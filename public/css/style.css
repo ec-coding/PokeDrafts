@@ -57,6 +57,7 @@ h3 {
 img {
      margin: 10px 10px 0 10px;
      border-radius: 5px;
+     filter: drop-shadow(5px 5px 5px black)
 }
 
 .type-input-div{
