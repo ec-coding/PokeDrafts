@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Your description goes here">
+    	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pokémon TCG Deck Builder</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<hr>
+		<h2>Pokémon TCG Deck Builder</h2>
+
+        <input type="text" id="name-search" placeholder="Search by name...">
+        <button id="search-button">Search</button>
+
+		<hr>
+		<section class="type-input-sec">
+			<form action="" method="" id="type-input-form">
+				<h3>Type</h3>
+				<div class="type-input-div">
+					<input class="type-input" type="radio" id="colorless" name="type" value="Colorless">
+					<label for="type-colorless"> Colorless</label>
+					<input class="type-input" type="radio" id="psychic" name="type" value="Psychic">
+					<label for="type-psychic"> Psychic</label>
+					<input class="type-input" type="radio" id="water" name="type" value="Water">
+					<label for="type-water"> Water</label>
+				</div>
+				<div class="type-input-div">
+					<input class="type-input" type="radio" id="fire" name="type" value="Fire">
+					<label for="type-fire"> Fire</label>
+					<input class="type-input" type="radio" id="grass" name="type" value="Grass">
+					<label for="type-grass"> Grass</label>
+					<input class="type-input" type="radio" id="lightning" name="type" value="Lightning">
+					<label for="type-lightning"> Lightning</label>
+				</div>
+			</form>
+		</section>
+		<hr>
+		<section class="supertype-input-sec">
+			<form>
+				<h3>Card Type</h3>
+				<div class="supertype-input-div">
+					<input class="type-input" type="radio" id="card-type-pokemon" name="supertype" value="Pokémon">
+					<label for="supertype-pokemon"> Pokémon</label>
+					<input class="type-input" type="radio" id="card-type-trainer" name="supertype" value="Trainer">
+					<label for="supertype-trainer"> Trainer</label>
+					<input class="type-input" type="radio" id="card-type-energy" name="supertype" value="Energy">
+					<label for="supertype-energy"> Energy</label>
+				</div>
+			</form>
+		</section>
+		<hr>
+		<section class="subtype-input-sec">
+			<form>
+				<h3>Set</h3>
+				<div class="subtype-input-div">
+					<input class="type-input" type="checkbox" id="base" name="subtype" value="base1">
+					<label for="subtype-base"> Base</label>
+					<input class="type-input" type="checkbox" id="jungle" name="subtype" value="base2">
+					<label for="subtype-jungle"> Jungle</label>
+					<input class="type-input" type="checkbox" id="fossil" name="subtype" value="base3">
+					<label for="subtype-fossil"> Fossil</label>
+				</div>
+			</form>
+		</section>
+		<hr>
+		<div id="card-container">
+
+		</div>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

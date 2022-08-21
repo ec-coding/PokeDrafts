@@ -22,21 +22,47 @@
 /*******************************************/
 
 body {
-
+     border-left: 1px solid black;
+     border-right: 1px solid black;
+     height: 700px;
 }
 
 
 /******************************************
 /* LAYOUT
 /*******************************************/
-header {
+/* header {
 
 }
 
 footer {
 
+} */
+
+header, body, footer {
+     width: 400px;
+     margin: 100px auto;
+     text-align: center;
+
+}
+
+h3 {
+     margin-top: 10px;
 }
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+img {
+     margin: 10px 10px 0 10px;
+     border-radius: 5px;
+}
+
+.type-input-div{
+     margin: 0 auto;
+}
+.type-input{
+     margin-left: 15px;
+     margin-right: 1px;
+}
