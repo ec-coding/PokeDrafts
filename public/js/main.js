@@ -1,5 +1,11 @@
 document.querySelector('#search-button').addEventListener('click', getCards)
 
+const clickCardToAdd = document.querySelectorAll('src')
+
+Array.from(clickCardToAdd).forEach(el => {
+    el.addEventListener('click', addCardToDeck)
+})
+
 function getCards(){
     const nameInput = document.querySelector('#name-search').value
     const url = `https://api.pokemontcg.io/v2/cards/?`
@@ -107,5 +113,25 @@ function getCards(){
         .catch(err => {
             console.log(`error ${err}`)
     });
-  }
+}
 
+async function addCardToDeck() {
+    console.log('Adding card to deck')
+    const cardImageURL = this.parentNode.data[i].images.small
+    console.log(cardImageURL)
+
+    try {
+        const response = await fetch('/catchCards/buildDeck', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'cardImageURL': cardImageURL
+            })
+        })
+        const data = await response.json()
+        console.log('data: ' + data)
+        location.reload()
+    } catch(err){
+        console.log(err)
+    }
+}
