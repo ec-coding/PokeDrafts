@@ -1,10 +1,6 @@
 document.querySelector('#search-button').addEventListener('click', getCards)
 
-const clickCardToAdd = document.querySelectorAll('src')
 
-Array.from(clickCardToAdd).forEach(el => {
-    el.addEventListener('click', addCardToDeck)
-})
 
 function getCards(){
     const nameInput = document.querySelector('#name-search').value
@@ -104,10 +100,13 @@ function getCards(){
         for (var i = 0; i < responseData.data.length; i++) {
             const newCard = document.createElement('div')
             const newCardImg = document.createElement('img')
+            newCardImg.setAttribute('class', 'card');
+            newCardImg.setAttribute('type', 'submit');
             // newCard.innerText = responseData.data[i].name
             newCardImg.src = responseData.data[i].images.small
             cardContainer.appendChild(newCard)
             cardContainer.appendChild(newCardImg)
+            newCardImg.addEventListener('click', addCardToDeck)
           }
         })
         .catch(err => {
@@ -115,23 +114,91 @@ function getCards(){
     });
 }
 
-async function addCardToDeck() {
-    console.log('Adding card to deck')
-    const cardImageURL = this.parentNode.data[i].images.small
-    console.log(cardImageURL)
+
+async function addCardToDeck(event) {
+
+    let cardImageURL = event.target
+    console.log(cardImageURL.src)
+
+    fetch(fetchURLText, {
+        headers: {
+            "X-Api-Key": "9aac7fc4-dfb9-41eb-ab2f-f30e2976bd08"
+        }
+    })
+    .then (res => res.json())
+    .then (responseData => {
+
+    const deckContainer = document.querySelector('#deck-container')
+    deckContainer.innerText = ''
+
+        const newDeckCard = document.createElement('div')
+        const newDeckCardImg = document.createElement('img')
+        newDeckCardImg.src = event.target.src
+        newDeckCardImg.setAttribute('class', 'deck-card')
+        deckContainer.appendChild(newDeckCard)
+        deckContainer.appendChild(newDeckCardImg)
+        
+    })
 
     try {
-        const response = await fetch('/catchCards/buildDeck', {
+        const response = await fetch('/cards', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 'cardImageURL': cardImageURL
             })
-        })
+        })  
         const data = await response.json()
         console.log('data: ' + data)
         location.reload()
     } catch(err){
         console.log(err)
+
+    // fetch('/cards', {
+    //     method: 'put',
+    //     headers: { 'Content-Type': 'application/json' }
+    // })
     }
 }
+
+
+
+
+    // try {
+    //     const response = await fetch('/catchCards/buildDeck', {
+    //         method: 'put',
+    //         headers: {'Content-Type': 'application/json'},
+    //         body: JSON.stringify({
+    //             'cardImageURL': cardImageURL
+    //         })
+    //     })
+    //     const data = await response.json()
+    //     console.log('data: ' + data)
+    //     location.reload()
+    // } catch(err){
+    //     console.log(err)
+    // }
+
+
+// const images = document.querySelectorAll('.card')
+
+// images.forEach(img => img.addEventListener('click', clickToAdd))
+
+// function clickToAdd(event) {
+//     console.log('Card was added to Deck')
+//     const imageThatIsClicked = event.target
+//     const imgURL = imageThatIsClicked.src
+//     console.log(imgURL)
+
+//     fetch('/cards', {
+//         method: 'put',
+//         headers: { 'Content-Type': 'application/json' }
+//     })
+// }
+
+
+// const clickCardToAdd = document.querySelectorAll('.card')
+
+// Array.from(clickCardToAdd).forEach(el => {
+//     el.addEventListener('click', addCardToDeck)
+// })
