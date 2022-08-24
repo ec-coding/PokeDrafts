@@ -11,51 +11,75 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
     .then(client => {
         console.log('Connected to Database')
         const db = client.db('card-archive')
-        const cardCollection = db.collection('cards')
+        const cardsCollection = db.collection('cards')
         app.set('view engine', 'ejs')
         app.use(cors())
         app.use(express.static('public'))
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(bodyParser.json())
-        app.get('/', (request, response) => {
-            response.sendFile(__dirname + '/index.html')
+        app.get('/', (req, res) => {
+            const cursor = db.collection('cards').find().toArray()
+            console.log(cursor)
+                .then(results => {
+                    console.log(results)
+                    res.render('index.ejs', { cards: results })
+                })
+                .catch(error => console.error(error))
+            })
+
+        app.get('/api/cards/:id', (request, response) => {
+            const id = request.params.id
+            const note = notes.find(note => note.id === id)
+            console.log(note)
+            response.json(note)
         })
+
         app.post('/cards', (req, res) => {
-            cardCollection.insertOne(req.body)
+
+            let cardID = (req.body.cardID)
+
+            cardsCollection.insertOne(req.body)
+
+            
+
                 .then(result => {
+                    console.log(result)
                     res.redirect('/')
                 })
+                .catch(error => console.error(error))
         })
 
-        app.put('/quotes', (req, res) => {
-            console.log(req.body)
-            cardCollection.findOneAndUpdate(
-                { name: 'Yoda' },
-                {
-                    $set: { 
-                        name: req.body.name,
-                        quote: req.body.quote
-                    }
-                },
-                {
-                    upsert: true
-                }
-            )
-            .then(result => {
-                res.json('Success')
-            })
-            .catch(error => console.error(error))
-        })
+
+        //Update the deck by adding the card that the user had clicked from the Search Results
+        // app.put('/cards', (req, res) => {
+        //     console.log(req.body)
+            // cardsCollection.findOneAndUpdate(
+            //     { name: 'Yoda' },
+            //     {
+            //         $set: { 
+            //             name: req.body.name,
+            //             quote: req.body.quote
+            //         }
+            //     },
+            //     {
+            //         upsert: true
+            //     }
+            // )
+            // .then(result => {
+            //     res.json('Success')
+            // })
+            // .catch(error => console.error(error))
+        // })
 
         app.delete('/cards', (req, res) => {
-            cardCollection.deleteOne(
-                { name: req.body.name }
+            cardsCollection.deleteMany(
+    
             )
             .then(result => {
                 if (result.deletedCount === 0) {
-                    return res.json('No cards to delete')
+                    return res.json('No decks to delete')
                 }
-                res.json('Deleted Card')
+                res.json('Deleted Decks')
             })
             .catch(error => console.error(error))
         })

@@ -102,65 +102,108 @@ function getCards(){
             const newCardImg = document.createElement('img')
             newCardImg.setAttribute('class', 'card');
             newCardImg.setAttribute('type', 'submit');
-            // newCard.innerText = responseData.data[i].name
+            newCard.innerText = responseData.data[i].name
             newCardImg.src = responseData.data[i].images.small
-            cardContainer.appendChild(newCard)
+            newCardImg.dataset.name = newCard.innerText
+            // cardContainer.appendChild(newCard)
             cardContainer.appendChild(newCardImg)
-            newCardImg.addEventListener('click', addCardToDeck)
+            newCardImg.addEventListener('click', createCardReplica)
           }
+
+
+        document.querySelector('.card').addEventListener('click', event => {
+            event.currentTarget;
+            let cardName = event.currentTarget.dataset.name
+            let img = event.currentTarget
+            let selectedCard = {
+                'categories': ['deck'],
+                'name': cardName,
+                'value': img.src
+            }
+            fetch('/cards', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(selectedCard)
+            })
+            .then(res => {
+                if (res.ok) return res.json()
+            })
+            .then(res => {
+                window.location.reload(true)
+            })
+
+            fetch('/cards', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    'value': img.src
+                })
+            })
+        
+            const deckContainer = document.querySelector('#deck-container')
+            deckContainer.innerText = ''
+            const newDeckCard = document.createElement('div')
+            const newDeckCardImg = document.createElement('img')
+            newDeckCardImg.src = img.src
+            newDeckCardImg.setAttribute('class', 'deck-card')
+            newDeckCardImg.setAttribute('type', 'submit')
+            deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
+            deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
+
+
+        })
+
         })
         .catch(err => {
             console.log(`error ${err}`)
     });
+
+}
+
+const deleteButton = document.querySelector('#delete-deck-button')
+
+deleteButton.addEventListener('click', _ => {
+    fetch('/cards', {
+        method: 'delete',
+        headers: { 'Content-Type': 'application./json' },
+        //You don't need to send a body, you just need to send a delete request.
+        })
+    .then(res => {
+        if (res.ok) return res
+    })
+    .then(data => {
+        window.location.reload()
+    })
+})
+
+function createCardReplica() {
+
 }
 
 
-async function addCardToDeck(event) {
 
-    let cardImageURL = event.target
-    console.log(cardImageURL.src)
 
-    fetch(fetchURLText, {
-        headers: {
-            "X-Api-Key": "9aac7fc4-dfb9-41eb-ab2f-f30e2976bd08"
-        }
-    })
-    .then (res => res.json())
-    .then (responseData => {
+// async function addCardToDeck() {
+//  want it to push the url of the card that is clicked to mongoDB
 
-    const deckContainer = document.querySelector('#deck-container')
-    deckContainer.innerText = ''
+// }
+    // then take that url and display it in the "Decks" area on my app as an src
 
-        const newDeckCard = document.createElement('div')
-        const newDeckCardImg = document.createElement('img')
-        newDeckCardImg.src = event.target.src
-        newDeckCardImg.setAttribute('class', 'deck-card')
-        newDeckCardImg.setAttribute('type', 'submit')
-        deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
-        deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
-        
-    })
+    // try {
+    //     const response = await fetch('/cards', {
+    //         method: 'put',
+    //         headers: {'Content-Type': 'application/json'},
+    //         body: JSON.stringify({
+    //             'cardImageURL': '/cards'
+    //         })
+    //     })  
+    //     const data = await response.json()
+    //     console.log('data: ' + data)
+    //     location.reload()
+    // } catch(err){
+    //     console.log(err)
+    // }
 
-    try {
-        const response = await fetch('/cards', {
-            method: 'put',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                'cardImageURL': cardImageURL
-            })
-        })  
-        const data = await response.json()
-        console.log('data: ' + data)
-        location.reload()
-    } catch(err){
-        console.log(err)
-
-    // fetch('/cards', {
-    //     method: 'put',
-    //     headers: { 'Content-Type': 'application/json' }
-    // })
-    }
-}
 
 
 
