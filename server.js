@@ -18,7 +18,7 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
         app.use(express.static('public'))
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(bodyParser.json())
-        app.get('/', (req, res) => {
+        app.get('/cards', (req, res) => {
             const cursor = db.collection('cards').find().toArray()
             console.log(cursor)
                 .then(results => {
@@ -26,23 +26,16 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
                     res.render('index.ejs', { cards: results })
                 })
                 .catch(error => console.error(error))
-            })
-
+        })
         app.get('/api/cards/:id', (request, response) => {
             const id = request.params.id
             const note = notes.find(note => note.id === id)
             console.log(note)
             response.json(note)
         })
-
         app.post('/cards', (req, res) => {
-
             let cardID = (req.body.cardID)
-
             cardsCollection.insertOne(req.body)
-
-            
-
                 .then(result => {
                     console.log(result)
                     res.redirect('/')
@@ -54,22 +47,12 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
         //Update the deck by adding the card that the user had clicked from the Search Results
         // app.put('/cards', (req, res) => {
         //     console.log(req.body)
-            // cardsCollection.findOneAndUpdate(
-            //     { name: 'Yoda' },
-            //     {
-            //         $set: { 
-            //             name: req.body.name,
-            //             quote: req.body.quote
-            //         }
-            //     },
-            //     {
-            //         upsert: true
-            //     }
-            // )
-            // .then(result => {
-            //     res.json('Success')
-            // })
-            // .catch(error => console.error(error))
+        //     cardsCollection.findOneAndUpdate(
+        //     )
+        //     .then(result => {
+        //         res.json('Success')
+        //     })
+        //     .catch(error => console.error(error))
         // })
 
         app.delete('/cards', (req, res) => {

@@ -131,24 +131,8 @@ function getCards(){
             .then(res => {
                 window.location.reload(true)
             })
-
-            fetch('/cards', {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    'value': img.src
-                })
-            })
         
-            const deckContainer = document.querySelector('#deck-container')
-            deckContainer.innerText = ''
-            const newDeckCard = document.createElement('div')
-            const newDeckCardImg = document.createElement('img')
-            newDeckCardImg.src = img.src
-            newDeckCardImg.setAttribute('class', 'deck-card')
-            newDeckCardImg.setAttribute('type', 'submit')
-            deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
-            deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
+
 
 
         })
@@ -177,7 +161,15 @@ deleteButton.addEventListener('click', _ => {
 })
 
 function createCardReplica() {
-
+    const deckContainer = document.querySelector('#deck-container')
+    deckContainer.innerText = ''
+    const newDeckCard = document.createElement('div')
+    const newDeckCardImg = document.createElement('img')
+    newDeckCardImg.src = event.currentTarget.src
+    newDeckCardImg.setAttribute('class', 'deck-card')
+    newDeckCardImg.setAttribute('type', 'submit')
+    deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
+    deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
 }
 
 
