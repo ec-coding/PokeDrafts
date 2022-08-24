@@ -27,25 +27,25 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
                 })
         })
 
-        app.put('/quotes', (req, res) => {
-            console.log(req.body)
-            cardCollection.findOneAndUpdate(
-                { name: 'Yoda' },
-                {
-                    $set: { 
-                        name: req.body.name,
-                        quote: req.body.quote
-                    }
-                },
-                {
-                    upsert: true
-                }
-            )
-            .then(result => {
-                res.json('Success')
-            })
-            .catch(error => console.error(error))
-        })
+        // app.put('/quotes', (req, res) => {
+        //     console.log(req.body)
+        //     cardCollection.findOneAndUpdate(
+        //         { name: 'Yoda' },
+        //         {
+        //             $set: { 
+        //                 name: req.body.name,
+        //                 quote: req.body.quote
+        //             }
+        //         },
+        //         {
+        //             upsert: true
+        //         }
+        //     )
+        //     .then(result => {
+        //         res.json('Success')
+        //     })
+        //     .catch(error => console.error(error))
+        // })
 
         app.delete('/cards', (req, res) => {
             cardCollection.deleteOne(
