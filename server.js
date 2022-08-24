@@ -2,8 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const cors = require ('cors');
-const MongoClient = require('mongodb').MongoClient
 const PORT = 8000
+const MongoClient = require('mongodb').MongoClient
+
 
 
 MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mongodb.net/?retryWrites=true&w=majority", {
