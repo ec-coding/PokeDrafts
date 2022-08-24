@@ -90,10 +90,6 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
 .catch(error => console.error(error))
 
 
-
-
-
-
 app.get('/api/:addCard', (request, response) => {
     const addCards = request.params.addCard.toLowerCase()
     if (pokemon[cardImage]) {
