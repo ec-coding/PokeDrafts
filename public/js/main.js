@@ -135,8 +135,9 @@ async function addCardToDeck(event) {
         const newDeckCardImg = document.createElement('img')
         newDeckCardImg.src = event.target.src
         newDeckCardImg.setAttribute('class', 'deck-card')
-        deckContainer.appendChild(newDeckCard)
-        deckContainer.appendChild(newDeckCardImg)
+        newDeckCardImg.setAttribute('type', 'submit')
+        deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
+        deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
         
     })
 
