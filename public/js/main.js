@@ -102,10 +102,11 @@ function getCards(){
             newCardImg.dataset.name = newCard.innerText
             // cardContainer.appendChild(newCard)
             cardContainer.appendChild(newCardImg)
+            newCardImg.addEventListener('click', addCardToDB)
             newCardImg.addEventListener('click', createCardReplica)
           }
 
-        document.querySelector('.card').addEventListener('click', event => {
+        async function addCardToDB(event) {
             event.currentTarget;
             let cardName = event.currentTarget.dataset.name
             let img = event.currentTarget
@@ -125,12 +126,30 @@ function getCards(){
             .then(res => {
                 window.location.reload(true)
                 })
-            })
-        })
-        .catch(err => {
-            console.log(`error ${err}`)
-    });
+        }
+        
+    })
+    
 }
+
+
+// .catch(err => {
+//     console.log(`error ${err}`)
+// })
+
+function createCardReplica() {
+    const deckContainer = document.querySelector('#deck-container')
+    deckContainer.innerText = ''
+    const newDeckCard = document.createElement('div')
+    const newDeckCardImg = document.createElement('img')
+    newDeckCardImg.src = event.currentTarget.src
+    newDeckCardImg.setAttribute('class', 'deck-card')
+    newDeckCardImg.setAttribute('type', 'submit')
+    deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
+    deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
+}
+
+
 
 const deleteButton = document.querySelector('#delete-deck-button')
 
@@ -148,14 +167,4 @@ deleteButton.addEventListener('click', _ => {
     })
 })
 
-function createCardReplica() {
-    const deckContainer = document.querySelector('#deck-container')
-    deckContainer.innerText = ''
-    const newDeckCard = document.createElement('div')
-    const newDeckCardImg = document.createElement('img')
-    newDeckCardImg.src = event.currentTarget.src
-    newDeckCardImg.setAttribute('class', 'deck-card')
-    newDeckCardImg.setAttribute('type', 'submit')
-    deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
-    deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
-}
+

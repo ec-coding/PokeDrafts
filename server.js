@@ -15,13 +15,23 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
         db = client.db(dbName)
         console.log(`Connected to ${dbName} Database`)
-        const db = client.db('card-archive')
-        const cardsCollection = db.collection('cards')
+
+        const cardsCollection = db.collection('deck-builder')
         app.set('view engine', 'ejs')
-        app.use(cors())
+
         app.use(express.static('public'))
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(bodyParser.json())
+        app.use(cors())
+
+        app.get('/',async (req, res) => {
+            db.collection('deck-builder').find().toArray()
+                .then(results => {
+                    res.render('index.ejs', { cards: results })
+                    console.log(results)
+                })
+                .catch(error => console.error(error))
+        })
 
         app.post('/cards', (req, res) => {
             let cardID = (req.body.cardID)
@@ -33,33 +43,27 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
                 .catch(error => console.error(error))
         })
 
-        app.get('/',async (req, res) => {
-            db.collection('cards').find().toArray()
-                .then(results => {
-                    res.render('index.ejs', { cards: results })
-                    console.log(results)
-                })
-                .catch(error => console.error(error))
+        // Update the deck by adding the card that the user had clicked from the Search Results
+        app.put('/cards', (req, res) => {
+            console.log(req.body)
+            cardsCollection.findOneAndUpdate(
+                filter,
+                update
+            )
+            .then(result => {
+                res.json('Success')
+            })
+            .catch(error => console.error(error))
         })
-        //Update the deck by adding the card that the user had clicked from the Search Results
-        // app.put('/cards', (req, res) => {
-        //     console.log(req.body)
-        //     cardsCollection.findOneAndUpdate(
-        //     )
-        //     .then(result => {
-        //         res.json('Success')
-        //     })
-        //     .catch(error => console.error(error))
-        // })
 
         app.delete('/cards', (req, res) => {
             cardsCollection.deleteMany(
     
             )
             .then(result => {
-                if (result.deletedCount === 0) {
-                    return res.json('No decks to delete')
-                }
+                // if (result.deletedCount === 0) {
+                //     return res.json('No decks to delete')
+                // }
                 res.json('Deleted Decks')
             })
             .catch(error => console.error(error))
