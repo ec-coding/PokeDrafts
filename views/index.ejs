@@ -1,4 +1,4 @@
-<!-- ejs -->
+<!-- In index.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -73,13 +73,13 @@
 
 			</div>
 			<hr>
-			<h2>Deck Builder</h2>
+			<h2>Deck Builder Beta</h2>
 			<div id="deck-container">
 
 				<ul class="cards">
 					<% for(var i = 0; i < cards.length; i++) {%>
 						<li class="card">
-							<span><%= cards[i].name %></span>
+							<span><%= cards[i].value.src %></span>
 						</li>
 					<% } %>
 				</ul>

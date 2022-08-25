@@ -16,7 +16,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         db = client.db(dbName)
         console.log(`Connected to ${dbName} Database`)
 
-        const cardsCollection = db.collection('deck-builder')
+        const cardsCollection = db.collection('cards')
         app.set('view engine', 'ejs')
 
         app.use(express.static('public'))
@@ -24,17 +24,15 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         app.use(bodyParser.json())
         app.use(cors())
 
-        app.get('/',async (req, res) => {
-            db.collection('deck-builder').find().toArray()
+        app.get('/', (req, res) => {
+            db.collection('cards').find().toArray()
                 .then(results => {
                     res.render('index.ejs', { cards: results })
-                    console.log(results)
                 })
                 .catch(error => console.error(error))
         })
-
         app.post('/cards', (req, res) => {
-            let cardID = (req.body.cardID)
+            // let cardID = (req.body.cardID)
             cardsCollection.insertOne(req.body)
                 .then(result => {
                     console.log(result)

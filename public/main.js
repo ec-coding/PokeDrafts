@@ -103,7 +103,7 @@ function getCards(){
             // cardContainer.appendChild(newCard)
             cardContainer.appendChild(newCardImg)
             newCardImg.addEventListener('click', addCardToDB)
-            newCardImg.addEventListener('click', createCardReplica)
+            // newCardImg.addEventListener('click', createCardReplica)
           }
 
         async function addCardToDB(event) {
