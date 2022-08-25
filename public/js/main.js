@@ -1,7 +1,5 @@
 document.querySelector('#search-button').addEventListener('click', getCards)
 
-
-
 function getCards(){
     const nameInput = document.querySelector('#name-search').value
     const url = `https://api.pokemontcg.io/v2/cards/?`
@@ -88,12 +86,9 @@ function getCards(){
             "X-Api-Key": "9aac7fc4-dfb9-41eb-ab2f-f30e2976bd08"
         }
     })
-
         .then(res => res.json())
         .then(responseData => {
-
         console.log(responseData)
-        console.log(responseData.data[0].name)
 
         const cardContainer = document.querySelector('#card-container')
         cardContainer.innerText = ''
@@ -110,7 +105,6 @@ function getCards(){
             newCardImg.addEventListener('click', createCardReplica)
           }
 
-
         document.querySelector('.card').addEventListener('click', event => {
             event.currentTarget;
             let cardName = event.currentTarget.dataset.name
@@ -124,24 +118,18 @@ function getCards(){
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(selectedCard)
-            })
+                })
             .then(res => {
                 if (res.ok) return res.json()
-            })
+                })
             .then(res => {
                 window.location.reload(true)
+                })
             })
-        
-
-
-
-        })
-
         })
         .catch(err => {
             console.log(`error ${err}`)
     });
-
 }
 
 const deleteButton = document.querySelector('#delete-deck-button')
@@ -171,70 +159,3 @@ function createCardReplica() {
     deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
     deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
 }
-
-
-
-
-// async function addCardToDeck() {
-//  want it to push the url of the card that is clicked to mongoDB
-
-// }
-    // then take that url and display it in the "Decks" area on my app as an src
-
-    // try {
-    //     const response = await fetch('/cards', {
-    //         method: 'put',
-    //         headers: {'Content-Type': 'application/json'},
-    //         body: JSON.stringify({
-    //             'cardImageURL': '/cards'
-    //         })
-    //     })  
-    //     const data = await response.json()
-    //     console.log('data: ' + data)
-    //     location.reload()
-    // } catch(err){
-    //     console.log(err)
-    // }
-
-
-
-
-
-    // try {
-    //     const response = await fetch('/catchCards/buildDeck', {
-    //         method: 'put',
-    //         headers: {'Content-Type': 'application/json'},
-    //         body: JSON.stringify({
-    //             'cardImageURL': cardImageURL
-    //         })
-    //     })
-    //     const data = await response.json()
-    //     console.log('data: ' + data)
-    //     location.reload()
-    // } catch(err){
-    //     console.log(err)
-    // }
-
-
-// const images = document.querySelectorAll('.card')
-
-// images.forEach(img => img.addEventListener('click', clickToAdd))
-
-// function clickToAdd(event) {
-//     console.log('Card was added to Deck')
-//     const imageThatIsClicked = event.target
-//     const imgURL = imageThatIsClicked.src
-//     console.log(imgURL)
-
-//     fetch('/cards', {
-//         method: 'put',
-//         headers: { 'Content-Type': 'application/json' }
-//     })
-// }
-
-
-// const clickCardToAdd = document.querySelectorAll('.card')
-
-// Array.from(clickCardToAdd).forEach(el => {
-//     el.addEventListener('click', addCardToDeck)
-// })

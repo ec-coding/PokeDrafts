@@ -74,15 +74,20 @@
 			</div>
 			<hr>
 			<h2>Deck Builder</h2>
-			<%= cards %>
 			<div id="deck-container">
 
-
-
+				<ul class="cards">
+					<% for(var i = 0; i < cards.length; i++) {%>
+						<li class="card">
+							<span><%= cards[i].name %></span>
+						</li>
+					<% } %>
+				</ul>
+				<%= cards %>
 			</div>
 			<button id="delete-deck-button">Delete Deck</button>
 		</div>
 
-		<script type="text/javascript" src="js/main.js"></script>
+		<script src="/main.js"></script>
 	</body>
 </html>

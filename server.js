@@ -4,13 +4,17 @@ const app = express()
 const cors = require ('cors');
 const PORT = 8000
 const MongoClient = require('mongodb').MongoClient
+require('dotenv').config()
 
 
+let db,
+    dbConnectionStr = "mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mongodb.net/?retryWrites=true&w=majority",
+    dbName = 'deck-builder'
 
-MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mongodb.net/?retryWrites=true&w=majority", {
-    useUnifiedTopology: true })
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
-        console.log('Connected to Database')
+        db = client.db(dbName)
+        console.log(`Connected to ${dbName} Database`)
         const db = client.db('card-archive')
         const cardsCollection = db.collection('cards')
         app.set('view engine', 'ejs')
@@ -18,21 +22,7 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
         app.use(express.static('public'))
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(bodyParser.json())
-        app.get('/cards', (req, res) => {
-            const cursor = db.collection('cards').find().toArray()
-            console.log(cursor)
-                .then(results => {
-                    console.log(results)
-                    res.render('index.ejs', { cards: results })
-                })
-                .catch(error => console.error(error))
-        })
-        app.get('/api/cards/:id', (request, response) => {
-            const id = request.params.id
-            const note = notes.find(note => note.id === id)
-            console.log(note)
-            response.json(note)
-        })
+
         app.post('/cards', (req, res) => {
             let cardID = (req.body.cardID)
             cardsCollection.insertOne(req.body)
@@ -43,7 +33,14 @@ MongoClient.connect("mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mon
                 .catch(error => console.error(error))
         })
 
-
+        app.get('/',async (req, res) => {
+            db.collection('cards').find().toArray()
+                .then(results => {
+                    res.render('index.ejs', { cards: results })
+                    console.log(results)
+                })
+                .catch(error => console.error(error))
+        })
         //Update the deck by adding the card that the user had clicked from the Search Results
         // app.put('/cards', (req, res) => {
         //     console.log(req.body)
