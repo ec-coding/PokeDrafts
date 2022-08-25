@@ -77,15 +77,6 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 .catch(error => console.error(error))
 
 
-app.get('/api/:addCard', (request, response) => {
-    const addCards = request.params.addCard.toLowerCase()
-    if (pokemon[cardImage]) {
-        response.json(pokemon[cardImage])
-    } else {
-        response.json(pokemon['unknown'])
-    }
-})
-
 
 //When you click a card, add its data to mongoDB, then place a copy of its image into the "deck" on the dom
 //When you click a card from the deck, remove its data from mongoDB, and then remove it from the deck
