@@ -147,6 +147,24 @@ function createCardReplica() {
     newDeckCardImg.setAttribute('type', 'submit')
     deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
     deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
+    newDeckCardImg.addEventListener('click', deleteCardFromDB)
+
+}
+
+async function deleteCardFromDB(event) {
+    event.currentTarget;
+    let selectedDeckCard = event.currentTarget
+    fetch('/cards', {
+        method: 'delete',
+        headers: { 'Content-Type': 'application./json' },
+        body: JSON.stringify(selectedDeckCard)
+        })
+    .then(res => {
+        if (res.ok) return res.json()
+    })
+    .then(data => {
+        window.location.reload()
+    }) 
 }
 
 

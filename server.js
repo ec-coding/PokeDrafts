@@ -55,8 +55,10 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         })
 
         app.delete('/cards', (req, res) => {
+            cardsCollection.deleteOne(
+                { name: req.body }
+            )
             cardsCollection.deleteMany(
-    
             )
             .then(result => {
                 // if (result.deletedCount === 0) {
