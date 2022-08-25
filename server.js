@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const cors = require ('cors');
-const PORT = 8000
+let port = process.env.PORT || 8000; 
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
 
@@ -68,8 +68,10 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             })
             .catch(error => console.error(error))
         })
-        app.listen(process.env.PORT || PORT, () => {
-            console.log(`The server is running on port ${PORT}!`)
+
+
+        app.listen(port, () => {
+            console.log(`The server is running on port ${port}!`)
         })
 })
 .catch(error => console.error(error))
