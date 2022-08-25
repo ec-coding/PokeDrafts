@@ -24,13 +24,13 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         app.use(bodyParser.json())
         app.use(cors())
 
-        // app.get('/', (req, res) => {
-        //     db.collection('cards').find().toArray()
-        //         .then(results => {
-        //             res.render('index.ejs', { cards: results })
-        //         })
-        //         .catch(error => console.error(error))
-        // })
+        app.get('/', (req, res) => {
+            db.collection('cards').find().toArray()
+                .then(results => {
+                    res.render('index.ejs', { cards: results })
+                })
+                .catch(error => console.error(error))
+        })
         app.post('/cards', (req, res) => {
             // let cardID = (req.body.cardID)
             cardsCollection.insertOne(req.body)
