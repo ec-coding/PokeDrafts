@@ -103,9 +103,10 @@ function getCards(){
             // cardContainer.appendChild(newCard)
             cardContainer.appendChild(newCardImg)
             newCardImg.addEventListener('click', addCardToDB)
-            // newCardImg.addEventListener('click', createCardReplica)
           }
 
+
+        //Clones a card onto the deck and has its image persist upon reloading.
         async function addCardToDB(event) {
             event.currentTarget;
             let cardName = event.currentTarget.dataset.name
@@ -123,6 +124,7 @@ function getCards(){
             .then(res => {
                 if (res.ok) return res.json()
                 })
+            //How do I make the card instantly appear on the deck without having to reload?    
             .then(res => {
                 window.location.reload(true)
                 })
@@ -137,44 +139,70 @@ function getCards(){
 //     console.log(`error ${err}`)
 // })
 
-function createCardReplica() {
-    const deckContainer = document.querySelector('#deck-container')
-    deckContainer.innerText = ''
-    const newDeckCard = document.createElement('div')
-    const newDeckCardImg = document.createElement('img')
-    newDeckCardImg.src = event.currentTarget.src
-    newDeckCardImg.setAttribute('class', 'deck-card')
-    newDeckCardImg.setAttribute('type', 'submit')
-    deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
-    deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
-    newDeckCardImg.addEventListener('click', deleteCardFromDB)
+// function createCardReplica() {
+//     const deckContainer = document.querySelector('#deck-container')
+//     deckContainer.innerText = ''
+//     const newDeckCard = document.createElement('div')
+//     const newDeckCardImg = document.createElement('img')
+//     newDeckCardImg.src = event.currentTarget.src
+//     newDeckCardImg.setAttribute('class', 'deck-card')
+//     newDeckCardImg.setAttribute('type', 'submit')
+//     deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
+//     deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
+//     newDeckCardImg.addEventListener('click', deleteCardFromDB)   
+  
+// }
 
-}
+// async function deleteCardFromDB(event) {
+//     console.log('Card Deleted')
+//     event.currentTarget;
+//     let deckCardName = event.currentTarget.dataset.name
+//     let deckCardImg = event.currentTarget
+//     let selectedDeckCard = {
+//         'categories': ['deck'],
+//         'name': deckCardName,
+//         'value': deckCardImg.src
+//     }
+//     console.log(selectedDeckCard)
+//     fetch('/delete-single-card', {
+//         method: 'DELETE',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(selectedDeckCard)
+//         })
+//     .then(res => {
+//         if (res.ok) return res
+//     })
+//     .then(data => {
+//         window.location.reload()
+//     }) 
+// } 
 
-async function deleteCardFromDB(event) {
-    event.currentTarget;
-    let selectedDeckCard = event.currentTarget
-    fetch('/cards', {
-        method: 'delete',
-        headers: { 'Content-Type': 'application./json' },
+
+const deleteSingleCard = document.querySelector('.deck-card')
+
+deleteSingleCard.addEventListener('click', _ => {
+    console.log('Deleting card')
+    fetch('/delete-single-card', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
         })
     .then(res => {
-        if (res.ok) return res.json()
+        if (res.ok) return res
     })
     .then(data => {
         window.location.reload()
-    }) 
-}
+    })
+})
 
 
 
 const deleteButton = document.querySelector('#delete-deck-button')
 
 deleteButton.addEventListener('click', _ => {
-    fetch('/cards', {
+    fetch('/delete-all-cards', {
         method: 'delete',
-        headers: { 'Content-Type': 'application./json' },
+        headers: { 'Content-Type': 'application/json' },
         //You don't need to send a body, you just need to send a delete request.
         })
     .then(res => {

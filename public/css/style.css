@@ -75,6 +75,14 @@ img {
      filter: drop-shadow(5px 5px 5px black)
 }
 
+.deck-card-delete {
+     width: 240;
+     height: 330;
+     background: transparent;
+     border: none !important;
+     font-size:0;
+}
+
 .name-input {
      height: 100px;
      background-color: tan;

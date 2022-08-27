@@ -32,7 +32,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
                 .catch(error => console.error(error))
         })
         app.post('/cards', (req, res) => {
-            // let cardID = (req.body.cardID)
+            // This is what clones the card you clicked from search results and places it in the deck
             cardsCollection.insertOne(req.body)
                 .then(result => {
                     console.log(result)
@@ -54,11 +54,26 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             .catch(error => console.error(error))
         })
 
-        app.delete('/cards', (req, res) => {
+        app.delete('/delete-single-card', (req, res) => {
             cardsCollection.deleteOne(
-                { name: req.body }
+                { name: {
+                    'categories': ['deck'],
+                    'name': req.body.name,
+                    'value': req.body.value
+                } },
             )
+            .then(result => {
+                // if (result.deletedCount === 0) {
+                //     return res.json('No decks to delete')
+                // }
+                res.json('Deleted Decks')
+            })
+            .catch(error => console.error(error))
+        })
+
+        app.delete('/delete-all-cards', (req, res) => {
             cardsCollection.deleteMany(
+
             )
             .then(result => {
                 // if (result.deletedCount === 0) {
