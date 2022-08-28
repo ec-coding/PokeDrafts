@@ -78,8 +78,8 @@
 
 				<ul class="cards">
 					<% for(var i = 0; i < cards.length; i++) {%>
-						<li class="card">
-							<img class="deck-card" src="<%= cards[i].value %>">
+						<li data-id="<%= cards[i]._id %>" class="card" id="deck-card" onclick="deleteDeckCard()">
+							<img src="<%= cards[i].value %>">
 						</li>
 					<% } %>
 				</ul>

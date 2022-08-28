@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const cors = require ('cors');
 let port = process.env.PORT || 8000; 
-const MongoClient = require('mongodb').MongoClient
+// const MongoClient = require('mongodb').MongoClient
+const {MongoClient, ObjectId} = require('mongodb')
 require('dotenv').config()
 
 
@@ -24,6 +25,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         app.use(bodyParser.json())
         app.use(cors())
 
+        //Get collection of cards and render it on your index.ejs
         app.get('/', (req, res) => {
             db.collection('cards').find().toArray()
                 .then(results => {
@@ -54,19 +56,19 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             .catch(error => console.error(error))
         })
 
+
+        //How do I delete a card before having to reload the page?
         app.delete('/delete-single-card', (req, res) => {
             cardsCollection.deleteOne(
-                { name: {
-                    'categories': ['deck'],
-                    'name': req.body.name,
-                    'value': req.body.value
-                } },
+                { 
+                    '_id': ObjectId(req.body.id)
+                },
             )
             .then(result => {
                 // if (result.deletedCount === 0) {
                 //     return res.json('No decks to delete')
                 // }
-                res.json('Deleted Decks')
+                res.json('')
             })
             .catch(error => console.error(error))
         })
@@ -79,7 +81,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
                 // if (result.deletedCount === 0) {
                 //     return res.json('No decks to delete')
                 // }
-                res.json('Deleted Decks')
+                res.json('')
             })
             .catch(error => console.error(error))
         })

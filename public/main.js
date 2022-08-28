@@ -102,6 +102,7 @@ function getCards(){
             newCardImg.dataset.name = newCard.innerText
             // cardContainer.appendChild(newCard)
             cardContainer.appendChild(newCardImg)
+            newCardImg.addEventListener('click', createCardReplica)
             newCardImg.addEventListener('click', addCardToDB)
           }
 
@@ -121,13 +122,6 @@ function getCards(){
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(selectedCard)
                 })
-            .then(res => {
-                if (res.ok) return res.json()
-                })
-            //How do I make the card instantly appear on the deck without having to reload?    
-            .then(res => {
-                window.location.reload(true)
-                })
         }
         
     })
@@ -139,49 +133,35 @@ function getCards(){
 //     console.log(`error ${err}`)
 // })
 
-// function createCardReplica() {
-//     const deckContainer = document.querySelector('#deck-container')
-//     deckContainer.innerText = ''
-//     const newDeckCard = document.createElement('div')
-//     const newDeckCardImg = document.createElement('img')
-//     newDeckCardImg.src = event.currentTarget.src
-//     newDeckCardImg.setAttribute('class', 'deck-card')
-//     newDeckCardImg.setAttribute('type', 'submit')
-//     deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
-//     deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
-//     newDeckCardImg.addEventListener('click', deleteCardFromDB)   
-  
-// }
+function createCardReplica() {
+    console.log('Card added to deck')
+    const deckContainer = document.querySelector('#deck-container')
+    deckContainer.innerText = ''
+    const newDeckCard = document.createElement('div')
+    const newDeckCardImg = document.createElement('img')
+    newDeckCardImg.src = event.currentTarget.src
+    newDeckCardImg.setAttribute('class', 'deck-card')
+    newDeckCardImg.setAttribute('type', 'submit')
+    deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
+    deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
+    newDeckCardImg.addEventListener('click', deleteCardFromDB)   
+}
 
-// async function deleteCardFromDB(event) {
-//     console.log('Card Deleted')
-//     event.currentTarget;
-//     let deckCardName = event.currentTarget.dataset.name
-//     let deckCardImg = event.currentTarget
-//     let selectedDeckCard = {
-//         'categories': ['deck'],
-//         'name': deckCardName,
-//         'value': deckCardImg.src
-//     }
-//     console.log(selectedDeckCard)
-//     fetch('/delete-single-card', {
-//         method: 'DELETE',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(selectedDeckCard)
-//         })
-//     .then(res => {
-//         if (res.ok) return res
-//     })
-//     .then(data => {
-//         window.location.reload()
-//     }) 
-// } 
+document.querySelectorAll('.card').forEach(card => card.addEventListener('click', deleteCardFromDB))
 
-
-const deleteSingleCard = document.querySelector('.deck-card')
-
-deleteSingleCard.addEventListener('click', _ => {
-    console.log('Deleting card')
+//This function removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
+async function deleteCardFromDB(event) {
+    console.log('Card Deleted')
+    event.currentTarget;
+    let deckCardID = event.currentTarget.dataset.id
+    let deckCardName = event.currentTarget.dataset.name
+    let deckCardImg = event.currentTarget
+    let selectedDeckCard = {
+        'id': deckCardID,
+        'categories': ['deck'],
+        'name': deckCardName,
+        'value': deckCardImg.src
+    }
     fetch('/delete-single-card', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -190,12 +170,16 @@ deleteSingleCard.addEventListener('click', _ => {
     .then(res => {
         if (res.ok) return res
     })
-    .then(data => {
+    .then(res => {
         window.location.reload()
-    })
-})
+    }) 
+} 
 
-
+//I want this function to delete a card from the deck if you click it immediately after re-adding it
+function deleteDeckCard() {
+    const deckCard = document.getElementById("deck-card");
+    element.remove()
+}
 
 const deleteButton = document.querySelector('#delete-deck-button')
 
