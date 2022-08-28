@@ -93,8 +93,10 @@ function getCards(){
         const cardContainer = document.querySelector('#card-container')
         cardContainer.innerText = ''
         for (var i = 0; i < responseData.data.length; i++) {
+            const newCardContainer = document.createElement('section')
             const newCard = document.createElement('div')
             const newCardImg = document.createElement('img')
+            newCardContainer.setAttribute('class', 'search-carousel-container')
             newCardImg.setAttribute('class', 'card');
             newCardImg.setAttribute('type', 'submit');
             newCard.innerText = responseData.data[i].name
@@ -122,16 +124,16 @@ function getCards(){
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(selectedCard)
                 })
+            .then(res => {
+            console.log(res)
+            })
         }
         
     })
-    
+    .catch(err => {
+        console.log(`error ${err}`)
+    })
 }
-
-
-// .catch(err => {
-//     console.log(`error ${err}`)
-// })
 
 function createCardReplica() {
     console.log('Card added to deck')
@@ -152,7 +154,7 @@ document.querySelectorAll('.card').forEach(card => card.addEventListener('click'
 //This function removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
 async function deleteCardFromDB(event) {
     console.log('Card Deleted')
-    event.currentTarget;
+    const deletedCard = event.currentTarget;
     let deckCardID = event.currentTarget.dataset.id
     let deckCardName = event.currentTarget.dataset.name
     let deckCardImg = event.currentTarget
@@ -167,19 +169,18 @@ async function deleteCardFromDB(event) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
         })
+
+    //Find out how to delete a card from the deck if you click it immediately after adding it to the deck
     .then(res => {
-        if (res.ok) return res
+        if (res.ok) {
+            deletedCard.remove()
+            return res
+        }
     })
     .then(res => {
         window.location.reload()
     }) 
 } 
-
-//I want this function to delete a card from the deck if you click it immediately after re-adding it
-function deleteDeckCard() {
-    const deckCard = document.getElementById("deck-card");
-    element.remove()
-}
 
 const deleteButton = document.querySelector('#delete-deck-button')
 

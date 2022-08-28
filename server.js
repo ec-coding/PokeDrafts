@@ -38,7 +38,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             cardsCollection.insertOne(req.body)
                 .then(result => {
                     console.log(result)
-                    res.redirect('/')
+                    // res.redirect('/')
                 })
                 .catch(error => console.error(error))
         })
@@ -62,6 +62,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             cardsCollection.deleteOne(
                 { 
                     '_id': ObjectId(req.body.id)
+                    // value: req.body.value
                 },
             )
             .then(result => {
@@ -96,8 +97,11 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 
 
 //When you click a card, add its data to mongoDB, then place a copy of its image into the "deck" on the dom
+
 //When you click a card from the deck, remove its data from mongoDB, and then remove it from the deck
+
 //A completed deck must have exactly 60 cards
+//Place a counter that shows you how many cards are currently in your deck
 //While building the deck, you cannot exceed 60 cards
 //You cannot have more than 4 of the same card in a single deck, with the exception being Energy cards
 
