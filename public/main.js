@@ -1,6 +1,6 @@
 document.querySelector('#search-button').addEventListener('click', getCards)
 
-function getCards(){
+function getCards() {
     const nameInput = document.querySelector('#name-search').value
     const url = `https://api.pokemontcg.io/v2/cards/?`
 
@@ -42,14 +42,14 @@ function getCards(){
     } else if (supertypeInputEnergy == true) {
         supertypeInput = document.querySelector('#card-type-energy').value
     }
-    
+
     const subtypeInputBase = document.querySelector('#base').checked
     const subtypeInputJungle = document.querySelector('#jungle').checked
     const subtypeInputFossil = document.querySelector('#fossil').checked
 
     if (subtypeInputBase == true) {
         subtypeInput = document.querySelector('#base').value
-        subtypeParam += ` set.id:base1 OR` 
+        subtypeParam += ` set.id:base1 OR`
     }
     if (subtypeInputJungle == true) {
         subtypeInput = document.querySelector('#jungle').value
@@ -67,10 +67,10 @@ function getCards(){
 
     fetchURLText = url + `page=1&pageSize=20&orderBy=set&q=`
     if (nameInput != '') {
-        fetchURLText += ` name:${nameInput}` 
+        fetchURLText += ` name:${nameInput}`
     }
     if (typeInput != '') {
-        fetchURLText += ` types:${typeInput}` 
+        fetchURLText += ` types:${typeInput}`
     }
     if (supertypeInput != '') {
         fetchURLText += ` supertype:${supertypeInput}`
@@ -78,7 +78,7 @@ function getCards(){
     if (subtypeParam != '') {
         fetchURLText += subtypeParam
     }
-    
+
     console.log(fetchURLText)
 
     fetch(fetchURLText, {
@@ -88,65 +88,68 @@ function getCards(){
     })
         .then(res => res.json())
         .then(responseData => {
-        console.log(responseData)
+            console.log(responseData)
 
-        const cardContainer = document.querySelector('#card-container')
-        cardContainer.innerText = ''
-        for (var i = 0; i < responseData.data.length; i++) {
-            const newCardContainer = document.createElement('section')
-            const newCard = document.createElement('div')
-            const newCardImg = document.createElement('img')
-            newCardContainer.setAttribute('class', 'search-carousel-container')
-            newCardImg.setAttribute('class', 'card');
-            newCardImg.setAttribute('type', 'submit');
-            newCard.innerText = responseData.data[i].name
-            newCardImg.src = responseData.data[i].images.small
-            newCardImg.dataset.name = newCard.innerText
-            // cardContainer.appendChild(newCard)
-            cardContainer.appendChild(newCardImg)
-            newCardImg.addEventListener('click', createCardReplica)
-            newCardImg.addEventListener('click', addCardToDB)
-          }
-
-
-        //Clones a card onto the deck and has its image persist upon reloading.
-        async function addCardToDB(event) {
-            event.currentTarget;
-            let cardName = event.currentTarget.dataset.name
-            let img = event.currentTarget
-            let selectedCard = {
-                'categories': ['deck'],
-                'name': cardName,
-                'value': img.src
+            const cardContainer = document.querySelector('#card-container')
+            cardContainer.innerText = ''
+            for (var i = 0; i < responseData.data.length; i++) {
+                const newCardContainer = document.createElement('section')
+                const newCard = document.createElement('div')
+                const newCardImg = document.createElement('img')
+                newCardContainer.setAttribute('class', 'search-carousel-container')
+                newCardImg.setAttribute('class', 'card');
+                newCardImg.setAttribute('type', 'submit');
+                newCard.innerText = responseData.data[i].name
+                newCardImg.src = responseData.data[i].images.small
+                newCardImg.dataset.name = newCard.innerText
+                // cardContainer.appendChild(newCard)
+                cardContainer.appendChild(newCardImg)
+                // newCardImg.addEventListener('click', createCardReplica) // no two click event handlers
+                newCardImg.addEventListener('click', addCardToDB)
             }
-            fetch('/cards', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(selectedCard)
+
+            //Clones a card onto the deck and has its image persist upon reloading.
+            async function addCardToDB(event) {
+                event.currentTarget;
+                let cardName = event.currentTarget.dataset.name
+                let img = event.currentTarget
+                let selectedCard = {
+                    'categories': ['deck'],
+                    'name': cardName,
+                    'value': img.src
+                }
+                fetch('/cards', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(selectedCard)
                 })
-            .then(res => {
-            console.log(res)
-            })
-        }
-        
-    })
-    .catch(err => {
-        console.log(`error ${err}`)
-    })
+                    .then((response) => response.json())
+                    .then(data => {
+                        // add card AFTER saved to DB
+                        createCardReplica(data.insertedId, selectedCard)
+                    })
+            }
+        })
+        .catch(err => {
+            console.log(`error ${err}`)
+        })
 }
 
-function createCardReplica() {
+function createCardReplica(id, selectedCard) {
     console.log('Card added to deck')
     const deckContainer = document.querySelector('#deck-container')
     deckContainer.innerText = ''
     const newDeckCard = document.createElement('div')
     const newDeckCardImg = document.createElement('img')
-    newDeckCardImg.src = event.currentTarget.src
+    newDeckCardImg.src = selectedCard.value
+    // The below does not work because it is not called by an event handler.
+    // newDeckCardImg.src = event.currentTarget.src
     newDeckCardImg.setAttribute('class', 'deck-card')
     newDeckCardImg.setAttribute('type', 'submit')
+    newDeckCardImg.dataset.id = id
     deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
     deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
-    newDeckCardImg.addEventListener('click', deleteCardFromDB)   
+    newDeckCardImg.addEventListener('click', deleteCardFromDB)
 }
 
 document.querySelectorAll('.card').forEach(card => card.addEventListener('click', deleteCardFromDB))
@@ -168,19 +171,19 @@ async function deleteCardFromDB(event) {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
-        })
-
-    //Find out how to delete a card from the deck if you click it immediately after adding it to the deck
-    .then(res => {
-        if (res.ok) {
-            deletedCard.remove()
-            return res
-        }
     })
-    .then(res => {
-        window.location.reload()
-    }) 
-} 
+
+        //Find out how to delete a card from the deck if you click it immediately after adding it to the deck
+        .then(res => {
+            if (res.ok) {
+                deletedCard.remove()
+                return res
+            }
+        })
+    // .then(res => {
+    //     window.location.reload()
+    // }) 
+}
 
 const deleteButton = document.querySelector('#delete-deck-button')
 
@@ -189,10 +192,15 @@ deleteButton.addEventListener('click', _ => {
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
         //You don't need to send a body, you just need to send a delete request.
-        })
-    .then(res => {
-        if (res.ok) return res
     })
+        .then(res => {
+            if (res.ok) {
+                // document.querySelectorAll('.deck-card').forEach((res) => {
+                //     res.currentTarget.remove()
+                // })
+                return res
+            }
+        })
     .then(data => {
         window.location.reload()
     })

@@ -37,24 +37,24 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             // This is what clones the card you clicked from search results and places it in the deck
             cardsCollection.insertOne(req.body)
                 .then(result => {
-                    console.log(result)
+                    res.json(result)
                     // res.redirect('/')
                 })
                 .catch(error => console.error(error))
         })
 
         // Update the deck by adding the card that the user had clicked from the Search Results
-        app.put('/cards', (req, res) => {
-            console.log(req.body)
-            cardsCollection.findOneAndUpdate(
-                filter,
-                update
-            )
-            .then(result => {
-                res.json('Success')
-            })
-            .catch(error => console.error(error))
-        })
+        // app.put('/cards', (req, res) => {
+        //     console.log(req.body)
+        //     cardsCollection.findOneAndUpdate(
+        //         filter,
+        //         update
+        //     )
+        //     .then(result => {
+        //         res.json('Success')
+        //     })
+        //     .catch(error => console.error(error))
+        // })
 
 
         //How do I delete a card before having to reload the page?
@@ -95,6 +95,8 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 .catch(error => console.error(error))
 
 
+
+//Alt + Shift + F
 
 //When you click a card, add its data to mongoDB, then place a copy of its image into the "deck" on the dom
 
