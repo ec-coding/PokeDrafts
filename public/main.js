@@ -10,6 +10,7 @@ function getCards() {
     const typeInputFire = document.querySelector('#fire').checked
     const typeInputGrass = document.querySelector('#grass').checked
     const typeInputLightning = document.querySelector('#lightning').checked
+    const typeInputFighting = document.querySelector('#fighting').checked
 
     let supertypeInput = ''
     let subtypeInput = ''
@@ -27,6 +28,8 @@ function getCards() {
         typeInput = document.querySelector('#grass').value
     } else if (typeInputLightning == true) {
         typeInput = document.querySelector('#lightning').value
+    } else if (typeInputFighting == true) {
+        typeInput = document.querySelector('#fighting').value
     } else {
         typeInput = ''
     }
