@@ -5,9 +5,11 @@ const cors = require ('cors');
 let port = process.env.PORT || 8000; 
 // const MongoClient = require('mongodb').MongoClient
 const {MongoClient, ObjectId} = require('mongodb')
+
+//If we don't have this line of code, any of the env files that we attempt to use will not run
 require('dotenv').config()
 
-
+//How do I put this in an env file?
 let db,
     dbConnectionStr = "mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mongodb.net/?retryWrites=true&w=majority",
     dbName = 'deck-builder'
@@ -18,11 +20,18 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         console.log(`Connected to ${dbName} Database`)
 
         const cardsCollection = db.collection('cards')
+
+        // Without this line, we wouldn't know how to handle our views
+        // Eventually, our views will be handled by React
         app.set('view engine', 'ejs')
 
+        // This line is used to locate our css and js files
         app.use(express.static('public'))
+
+        // These 2 lines allow us to parse things that come out of the body
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(bodyParser.json())
+        
         app.use(cors())
 
         //Get collection of cards and render it on your index.ejs
