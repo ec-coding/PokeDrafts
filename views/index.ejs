@@ -77,12 +77,14 @@
 			<hr>
 			<h2>Deck Builder Beta</h2>
 			<div id="deck-container">
-				<ul class="cards">
+				<ul class="cards slider">
 						<% for(var i = 0; i < cards.length; i++) {%>
-							<li data-id="<%= cards[i]._id %>" class="card" id="deck-card" onclick="deleteDeckCard()">
+							<li data-id="<%= cards[i]._id %>" class="card slide" id="deck-card" onclick="deleteDeckCard()">
 								<img src="<%= cards[i].value %>">
 							</li>
 						<% } %>
+						<button class="btn btn-next">&gt;</button>
+						<button class="btn btn-prev">&lt;</button>
 				</ul>
 			</div>
 			<button id="delete-deck-button">Delete Deck</button>

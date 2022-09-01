@@ -1,10 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const cors = require ('cors');
-let port = process.env.PORT || 8000; 
+const cors = require('cors');
+let port = process.env.PORT || 8000;
 // const MongoClient = require('mongodb').MongoClient
-const {MongoClient, ObjectId} = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 
 //If we don't have this line of code, any of the env files that we attempt to use will not run
 require('dotenv').config()
@@ -31,7 +31,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         // These 2 lines allow us to parse things that come out of the body
         app.use(bodyParser.urlencoded({ extended: true }))
         app.use(bodyParser.json())
-        
+
         app.use(cors())
 
         //Get collection of cards and render it on your index.ejs
@@ -52,56 +52,42 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
                 .catch(error => console.error(error))
         })
 
-        // Update the deck by adding the card that the user had clicked from the Search Results
-        // app.put('/cards', (req, res) => {
-        //     console.log(req.body)
-        //     cardsCollection.findOneAndUpdate(
-        //         filter,
-        //         update
-        //     )
-        //     .then(result => {
-        //         res.json('Success')
-        //     })
-        //     .catch(error => console.error(error))
-        // })
-
-
         //How do I delete a card before having to reload the page?
         app.delete('/delete-single-card', (req, res) => {
             cardsCollection.deleteOne(
-                { 
+                {
                     '_id': ObjectId(req.body.id)
                     // value: req.body.value
                 },
             )
-            .then(result => {
-                // if (result.deletedCount === 0) {
-                //     return res.json('No decks to delete')
-                // }
-                res.json('')
-            })
-            .catch(error => console.error(error))
+                .then(result => {
+                    // if (result.deletedCount === 0) {
+                    //     return res.json('No decks to delete')
+                    // }
+                    res.json('')
+                })
+                .catch(error => console.error(error))
         })
 
         app.delete('/delete-all-cards', (req, res) => {
             cardsCollection.deleteMany(
 
             )
-            .then(result => {
-                // if (result.deletedCount === 0) {
-                //     return res.json('No decks to delete')
-                // }
-                res.json('')
-            })
-            .catch(error => console.error(error))
+                .then(result => {
+                    // if (result.deletedCount === 0) {
+                    //     return res.json('No decks to delete')
+                    // }
+                    res.json('')
+                })
+                .catch(error => console.error(error))
         })
 
 
         app.listen(port, () => {
             console.log(`The server is running on port ${port}!`)
         })
-})
-.catch(error => console.error(error))
+    })
+    .catch(error => console.error(error))
 
 
 
