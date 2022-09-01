@@ -261,7 +261,8 @@ prevSlide.addEventListener("click", function () {
     });
 });
 
-//Maximum number of slides
+// Maximum number of slides
 let maxSlide = slides.length - 1;
 
 
+// Hide slider arrows if there are no cards to display
