@@ -75,6 +75,10 @@ h3 {
      place-items: center;
 } */
 
+ul {
+     list-style-type: none;
+}
+
 img {
      margin: 10px 10px 0 10px;
      border-radius: 5px;
@@ -84,6 +88,10 @@ img {
 img:hover {
      opacity: 0.6;
      filter: drop-shadow(10px 10px 10px black);
+}
+
+img:active {
+     transform: scale(1.05)
 }
 
 .deck-card-delete {
@@ -107,6 +115,12 @@ img:hover {
      margin-right: 1px;
 }
 
+#card-container {
+     height: 40vh;
+     display: grid;
+     place-items: center;
+}
+
 #deck-container {
      height: 40vh;
      display: grid;
@@ -116,7 +130,7 @@ img:hover {
 .slider {
      width: 100%;
      max-width: 400px;
-     height: 350px;
+     height: 400px;
      position: relative;
      overflow: hidden;
      border-radius: 15px;
@@ -134,16 +148,35 @@ img:hover {
      object-fit: cover;
 }
 
-.btn {
+.search-btn-prev, .search-btn-next {
      position: absolute;
+     margin-top: 125px;
+     margin-left: 725px;
+     margin-right: 725px;
      width: 40px;
-     height: 40px;
+     height: 250px;
      padding: 10px;
      border: none;
-     border-radius: 50%;
+     border-radius: 15px;
      z-index: 10px;
      cursor: pointer;
-     background-color: rgb(124, 76, 76);
+     background-color: rgba(124, 76, 76, 0.50);
+     font-size: 18px;
+}
+
+.deck-btn-prev, .deck-btn-next {
+     position: absolute;
+     margin-top: 575px;
+     margin-left: 725px;
+     margin-right: 725px;
+     width: 40px;
+     height: 250px;
+     padding: 10px;
+     border: none;
+     border-radius: 15px;
+     z-index: 10px;
+     cursor: pointer;
+     background-color: rgb(124, 76, 76, 0.50);
      font-size: 18px;
 }
 
@@ -151,12 +184,12 @@ img:hover {
      transform: scale(1.1);
 }
 
-.btn-prev {
+.search-btn-prev, .deck-btn-prev {
      top: 45%;
      left: 2%
 }
 
-.btn-next {
+.search-btn-next, .deck-btn-next {
      top: 45%;
      right: 2%;
 }

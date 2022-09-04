@@ -72,20 +72,28 @@
 		</section>
 			<h2>Search Results</h2>
 			<div id="card-container">
-
+				<ul class="search-cards search-slider slider">
+					<!-- <% for(var i = 0; i < cards.length; i++) {%>
+						<li data-id="<%= cards[i]._id %>" class="search-card search-slide" onclick="deleteSearchCard()">
+							<img class="card-img" src="<%= cards[i].value %>">
+						</li>
+					<% } %> -->
+				</ul>
+				<button class="btn search-btn-next">&gt;</button>
+				<button class="btn search-btn-prev">&lt;</button>
 			</div>
 			<hr>
 			<h2>Deck Builder Beta</h2>
 			<div id="deck-container">
-				<ul class="cards slider">
+				<ul class="deck-cards deck-slider slider">
 						<% for(var i = 0; i < cards.length; i++) {%>
-							<li data-id="<%= cards[i]._id %>" class="card slide" id="deck-card" onclick="deleteDeckCard()">
-								<img src="<%= cards[i].value %>">
+							<li data-id="<%= cards[i]._id %>" class="deck-card deck-slide slide" onclick="deleteDeckCard()">
+								<img class="card-img" src="<%= cards[i].value %>">
 							</li>
 						<% } %>
-						<button class="btn btn-next">&gt;</button>
-						<button class="btn btn-prev">&lt;</button>
 				</ul>
+				<button class="btn deck-btn-next">&gt;</button>
+				<button class="btn deck-btn-prev">&lt;</button>
 			</div>
 			<button id="delete-deck-button">Delete Deck</button>
 		</div>
