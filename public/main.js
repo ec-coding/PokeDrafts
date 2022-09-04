@@ -106,8 +106,6 @@ function getCards() {
                 newCardImg.dataset.name = newCard.innerText
                 cardContainer.appendChild(newCard)
                 newCard.appendChild(newCardImg)
-
-                // newCardImg.addEventListener('click', createCardReplica) // no two click event handlers
                 formatSearchCards()
                 formatCards()
                 newCardImg.addEventListener('click', addCardToDB)
@@ -150,7 +148,6 @@ function createCardReplica(id, selectedCard) {
     // The below does not work because it is not called by an event handler.
     // newDeckCardImg.src = event.currentTarget.src
     newDeckCard.setAttribute('class', 'deck-card deck-slide slide')
-    // newDeckCardImg.setAttribute('type', 'submit')
     newDeckCardImg.dataset.id = id
     newDeckCard.appendChild(newDeckCardImg)
     deckContainer.appendChild(newDeckCard)
