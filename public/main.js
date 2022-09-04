@@ -362,4 +362,4 @@ let maxSlide = slides.length - 1;
 
 // Hide slider arrows if there are no cards to display
 
-// when you add a card to the deck, maybe create an empty slide first, go to it, and then have the card appear??
+// when you add a card to the deck, maybe create an empty slide first, go to it, and then have the card appear?
