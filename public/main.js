@@ -1,6 +1,8 @@
 document.querySelector('#search-button').addEventListener('click', getCards)
+formatCards()
 
 function getCards() {
+    
     const nameInput = document.querySelector('#name-search').value
     const url = `https://api.pokemontcg.io/v2/cards/?`
 
@@ -93,21 +95,21 @@ function getCards() {
         .then(responseData => {
             console.log(responseData)
 
-            const cardContainer = document.querySelector('#card-container')
+            const cardContainer = document.querySelector('#card-container .search-slider')
             cardContainer.innerText = ''
             for (var i = 0; i < responseData.data.length; i++) {
-                const newCardContainer = document.createElement('section')
-                const newCard = document.createElement('div')
+                const newCard = document.createElement('li')
                 const newCardImg = document.createElement('img')
-                newCardContainer.setAttribute('class', 'search-carousel-container')
-                newCardImg.setAttribute('class', 'card');
-                newCardImg.setAttribute('type', 'submit');
-                newCard.innerText = responseData.data[i].name
+                newCard.setAttribute('class', 'search-card search-slide slide');
+                newCardImg.setAttribute('class', 'card-img');
                 newCardImg.src = responseData.data[i].images.small
                 newCardImg.dataset.name = newCard.innerText
-                // cardContainer.appendChild(newCard)
-                cardContainer.appendChild(newCardImg)
+                cardContainer.appendChild(newCard)
+                newCard.appendChild(newCardImg)
+
                 // newCardImg.addEventListener('click', createCardReplica) // no two click event handlers
+                formatSearchCards()
+                formatCards()
                 newCardImg.addEventListener('click', addCardToDB)
             }
 
@@ -128,6 +130,7 @@ function getCards() {
                 })
                     .then((response) => response.json())
                     .then(data => {
+                        formatCards()
                         // add card AFTER saved to DB
                         createCardReplica(data.insertedId, selectedCard)
                     })
@@ -140,22 +143,21 @@ function getCards() {
 
 function createCardReplica(id, selectedCard) {
     console.log('Card added to deck')
-    const deckContainer = document.querySelector('#deck-container')
-    deckContainer.innerText = ''
-    const newDeckCard = document.createElement('div')
+    const deckContainer = document.querySelector('#deck-container .deck-slider')
+    const newDeckCard = document.createElement('li')
     const newDeckCardImg = document.createElement('img')
     newDeckCardImg.src = selectedCard.value
     // The below does not work because it is not called by an event handler.
     // newDeckCardImg.src = event.currentTarget.src
-    newDeckCardImg.setAttribute('class', 'deck-card')
-    newDeckCardImg.setAttribute('type', 'submit')
+    newDeckCard.setAttribute('class', 'deck-card deck-slide slide')
+    // newDeckCardImg.setAttribute('type', 'submit')
     newDeckCardImg.dataset.id = id
-    deckContainer.insertAdjacentElement('beforebegin', newDeckCard)
-    deckContainer.insertAdjacentElement('beforebegin', newDeckCardImg)
+    newDeckCard.appendChild(newDeckCardImg)
+    deckContainer.appendChild(newDeckCard)
     newDeckCardImg.addEventListener('click', deleteCardFromDB)
 }
 
-document.querySelectorAll('.card').forEach(card => card.addEventListener('click', deleteCardFromDB))
+document.querySelectorAll('.deck-card').forEach(card => card.addEventListener('click', deleteCardFromDB))
 
 //This function removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
 async function deleteCardFromDB(event) {
@@ -180,7 +182,8 @@ async function deleteCardFromDB(event) {
         .then(res => {
             if (res.ok) {
                 deletedCard.remove()
-                goToNextCard ()
+                maxSlide -= 1
+                goToNextCard()
                 return res
             }
         })
@@ -205,14 +208,81 @@ deleteButton.addEventListener('click', _ => {
                 return res
             }
         })
-    .then(data => {
-        window.location.reload()
-    })
+        .then(data => {
+            window.location.reload()
+        })
 })
 
 
-// Select all slides
-const slides = document.querySelectorAll(".slide");
+// SEARCH RESULT SLIDERS
+
+function formatSearchCards() {
+    const searchSlides = document.querySelectorAll(".search-slide");
+
+    searchSlides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${indx * 100}%)`;
+    });
+
+// Why was all of the below put into a function?
+// Loop through slides and set each slide's translateX property to index * 100%
+searchSlides.forEach((slide, indx) => {
+    slide.style.transform = `translateX(${indx * 100}%)`;
+});
+
+// Current slide counter
+let curSearchSlide = 0;
+
+// Select next slide button
+const nextSearchSlide = document.querySelector(".search-btn-next");
+
+//Add event listener and navigation functionality
+nextSearchSlide.addEventListener("click", goToNextSearchCard);
+
+function goToNextSearchCard() {
+    //Check if current slide is the last and reset current slide
+    if (curSearchSlide == maxSearchSlide) {
+        curSearchSlide = 0;
+    } else {
+        curSearchSlide++;
+    }
+
+    // Move slide by -100%
+    searchSlides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${100 * (indx - curSearchSlide)}%)`
+    });
+}
+
+// Select prev slide button
+const prevSearchSlide = document.querySelector(".search-btn-prev")
+
+// Add event listener and navigation functionality
+prevSearchSlide.addEventListener("click", function () {
+    // Check if current slide is the first and reset current slide to last
+    if (curSearchSlide === 0) {
+        curSearchSlide = maxSearchSlide;
+    } else {
+        curSearchSlide--;
+    }
+
+    // Move slide by 100%
+    searchSlides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${100 * (indx - curSearchSlide)}%)`
+    });
+});
+
+// Maximum number of slides
+let maxSearchSlide = searchSlides.length - 1;
+}
+
+
+// DECK SLIDERS
+
+function formatCards() {
+    const slides = document.querySelectorAll(".deck-slide");
+
+    slides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${indx * 100}%)`;
+    });
 
 // Loop through slides and set each slide's translateX property to index * 100%
 slides.forEach((slide, indx) => {
@@ -223,12 +293,12 @@ slides.forEach((slide, indx) => {
 let curSlide = 0;
 
 // Select next slide button
-const nextSlide = document.querySelector(".btn-next");
+const nextSlide = document.querySelector(".deck-btn-next");
 
 //Add event listener and navigation functionality
 nextSlide.addEventListener("click", goToNextCard);
 
-function goToNextCard () {
+function goToNextCard() {
     //Check if current slide is the last and reset current slide
     if (curSlide == maxSlide) {
         curSlide = 0;
@@ -242,9 +312,8 @@ function goToNextCard () {
     });
 }
 
-
 // Select prev slide button
-const prevSlide = document.querySelector(".btn-prev")
+const prevSlide = document.querySelector(".deck-btn-prev")
 
 // Add event listener and navigation functionality
 prevSlide.addEventListener("click", function () {
@@ -263,6 +332,34 @@ prevSlide.addEventListener("click", function () {
 
 // Maximum number of slides
 let maxSlide = slides.length - 1;
+}
 
+const slides = document.querySelectorAll(".deck-slide");
+
+slides.forEach((slide, indx) => {
+    slide.style.transform = `translateX(${indx * 100}%)`;
+});
+
+// Current slide counter
+let curSlide = 0;
+
+function goToNextCard() {
+    //Check if current slide is the last and reset current slide
+    if (curSlide == maxSlide) {
+        curSlide = 0;
+    } else {
+        curSlide++;
+    }
+
+    // Move slide by -100%
+    slides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`
+    });
+}
+
+// Maximum number of slides
+let maxSlide = slides.length - 1;
 
 // Hide slider arrows if there are no cards to display
+
+// when you add a card to the deck, maybe create an empty slide first, go to it, and then have the card appear??
