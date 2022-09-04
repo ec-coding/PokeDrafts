@@ -148,6 +148,14 @@ img:active {
      object-fit: cover;
 }
 
+#delete-deck-button {
+     position: relative;
+
+     z-index: 10px;
+     cursor: pointer;
+
+}
+
 .search-btn-prev, .search-btn-next {
      position: absolute;
      margin-top: 125px;
