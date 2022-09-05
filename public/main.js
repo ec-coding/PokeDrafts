@@ -117,11 +117,11 @@ function getCards() {
                 let cardName = event.currentTarget.dataset.name
                 let img = event.currentTarget
                 let selectedCard = {
-                    'categories': ['deck'],
+                    // 'categories': ['deck'],
                     'name': cardName,
                     'value': img.src
                 }
-                fetch('/cards', {
+                fetch('/decks/cards', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(selectedCard)
@@ -169,7 +169,7 @@ async function deleteCardFromDB(event) {
         'name': deckCardName,
         'value': deckCardImg.src
     }
-    fetch('/delete-single-card', {
+    fetch('/decks/delete-single-card', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
@@ -192,7 +192,7 @@ async function deleteCardFromDB(event) {
 const deleteButton = document.querySelector('#delete-deck-button')
 
 deleteButton.addEventListener('click', _ => {
-    fetch('/delete-all-cards', {
+    fetch('/decks/delete-all-cards', {
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
         //You don't need to send a body, you just need to send a delete request.

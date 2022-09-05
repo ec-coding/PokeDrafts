@@ -6,9 +6,9 @@ const morgan = require('morgan')
 const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
-const mongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')(session)
 const {MongoClient, ObjectId} = require('mongodb')
-const connectDB = require('.config/db')
+const connectDB = require('./config/db')
 const bodyParser = require('body-parser')
 const app = express()
 const cors = require ('cors');
@@ -60,6 +60,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
+    // store: new MongoStore({ mongoUrl: process.env.MONGO_URI })
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
@@ -89,11 +90,6 @@ app.listen(
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 )
 
-//Alt + Shift + F
-
-//When you click a card, add its data to mongoDB, then place a copy of its image into the "deck" on the dom
-
-//When you click a card from the deck, remove its data from mongoDB, and then remove it from the deck
 
 //A completed deck must have exactly 60 cards
 //Place a counter that shows you how many cards are currently in your deck
@@ -103,74 +99,74 @@ app.listen(
 
 //Zolere / Yggdrasil99!!
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-    .then(client => {
-        db = client.db(dbName)
-        console.log(`Connected to ${dbName} Database`)
+// MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+//     .then(client => {
+//         db = client.db(dbName)
+//         console.log(`Connected to ${dbName} Database`)
 
-        const cardsCollection = db.collection('cards')
+//         const cardsCollection = db.collection('cards')
 
-        // Without this line, we wouldn't know how to handle our views
-        // Eventually, our views will be handled by React
-        app.set('view engine', 'ejs')
+//         // Without this line, we wouldn't know how to handle our views
+//         // Eventually, our views will be handled by React
+//         app.set('view engine', 'ejs')
 
-        // These 2 lines allow us to parse things that come out of the body
-        app.use(bodyParser.urlencoded({ extended: true }))
-        app.use(bodyParser.json())
+//         // These 2 lines allow us to parse things that come out of the body
+//         app.use(bodyParser.urlencoded({ extended: true }))
+//         app.use(bodyParser.json())
 
-        app.use(cors())
+//         app.use(cors())
 
-        //Get collection of cards and render it on your index.ejs
-        app.get('/', (req, res) => {
-            db.collection('cards').find().toArray()
-                .then(results => {
-                    res.render('index.ejs', { cards: results })
-                })
-                .catch(error => console.error(error))
-        })
-        app.post('/cards', (req, res) => {
-            // This is what clones the card you clicked from search results and places it in the deck
-            cardsCollection.insertOne(req.body)
-                .then(result => {
-                    res.json(result)
-                    // res.redirect('/')
-                })
-                .catch(error => console.error(error))
-        })
+//         //Get collection of cards and render it on your index.ejs
+//         app.get('/', (req, res) => {
+//             db.collection('cards').find().toArray()
+//                 .then(results => {
+//                     res.render('index.ejs', { cards: results })
+//                 })
+//                 .catch(error => console.error(error))
+//         })
+//         app.post('/cards', (req, res) => {
+//             // This is what clones the card you clicked from search results and places it in the deck
+//             cardsCollection.insertOne(req.body)
+//                 .then(result => {
+//                     res.json(result)
+//                     // res.redirect('/')
+//                 })
+//                 .catch(error => console.error(error))
+//         })
 
-        //How do I delete a card before having to reload the page?
-        app.delete('/delete-single-card', (req, res) => {
-            cardsCollection.deleteOne(
-                { 
-                    '_id': ObjectId(req.body.id)
-                    // value: req.body.value
-                },
-            )
-            .then(result => {
-                // if (result.deletedCount === 0) {
-                //     return res.json('No decks to delete')
-                // }
-                res.json('')
-            })
-            .catch(error => console.error(error))
-        })
+//         //How do I delete a card before having to reload the page?
+//         app.delete('/delete-single-card', (req, res) => {
+//             cardsCollection.deleteOne(
+//                 { 
+//                     '_id': ObjectId(req.body.id)
+//                     // value: req.body.value
+//                 },
+//             )
+//             .then(result => {
+//                 // if (result.deletedCount === 0) {
+//                 //     return res.json('No decks to delete')
+//                 // }
+//                 res.json('')
+//             })
+//             .catch(error => console.error(error))
+//         })
 
-        app.delete('/delete-all-cards', (req, res) => {
-            cardsCollection.deleteMany(
+//         app.delete('/delete-all-cards', (req, res) => {
+//             cardsCollection.deleteMany(
 
-            )
-            .then(result => {
-                // if (result.deletedCount === 0) {
-                //     return res.json('No decks to delete')
-                // }
-                res.json('')
-            })
-            .catch(error => console.error(error))
-        })
+//             )
+//             .then(result => {
+//                 // if (result.deletedCount === 0) {
+//                 //     return res.json('No decks to delete')
+//                 // }
+//                 res.json('')
+//             })
+//             .catch(error => console.error(error))
+//         })
 
 
-        app.listen(port, () => {
-            console.log(`The server is running on port ${port}!`)
-        })
-})
-.catch(error => console.error(error))
+//         app.listen(port, () => {
+//             console.log(`The server is running on port ${port}!`)
+//         })
+// })
+// .catch(error => console.error(error))
