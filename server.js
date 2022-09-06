@@ -33,9 +33,9 @@ let port = process.env.PORT || 8000;
 require('dotenv').config()
 
 //How do I put this in an env file?
-let db,
-    dbConnectionStr = "mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mongodb.net/?retryWrites=true&w=majority",
-    dbName = 'deck-builder'
+// let db,
+//     dbConnectionStr = "mongodb+srv://Zolere:Yggdrasil99!!@deck-builder.vtmbkox.mongodb.net/?retryWrites=true&w=majority",
+//     dbName = 'deck-builder'
 
 // Method override
 app.use(methodOverride(function (req, res) {
@@ -96,77 +96,8 @@ app.listen(
 //While building the deck, you cannot exceed 60 cards
 //You cannot have more than 4 of the same card in a single deck, with the exception being Energy cards
 
+//ADDITIONAL UI:
+//Wipe search results
 
 //Zolere / Yggdrasil99!!
 
-// MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-//     .then(client => {
-//         db = client.db(dbName)
-//         console.log(`Connected to ${dbName} Database`)
-
-//         const cardsCollection = db.collection('cards')
-
-//         // Without this line, we wouldn't know how to handle our views
-//         // Eventually, our views will be handled by React
-//         app.set('view engine', 'ejs')
-
-//         // These 2 lines allow us to parse things that come out of the body
-//         app.use(bodyParser.urlencoded({ extended: true }))
-//         app.use(bodyParser.json())
-
-//         app.use(cors())
-
-//         //Get collection of cards and render it on your index.ejs
-//         app.get('/', (req, res) => {
-//             db.collection('cards').find().toArray()
-//                 .then(results => {
-//                     res.render('index.ejs', { cards: results })
-//                 })
-//                 .catch(error => console.error(error))
-//         })
-//         app.post('/cards', (req, res) => {
-//             // This is what clones the card you clicked from search results and places it in the deck
-//             cardsCollection.insertOne(req.body)
-//                 .then(result => {
-//                     res.json(result)
-//                     // res.redirect('/')
-//                 })
-//                 .catch(error => console.error(error))
-//         })
-
-//         //How do I delete a card before having to reload the page?
-//         app.delete('/delete-single-card', (req, res) => {
-//             cardsCollection.deleteOne(
-//                 { 
-//                     '_id': ObjectId(req.body.id)
-//                     // value: req.body.value
-//                 },
-//             )
-//             .then(result => {
-//                 // if (result.deletedCount === 0) {
-//                 //     return res.json('No decks to delete')
-//                 // }
-//                 res.json('')
-//             })
-//             .catch(error => console.error(error))
-//         })
-
-//         app.delete('/delete-all-cards', (req, res) => {
-//             cardsCollection.deleteMany(
-
-//             )
-//             .then(result => {
-//                 // if (result.deletedCount === 0) {
-//                 //     return res.json('No decks to delete')
-//                 // }
-//                 res.json('')
-//             })
-//             .catch(error => console.error(error))
-//         })
-
-
-//         app.listen(port, () => {
-//             console.log(`The server is running on port ${port}!`)
-//         })
-// })
-// .catch(error => console.error(error))

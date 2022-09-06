@@ -22,14 +22,17 @@
 /*******************************************/
 
 body {
-     border: 3px solid black;
+     font-family: 'Nintendo DS BIOS', sans-serif;
      min-height: 80vh;
+     background-image: url("pokedex.jpg");
+     background-size: 480px 620px;
+     background-repeat: no-repeat;
+     background-position: center top;
+     padding-top: 80px;
 }
 
 form {
      height: 100%;
-     background-color: tan;
-     border-top: 3px solid black;
      padding-bottom: 10px;
 }
 
@@ -51,18 +54,23 @@ footer {
 } */
 
 header, body, footer {
-     width: 400px;
+     width: 380px;
      margin: 50px auto;
      text-align: center;
-
 }
 
 h2 {
-     margin-top: 0
+     margin-top: 0;
+     margin-bottom: -10px;
+}
+
+#search-header {
+     margin-bottom: 10px;
 }
 
 h3 {
      margin-top: 10px;
+     margin-bottom: 10px;
 }
 
 /******************************************
@@ -86,7 +94,7 @@ img {
 }
 
 img:hover {
-     opacity: 0.6;
+     opacity: 0.8;
      filter: drop-shadow(10px 10px 10px black);
 }
 
@@ -102,9 +110,62 @@ img:active {
      font-size:0;
 }
 
+#search-param {
+     height: 42vh;
+     margin-right: 20px;
+     background-image: linear-gradient(rgba(90, 90, 135), lightblue, rgb(90, 90, 135));
+     border: 2px solid black;
+}
+
 .name-input {
      height: 100px;
-     background-color: tan;
+     width: 100%;
+}
+
+#choice-params{
+     display: flex;
+     flex-wrap: wrap;
+}
+
+.first-type-container{
+     border-top: 2px dashed rgba(0, 0, 0, 0.425);
+     border-bottom: 2px dashed rgba(0, 0, 0, 0.425);
+     border-right: 2px dashed rgba(0, 0, 0, 0.425);
+     font-size: 20px;
+     padding-left: 20px;
+     text-align: left;
+     width: 50%;
+     flex-direction: row;
+}
+
+.secondary-type-container{
+     border-top: 2px dashed rgba(0, 0, 0, 0.425);
+     border-bottom: 2px dashed rgba(0, 0, 0, 0.425);
+     font-size: 18px;
+     text-align: left;
+     width: 50%;
+     flex-direction: column;
+}
+
+.type-input-sec{
+     height: 100%;
+}
+
+.supertype-input-sec{
+     height: 45%;
+}
+
+.supertype-input-div{
+     margin-left: 20px;
+}
+
+.subtype-input-sec{
+     border-top: 2px dashed rgba(0, 0, 0, 0.425);
+     height: 55%;
+}
+
+.subtype-input-div{
+     margin-left: 20px;
 }
 
 .type-input-div{
@@ -115,14 +176,30 @@ img:active {
      margin-right: 1px;
 }
 
+#search-results {
+     height: 42vh;
+     margin-top: 120px;
+     padding-top: 10px;
+     background-image: linear-gradient(rgba(90, 90, 135), lightblue, rgb(90, 90, 135));
+     border: 2px solid black;
+     margin-right: 20px;
+}
+
 #card-container {
-     height: 40vh;
      display: grid;
      place-items: center;
 }
 
+#deck {
+     height: 42vh;
+     margin-top: 40px;
+     padding-top: 10px;
+     background-image: linear-gradient(rgba(90, 90, 135), lightblue, rgb(90, 90, 135));
+     border: 2px solid black;
+     margin-right: 20px;
+}
+
 #deck-container {
-     height: 40vh;
      display: grid;
      place-items: center;
 }
@@ -158,9 +235,9 @@ img:active {
 
 .search-btn-prev, .search-btn-next {
      position: absolute;
-     margin-top: 125px;
-     margin-left: 725px;
-     margin-right: 725px;
+     margin-top: 325px;
+     margin-left: 730px;
+     margin-right: 750px;
      width: 40px;
      height: 250px;
      padding: 10px;
@@ -174,9 +251,9 @@ img:active {
 
 .deck-btn-prev, .deck-btn-next {
      position: absolute;
-     margin-top: 575px;
-     margin-left: 725px;
-     margin-right: 725px;
+     margin-top: 760px;
+     margin-left: 730px;
+     margin-right: 750px;
      width: 40px;
      height: 250px;
      padding: 10px;
