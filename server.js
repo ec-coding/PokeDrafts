@@ -15,14 +15,11 @@ const bodyParser = require('body-parser')
 const app = express()
 const cors = require ('cors');
 
-//If we don't have this line of code, any of the env files that we attempt to use will not run
-require('dotenv').config()
-
 // Load Config
 dotenv.config({ path: './config/config.env' })
 
-
-
+//If we don't have this line of code, any of the env files that we attempt to use will not run
+require('dotenv').config()
 
 // Passport config
 require('./config/passport')(passport)
