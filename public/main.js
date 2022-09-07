@@ -2,7 +2,7 @@ document.querySelector('#search-button').addEventListener('click', getCards)
 formatCards()
 
 function getCards() {
-    
+
     const nameInput = document.querySelector('#name-search').value
     const url = `https://api.pokemontcg.io/v2/cards/?`
 
@@ -70,7 +70,7 @@ function getCards() {
         subtypeParam = subtypeParam.slice(0, -2)
     }
 
-    fetchURLText = url + `page=1&pageSize=20&orderBy=set&q=`
+    fetchURLText = url + `page=1&pageSize=30&orderBy=set&q=`
     if (nameInput != '') {
         fetchURLText += ` name:${nameInput}`
     }
@@ -106,8 +106,6 @@ function getCards() {
                 newCardImg.dataset.name = newCard.innerText
                 cardContainer.appendChild(newCard)
                 newCard.appendChild(newCardImg)
-
-                // newCardImg.addEventListener('click', createCardReplica) // no two click event handlers
                 formatSearchCards()
                 formatCards()
                 newCardImg.addEventListener('click', addCardToDB)
@@ -119,11 +117,11 @@ function getCards() {
                 let cardName = event.currentTarget.dataset.name
                 let img = event.currentTarget
                 let selectedCard = {
-                    'categories': ['deck'],
+                    // 'categories': ['deck'],
                     'name': cardName,
                     'value': img.src
                 }
-                fetch('/cards', {
+                fetch('/decks/cards', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(selectedCard)
@@ -131,7 +129,7 @@ function getCards() {
                     .then((response) => response.json())
                     .then(data => {
                         formatCards()
-                        // add card AFTER saved to DB
+                        // add card AFTER it is saved to DB
                         createCardReplica(data.insertedId, selectedCard)
                     })
             }
@@ -142,24 +140,29 @@ function getCards() {
 }
 
 function createCardReplica(id, selectedCard) {
+
+    moveSlidesWhenAddingCard()
+
     console.log('Card added to deck')
     const deckContainer = document.querySelector('#deck-container .deck-slider')
     const newDeckCard = document.createElement('li')
     const newDeckCardImg = document.createElement('img')
     newDeckCardImg.src = selectedCard.value
-    // The below does not work because it is not called by an event handler.
-    // newDeckCardImg.src = event.currentTarget.src
     newDeckCard.setAttribute('class', 'deck-card deck-slide slide')
-    // newDeckCardImg.setAttribute('type', 'submit')
     newDeckCardImg.dataset.id = id
     newDeckCard.appendChild(newDeckCardImg)
     deckContainer.appendChild(newDeckCard)
+    newDeckCard.style.transform = `translateX(0%)`;
+    formatCards()
     newDeckCardImg.addEventListener('click', deleteCardFromDB)
 }
 
+
+// DELETING CARDS
+
 document.querySelectorAll('.deck-card').forEach(card => card.addEventListener('click', deleteCardFromDB))
 
-//This function removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
+// Removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
 async function deleteCardFromDB(event) {
     console.log('Card Deleted')
     const deletedCard = event.currentTarget;
@@ -172,17 +175,16 @@ async function deleteCardFromDB(event) {
         'name': deckCardName,
         'value': deckCardImg.src
     }
-    fetch('/delete-single-card', {
+    fetch('/decks/delete-single-card', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
     })
-
-        //Find out how to delete a card from the deck if you click it immediately after adding it to the deck
         .then(res => {
             if (res.ok) {
                 deletedCard.remove()
-                maxSlide -= 1
+                formatCards()
+                event.currentTarget.parent.remove('li')
                 goToNextCard()
                 return res
             }
@@ -195,16 +197,12 @@ async function deleteCardFromDB(event) {
 const deleteButton = document.querySelector('#delete-deck-button')
 
 deleteButton.addEventListener('click', _ => {
-    fetch('/delete-all-cards', {
+    fetch('/decks/delete-all-cards', {
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
-        //You don't need to send a body, you just need to send a delete request.
     })
         .then(res => {
             if (res.ok) {
-                // document.querySelectorAll('.deck-card').forEach((res) => {
-                //     res.currentTarget.remove()
-                // })
                 return res
             }
         })
@@ -213,7 +211,7 @@ deleteButton.addEventListener('click', _ => {
         })
 })
 
-
+// CAROUSEL
 // SEARCH RESULT SLIDERS
 
 function formatSearchCards() {
@@ -223,58 +221,58 @@ function formatSearchCards() {
         slide.style.transform = `translateX(${indx * 100}%)`;
     });
 
-// Why was all of the below put into a function?
-// Loop through slides and set each slide's translateX property to index * 100%
-searchSlides.forEach((slide, indx) => {
-    slide.style.transform = `translateX(${indx * 100}%)`;
-});
+    // Why was all of the below put into a function?
+    // Loop through slides and set each slide's translateX property to index * 100%
+    searchSlides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${indx * 100}%)`;
+    });
 
-// Current slide counter
-let curSearchSlide = 0;
+    // Current slide counter
+    let curSearchSlide = 0;
 
-// Select next slide button
-const nextSearchSlide = document.querySelector(".search-btn-next");
+    // Select next slide button
+    const nextSearchSlide = document.querySelector(".search-btn-next");
 
-//Add event listener and navigation functionality
-nextSearchSlide.addEventListener("click", goToNextSearchCard);
+    //Add event listener and navigation functionality
+    nextSearchSlide.addEventListener("click", goToNextSearchCard);
 
-function goToNextSearchCard() {
-    //Check if current slide is the last and reset current slide
-    if (curSearchSlide == maxSearchSlide) {
-        curSearchSlide = 0;
-    } else {
-        curSearchSlide++;
+    function goToNextSearchCard() {
+        //Check if current slide is the last and reset current slide
+        if (curSearchSlide == maxSearchSlide) {
+            curSearchSlide = 0;
+        } else {
+            curSearchSlide++;
+        }
+
+        // Move slide by -100%
+        searchSlides.forEach((slide, indx) => {
+            slide.style.transform = `translateX(${100 * (indx - curSearchSlide)}%)`
+        });
     }
 
-    // Move slide by -100%
-    searchSlides.forEach((slide, indx) => {
-        slide.style.transform = `translateX(${100 * (indx - curSearchSlide)}%)`
+    // Select prev slide button
+    const prevSearchSlide = document.querySelector(".search-btn-prev")
+
+    // Add event listener and navigation functionality
+    prevSearchSlide.addEventListener("click", function () {
+        // Check if current slide is the first and reset current slide to last
+        if (curSearchSlide === 0) {
+            curSearchSlide = maxSearchSlide;
+        } else {
+            curSearchSlide--;
+        }
+
+        // Move slide by 100%
+        searchSlides.forEach((slide, indx) => {
+            slide.style.transform = `translateX(${100 * (indx - curSearchSlide)}%)`
+        });
     });
+
+    // Maximum number of slides
+    let maxSearchSlide = searchSlides.length - 1;
 }
 
-// Select prev slide button
-const prevSearchSlide = document.querySelector(".search-btn-prev")
-
-// Add event listener and navigation functionality
-prevSearchSlide.addEventListener("click", function () {
-    // Check if current slide is the first and reset current slide to last
-    if (curSearchSlide === 0) {
-        curSearchSlide = maxSearchSlide;
-    } else {
-        curSearchSlide--;
-    }
-
-    // Move slide by 100%
-    searchSlides.forEach((slide, indx) => {
-        slide.style.transform = `translateX(${100 * (indx - curSearchSlide)}%)`
-    });
-});
-
-// Maximum number of slides
-let maxSearchSlide = searchSlides.length - 1;
-}
-
-
+// CAROUSEL
 // DECK SLIDERS
 
 function formatCards() {
@@ -284,54 +282,62 @@ function formatCards() {
         slide.style.transform = `translateX(${indx * 100}%)`;
     });
 
-// Loop through slides and set each slide's translateX property to index * 100%
+    // Loop through slides and set each slide's translateX property to index * 100%
+    slides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${indx * 100}%)`;
+    });
+
+    // Current slide counter
+    let curSlide = 0;
+
+    // Select next slide button
+    const nextSlide = document.querySelector(".deck-btn-next");
+
+    //Add event listener and navigation functionality
+    nextSlide.addEventListener("click", goToNextCard);
+
+    function goToNextCard() {
+        //Check if current slide is the last and reset current slide
+        if (curSlide == maxSlide) {
+            curSlide = 0;
+        } else {
+            curSlide++;
+        }
+
+        // Move slide by -100%
+        slides.forEach((slide, indx) => {
+            slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`
+        });
+    }
+
+    // Select prev slide button
+    const prevSlide = document.querySelector(".deck-btn-prev")
+
+    // Add event listener and navigation functionality
+    prevSlide.addEventListener("click", function () {
+        // Check if current slide is the first and reset current slide to last
+        if (curSlide === 0) {
+            curSlide = maxSlide;
+        } else {
+            curSlide--;
+        }
+
+        // Move slide by 100%
+        slides.forEach((slide, indx) => {
+            slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`
+        });
+    });
+
+    // Maximum number of slides
+    let maxSlide = slides.length - 1;
+}
+
+function moveSlidesWhenAddingCard() {
+const slides = document.querySelectorAll(".deck-slide");
+
 slides.forEach((slide, indx) => {
     slide.style.transform = `translateX(${indx * 100}%)`;
 });
-
-// Current slide counter
-let curSlide = 0;
-
-// Select next slide button
-const nextSlide = document.querySelector(".deck-btn-next");
-
-//Add event listener and navigation functionality
-nextSlide.addEventListener("click", goToNextCard);
-
-function goToNextCard() {
-    //Check if current slide is the last and reset current slide
-    if (curSlide == maxSlide) {
-        curSlide = 0;
-    } else {
-        curSlide++;
-    }
-
-    // Move slide by -100%
-    slides.forEach((slide, indx) => {
-        slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`
-    });
-}
-
-// Select prev slide button
-const prevSlide = document.querySelector(".deck-btn-prev")
-
-// Add event listener and navigation functionality
-prevSlide.addEventListener("click", function () {
-    // Check if current slide is the first and reset current slide to last
-    if (curSlide === 0) {
-        curSlide = maxSlide;
-    } else {
-        curSlide--;
-    }
-
-    // Move slide by 100%
-    slides.forEach((slide, indx) => {
-        slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`
-    });
-});
-
-// Maximum number of slides
-let maxSlide = slides.length - 1;
 }
 
 const slides = document.querySelectorAll(".deck-slide");
@@ -339,6 +345,7 @@ const slides = document.querySelectorAll(".deck-slide");
 slides.forEach((slide, indx) => {
     slide.style.transform = `translateX(${indx * 100}%)`;
 });
+
 
 // Current slide counter
 let curSlide = 0;

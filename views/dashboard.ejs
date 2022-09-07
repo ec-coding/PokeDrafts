@@ -1,0 +1,126 @@
+<!-- In index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Your description goes here">
+	<meta name="keywords" content="one, two, three">
+	<title>Pokémon TCG Deck Builder</title>
+
+	<!-- external CSS link -->
+	<link href="http://fonts.cdnfonts.com/css/nintendo-ds-bios" rel="stylesheet">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div id="app-container">
+		<section class="nav-container">
+			<button id="logout-button"><a href="/auth/logout">Logout</a></button>		
+			<button id="nav-search" class="tab-button">Search</button>
+			<button id="nav-results" class="tab-button">Results</button>
+			<button id="nav-deck" class="tab-button">Deck</button>
+		</section>
+		<div id="search-param" class="panel">
+			<section class="name-input">
+				<br>
+				<h2 id="search-header">Search Cards</h2>
+				<input type="text" id="name-search" placeholder="Search by name...">
+				<button id="search-button">Submit</button>
+			</section>
+			<div id="choice-params">
+				<div class="first-type-container">
+					<section class="type-input-sec">
+						<form action="" method="" id="type-input-form">
+							<h3>Type</h3>
+							<div class="type-input-div">
+								<input class="type-input" type="radio" id="colorless" name="type" value="Colorless">
+								<label for="type-colorless"> Colorless</label><br>
+								<input class="type-input" type="radio" id="psychic" name="type" value="Psychic">
+								<label for="type-psychic"> Psychic</label><br>
+								<input class="type-input" type="radio" id="water" name="type" value="Water">
+								<label for="type-water"> Water</label><br>
+							</div>
+							<div class="type-input-div">
+								<input class="type-input" type="radio" id="fire" name="type" value="Fire">
+								<label for="type-fire"> Fire</label><br>
+								<input class="type-input" type="radio" id="grass" name="type" value="Grass">
+								<label for="type-grass"> Grass</label><br>
+								<input class="type-input" type="radio" id="lightning" name="type" value="Lightning">
+								<label for="type-lightning"> Lightning</label><br>
+								<input class="type-input" type="radio" id="fighting" name="type" value="Fighting">
+								<label for="type-fighting"> Fighting</label>
+							</div>
+						</form>
+					</section>
+				</div>
+				<div class="secondary-type-container">
+					<section class="supertype-input-sec">
+						<form>
+							<div class="supertype-input-div">
+								<h3>Card Type</h3>
+								<input class="type-input" type="radio" id="card-type-pokemon" name="supertype"
+									value="Pokémon">
+								<label for="supertype-pokemon"> Pokémon</label><br>
+								<input class="type-input" type="radio" id="card-type-trainer" name="supertype"
+									value="Trainer">
+								<label for="supertype-trainer"> Trainer</label><br>
+								<input class="type-input" type="radio" id="card-type-energy" name="supertype"
+									value="Energy">
+								<label for="supertype-energy"> Energy</label>
+							</div>
+						</form>
+					</section>
+					<section class="subtype-input-sec">
+						<form>
+							<div class="subtype-input-div">
+								<h3>Set</h3>
+								<input class="type-input" type="checkbox" id="base" name="subtype" value="base1">
+								<label for="subtype-base"> Base</label><br>
+								<input class="type-input" type="checkbox" id="jungle" name="subtype" value="base2">
+								<label for="subtype-jungle"> Jungle</label><br>
+								<input class="type-input" type="checkbox" id="fossil" name="subtype" value="base3">
+								<label for="subtype-fossil"> Fossil</label>
+							</div>
+						</form>
+					</section>
+				</div>
+			</div>
+		</div>
+		<div id="search-results" class="panel">
+			<h2>Search Results</h2>
+			<div id="card-container">
+				<ul class="search-cards search-slider slider">
+					<!-- <% for(var i = 0; i < cards.length; i++) {%>
+						<li data-id="<%= cards[i]._id %>" class="search-card search-slide" onclick="deleteSearchCard()">
+							<img class="card-img" src="<%= cards[i].value %>">
+						</li>
+					<% } %> -->
+				</ul>
+				<button class="btn search-btn-next">&gt;</button>
+				<button class="btn search-btn-prev">&lt;</button>
+			</div>
+		</div>
+		<div id="deck" class="panel">
+			<h2>Deck</h2>
+			<div id="deck-container">
+				<ul class="deck-cards deck-slider slider">
+					<% for(var i=0; i < cards.length; i++) {%>
+						<li data-id="<%= cards[i]._id %>" class="deck-card deck-slide slide">
+							<img class="card-img" src="<%= cards[i].value %>">
+						</li>
+						<% } %>
+				</ul>
+				<button class="btn deck-btn-next">&gt;</button>
+				<button class="btn deck-btn-prev">&lt;</button>
+			</div>
+			<button id="delete-deck-button">Delete Deck</button>
+		</div>
+	</div>
+
+	<script src="/main.js"></script>
+</body>
+
+</html>
