@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
+
+// Passport handles authentication and has strategies
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)

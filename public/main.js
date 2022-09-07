@@ -70,7 +70,7 @@ function getCards() {
         subtypeParam = subtypeParam.slice(0, -2)
     }
 
-    fetchURLText = url + `page=1&pageSize=20&orderBy=set&q=`
+    fetchURLText = url + `page=1&pageSize=30&orderBy=set&q=`
     if (nameInput != '') {
         fetchURLText += ` name:${nameInput}`
     }
