@@ -15,8 +15,14 @@ const bodyParser = require('body-parser')
 const app = express()
 const cors = require ('cors');
 
+//If we don't have this line of code, any of the env files that we attempt to use will not run
+require('dotenv').config()
+
 // Load Config
 dotenv.config({ path: './config/config.env' })
+
+
+
 
 // Passport config
 require('./config/passport')(passport)
@@ -31,8 +37,7 @@ app.use(express.json())
 
 let port = process.env.PORT || 8000; 
 
-//If we don't have this line of code, any of the env files that we attempt to use will not run
-require('dotenv').config()
+
 
 //How do I put this in an env file?
 // let db,
