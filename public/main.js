@@ -3,7 +3,6 @@ formatCards()
 document.getElementById("nav-search").click();
 
 function getCards() {
-
     const nameInput = document.querySelector('#name-search').value
     const url = `https://api.pokemontcg.io/v2/cards/?`
 
@@ -109,6 +108,7 @@ function getCards() {
                 newCard.appendChild(newCardImg)
                 formatSearchCards()
                 formatCards()
+                document.getElementById("nav-results").click();
                 newCardImg.addEventListener('click', addCardToDB)
             }
 
