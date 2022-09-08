@@ -27,7 +27,7 @@ body {
      background-image: url("pokedex.jpg");
      background-size: 480px 620px;
      background-repeat: no-repeat;
-     background-position: center top;
+     background-position: center;
      padding-top: 80px;
 }
 
@@ -65,6 +65,7 @@ h2 {
 }
 
 #search-header {
+     margin-top: 5px;
      margin-bottom: 10px;
 }
 
@@ -78,16 +79,8 @@ h3 {
 /* ADDITIONAL STYLES
 /*******************************************/
 
-.nav-container {
-     position: absolute;
-     margin-top: -100px;
-     
-}
-
 .panel {
-     overflow: hidden;
-     transition: max-height 0.2s ease-out;
-     /* max-height: 0; */
+     margin-top: 130px;
 }
 
 ul {
@@ -190,7 +183,7 @@ img:active {
 
 #search-results {
      height: 42vh;
-     margin-top: 120px;
+     /* margin-top: 120px; */
      padding-top: 10px;
      background-image: linear-gradient(rgba(90, 90, 135), lightblue, rgb(90, 90, 135));
      border: 2px solid black;
@@ -204,7 +197,7 @@ img:active {
 
 #deck {
      height: 42vh;
-     margin-top: 40px;
+     /* margin-top: 40px; */
      padding-top: 10px;
      background-image: linear-gradient(rgba(90, 90, 135), lightblue, rgb(90, 90, 135));
      border: 2px solid black;
@@ -215,6 +208,15 @@ img:active {
      display: grid;
      place-items: center;
 }
+
+#delete-deck-button {
+     position: absolute;
+     margin-left: -40px;
+     z-index: 10px;
+     cursor: pointer;
+}
+
+/* CAROUSEL */
 
 .slider {
      width: 100%;
@@ -237,19 +239,11 @@ img:active {
      object-fit: cover;
 }
 
-#delete-deck-button {
-     position: absolute;
-     margin-left: -40px;
-     z-index: 10px;
-     cursor: pointer;
-
-}
-
 .search-btn-prev, .search-btn-next {
      position: absolute;
-     margin-top: 325px;
-     margin-left: 730px;
-     margin-right: 750px;
+     margin-top: -40px;
+     margin-left: 738px;
+     margin-right: 758px;
      width: 40px;
      height: 250px;
      padding: 10px;
@@ -263,9 +257,9 @@ img:active {
 
 .deck-btn-prev, .deck-btn-next {
      position: absolute;
-     margin-top: 760px;
-     margin-left: 730px;
-     margin-right: 750px;
+     margin-top: -40px;
+     margin-left: 738px;
+     margin-right: 758px;
      width: 40px;
      height: 250px;
      padding: 10px;
@@ -289,4 +283,70 @@ img:active {
 .search-btn-next, .deck-btn-next {
      top: 45%;
      right: 2%;
+}
+
+/* TAB VIEW */
+
+.nav-container {
+     position: absolute;
+     margin-top: -120px;
+     margin-left: 200px;
+     overflow: hidden;
+     height: 50px;
+}
+
+#logout-button {
+     position: absolute;
+     margin-top: -110px;
+     margin-left: -200px;
+     border: 3px solid rgb(24, 23, 23);
+     border-radius: 50%;
+     box-shadow: 0px 0px 1px #aaa, inset 0px 2px 3px #fff;
+     outline: none;
+     cursor: pointer;
+     padding: 20px 18px;
+     transition: 0.3s;
+}
+
+#nav-search {
+     background-image: linear-gradient(rgb(200, 145, 145), rgb(255, 0, 0));
+}
+
+#nav-results {
+     background-image: linear-gradient(rgb(200, 200, 135), rgb(200, 220, 30));
+}
+
+#nav-deck {
+     background-image: linear-gradient(rgb(200, 160, 135), rgb(20, 115, 60));
+}
+
+.tab-button {
+     border: 3px solid rgb(24, 23, 23);
+     margin: 0 10px;
+     width: 14px;
+     height: 14px;
+     position: relative;
+     text-align: center;
+     border-radius: 50%;
+     box-shadow: 0px 0px 1px #aaa, inset 0px 2px 1px #fff;
+     outline: none;
+     cursor: pointer;
+     padding: 16px 18px;
+     transition: 0.3s;
+     font-size: 17px;
+}
+
+.tab-button:hover {
+     box-shadow: 0px 3px 5px rgb(192, 192, 192), inset 0px 2px 3px rgb(255, 255, 255);
+}
+
+.tab-button:active {
+     box-shadow: 0px 3px 8px rgb(192, 192, 192), inset 0px 2px 3px rgb(0, 0, 0);
+}
+
+.tab-content {
+     display: none;
+     padding: 6px 12px;
+     border: 1px solid #ccc;
+     border-top: none;
 }

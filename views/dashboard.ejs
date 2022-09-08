@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Your description goes here">
 	<meta name="keywords" content="one, two, three">
-	<title>Pokémon TCG Deck Builder</title>
+	<title>Pokédecks</title>
 
 	<!-- external CSS link -->
 	<link href="http://fonts.cdnfonts.com/css/nintendo-ds-bios" rel="stylesheet">
@@ -17,15 +17,16 @@
 
 <body>
 	<div id="app-container">
+		<section>
+		<button id="logout-button"><a href="/auth/logout">Logout</a></button>
+		</section>	
 		<section class="nav-container">
-			<button id="logout-button"><a href="/auth/logout">Logout</a></button>		
-			<button id="nav-search" class="tab-button">Search</button>
-			<button id="nav-results" class="tab-button">Results</button>
-			<button id="nav-deck" class="tab-button">Deck</button>
+			<button id="nav-search" class="tab-button" onclick="openTab(event, 'search-param')"></button>
+			<button id="nav-results" class="tab-button" onclick="openTab(event, 'search-results')"></button>
+			<button id="nav-deck" class="tab-button" onclick="openTab(event, 'deck')"></button>
 		</section>
-		<div id="search-param" class="panel">
+		<div id="search-param" class="panel tab-content">
 			<section class="name-input">
-				<br>
 				<h2 id="search-header">Search Cards</h2>
 				<input type="text" id="name-search" placeholder="Search by name...">
 				<button id="search-button">Submit</button>
@@ -89,7 +90,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="search-results" class="panel">
+		<div id="search-results" class="panel tab-content">
 			<h2>Search Results</h2>
 			<div id="card-container">
 				<ul class="search-cards search-slider slider">
@@ -103,7 +104,7 @@
 				<button class="btn search-btn-prev">&lt;</button>
 			</div>
 		</div>
-		<div id="deck" class="panel">
+		<div id="deck" class="panel tab-content">
 			<h2>Deck</h2>
 			<div id="deck-container">
 				<ul class="deck-cards deck-slider slider">

@@ -1,5 +1,6 @@
 document.querySelector('#search-button').addEventListener('click', getCards)
 formatCards()
+document.getElementById("nav-search").click();
 
 function getCards() {
 
@@ -333,11 +334,11 @@ function formatCards() {
 }
 
 function moveSlidesWhenAddingCard() {
-const slides = document.querySelectorAll(".deck-slide");
+    const slides = document.querySelectorAll(".deck-slide");
 
-slides.forEach((slide, indx) => {
-    slide.style.transform = `translateX(${indx * 100}%)`;
-});
+    slides.forEach((slide, indx) => {
+        slide.style.transform = `translateX(${indx * 100}%)`;
+    });
 }
 
 const slides = document.querySelectorAll(".deck-slide");
@@ -370,3 +371,21 @@ let maxSlide = slides.length - 1;
 // Hide slider arrows if there are no cards to display
 
 // when you add a card to the deck, maybe create an empty slide first, go to it, and then have the card appear?
+
+
+// TAB SLIDES
+function openTab(evt, tabName) {
+    let i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="default-open" and click on it
