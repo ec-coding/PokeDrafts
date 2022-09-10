@@ -63,4 +63,7 @@ deck {
 }
 
 
+CHALLENGES:
+1. How do you add information from an API's dataset to your own database?
+
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
