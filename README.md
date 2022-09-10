@@ -18,6 +18,13 @@ FRONT-END
 2. Establish dynamic carousels to accommodate all card results.
 3. Create tab views for Search, Search Results, and Deck.
 
+UI
+1. Highlight the button of whichever tab is active.
+2. When a user deletes a card, remove the slide it is on as well.
+3. When the user hits the submit button on Card Search, switch the tab to Search Results.
+4. Add radio inputs for Pokemon Type and Card Type.
+5. Add checkbox inputs for Card Set.
+
 DECK RULES
 1. A completed deck must have exactly 60 cards.
 2. A deck cannot exceed 60 cards.
