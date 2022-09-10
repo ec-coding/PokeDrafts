@@ -20,3 +20,6 @@ DECK RULES
 1. A completed deck must have exactly 60 cards.
 2. A deck cannot exceed 60 cards.
 3. No more than 4 of each card can be added to a deck, with the exception of energy cards.
+
+
+<a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
