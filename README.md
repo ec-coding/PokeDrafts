@@ -24,6 +24,8 @@ UI
 3. When the user hits the submit button on Card Search, switch the tab to Search Results.
 4. Add radio inputs for Pokemon Type and Card Type.
 5. Add checkbox inputs for Card Set.
+6. Add a card counter on the Deck panel.
+7. Show how much of each card is in a deck.
 
 DECK RULES
 1. A completed deck must have exactly 60 cards.
@@ -36,5 +38,7 @@ FUTURE GOALS
 2. Allow users to toggle their decks as public or private.
 3. If a deck is made public, allow other users to view them.
 4. Render a limited number of files initially, and have the carousel render more as it goes on.
+5. Provide an option for users to sort the deck in various ways.
+
 
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
