@@ -43,23 +43,23 @@ FUTURE GOALS
 MISC
 1. Card object on mongoDB should appear as the following:
 
-`deck = {<br>
-    card 1:<br>
-        id: 35346346<br>
-        img: 354345345<br>
-        createdAt: Date<br>
-        createdBy: Name<br>
-    card 2:<br>
-        id: 35346346<br>
-        img: 354345345<br>
-        createdAt: Date<br>
-        createdBy: Name<br>
+deck = 
+    card 1:
+        id: 35346346
+        img: 354345345
+        createdAt: Date
+        createdBy: Name
+    card 2:
+        id: 35346346
+        img: 354345345
+        createdAt: Date
+        createdBy: Name
     card 3:<br>
-        id: 35346346<br>
-        img: 354345345<br>
-        createdAt: Date<br>
-        createdBy: Name<br>
-}`
+        id: 35346346
+        img: 354345345
+        createdAt: Date
+        createdBy: Name
+}
 
 
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
