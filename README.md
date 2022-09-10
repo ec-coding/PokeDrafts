@@ -39,6 +39,7 @@ FUTURE GOALS
 3. If a deck is made public, allow other users to view them.
 4. Render a limited number of files initially, and have the carousel render more as it goes on.
 5. Provide an option for users to sort the deck in various ways.
+6. Enable more avenues of authentication
 
 MISC
 1. Card object on mongoDB should appear as the following:
