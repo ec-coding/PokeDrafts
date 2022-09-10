@@ -1,6 +1,7 @@
 <h1 align="center">PokéDrafts</h1>
 <h2 align="center">A customized deck builder app for the Pokémon Trading Card Game.</h2>
-<h4 align="center">Built for the 100Devs 100 Hours Project</h4>
+<h3 align="center">Built for the 100Devs 100 Hours Project</h3>
+
 
 This app aims to accomplish the following:
 
