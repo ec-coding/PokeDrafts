@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Your description goes here">
 	<meta name="keywords" content="one, two, three">
-	<title>Pokémon Deckforge</title>
+	<title>PokéDrafts</title>
 
 	<!-- external CSS link -->
 	<link href="http://fonts.cdnfonts.com/css/nintendo-ds-bios" rel="stylesheet">
@@ -16,22 +16,16 @@
 </head>
 
 <body>
-	<div class="title-container">
-		<div class="title-image">
-		</div>
-		<div class="title-image-one">
-		</div>
-		<div class="title-image-two">
-		</div>
-	</div>
 	<div id="app-container">
-		<section class="logout-container">
-			<a href="/auth/logout"><button id="logout-button">Logout</button></a>
-		</section>	
-		<section class="nav-container">
-			<button id="nav-search" class="tab-button" onclick="openTab(event, 'search-param')"></button>
-			<button id="nav-results" class="tab-button" onclick="openTab(event, 'search-results')"></button>
-			<button id="nav-deck" class="tab-button" onclick="openTab(event, 'deck')"></button>
+		<div id="title-container">
+			<h1>PokéDrafts</h1>
+			<h2>A Deck Builder App for the Pokémon Trading Card Game</h2>
+		</div>
+		<section id="nav-container">
+			<button id="logout-button"><a href="/auth/logout">Logout</a></button>
+			<button id="nav-search" class="tab-button" onclick="openTab(event, 'search-param')">Search Cards</button>
+			<button id="nav-results" class="tab-button" onclick="openTab(event, 'search-results')">Search Results</button>
+			<button id="nav-deck" class="tab-button" onclick="openTab(event, 'deck')">Deck</button>
 		</section>
 		<div id="search-param" class="panel tab-content">
 			<section class="name-input">
@@ -40,62 +34,58 @@
 				<button id="search-button">Submit</button>
 			</section>
 			<div id="choice-params">
-				<div class="first-type-container">
-					<section class="type-input-sec">
-						<form action="" method="" id="type-input-form">
-							<h3>Type</h3>
-							<div class="type-input-div">
-								<input class="type-input" type="radio" id="colorless" name="type" value="Colorless">
-								<label for="type-colorless"> Colorless</label><br>
-								<input class="type-input" type="radio" id="psychic" name="type" value="Psychic">
-								<label for="type-psychic"> Psychic</label><br>
-								<input class="type-input" type="radio" id="water" name="type" value="Water">
-								<label for="type-water"> Water</label><br>
-							</div>
-							<div class="type-input-div">
-								<input class="type-input" type="radio" id="fire" name="type" value="Fire">
-								<label for="type-fire"> Fire</label><br>
-								<input class="type-input" type="radio" id="grass" name="type" value="Grass">
-								<label for="type-grass"> Grass</label><br>
-								<input class="type-input" type="radio" id="lightning" name="type" value="Lightning">
-								<label for="type-lightning"> Lightning</label><br>
-								<input class="type-input" type="radio" id="fighting" name="type" value="Fighting">
-								<label for="type-fighting"> Fighting</label>
-							</div>
-						</form>
-					</section>
-				</div>
-				<div class="secondary-type-container">
-					<section class="supertype-input-sec">
-						<form>
-							<div class="supertype-input-div">
-								<h3>Card Type</h3>
-								<input class="type-input" type="radio" id="card-type-pokemon" name="supertype"
-									value="Pokémon">
-								<label for="supertype-pokemon"> Pokémon</label><br>
-								<input class="type-input" type="radio" id="card-type-trainer" name="supertype"
-									value="Trainer">
-								<label for="supertype-trainer"> Trainer</label><br>
-								<input class="type-input" type="radio" id="card-type-energy" name="supertype"
-									value="Energy">
-								<label for="supertype-energy"> Energy</label>
-							</div>
-						</form>
-					</section>
-					<section class="subtype-input-sec">
-						<form>
-							<div class="subtype-input-div">
-								<h3>Set</h3>
-								<input class="type-input" type="checkbox" id="base" name="subtype" value="base1">
-								<label for="subtype-base"> Base</label><br>
-								<input class="type-input" type="checkbox" id="jungle" name="subtype" value="base2">
-								<label for="subtype-jungle"> Jungle</label><br>
-								<input class="type-input" type="checkbox" id="fossil" name="subtype" value="base3">
-								<label for="subtype-fossil"> Fossil</label>
-							</div>
-						</form>
-					</section>
-				</div>
+				<section class="type-input-sec search-input">
+					<form action="" method="" id="type-input-form">
+						<h3>Type</h3>
+						<div class="type-input-div">
+							<input class="type-input" type="radio" id="colorless" name="type" value="Colorless">
+							<label for="type-colorless"> Colorless</label>
+							<input class="type-input" type="radio" id="psychic" name="type" value="Psychic">
+							<label for="type-psychic"> Psychic</label>
+							<input class="type-input" type="radio" id="water" name="type" value="Water">
+							<label for="type-water"> Water</label>
+						</div>
+						<div class="type-input-div">
+							<input class="type-input" type="radio" id="fire" name="type" value="Fire">
+							<label for="type-fire"> Fire</label>
+							<input class="type-input" type="radio" id="grass" name="type" value="Grass">
+							<label for="type-grass"> Grass</label>
+							<input class="type-input" type="radio" id="lightning" name="type" value="Lightning">
+							<label for="type-lightning"> Lightning</label>
+							<input class="type-input" type="radio" id="fighting" name="type" value="Fighting">
+							<label for="type-fighting"> Fighting</label>
+						</div>
+					</form>
+				</section>
+				<section class="supertype-input-sec search-input">
+					<form>
+						<div class="supertype-input-div">
+							<h3>Card Type</h3>
+							<input class="type-input" type="radio" id="card-type-pokemon" name="supertype"
+								value="Pokémon">
+							<label for="supertype-pokemon"> Pokémon</label>
+							<input class="type-input" type="radio" id="card-type-trainer" name="supertype"
+								value="Trainer">
+							<label for="supertype-trainer"> Trainer</label>
+							<input class="type-input" type="radio" id="card-type-energy" name="supertype"
+								value="Energy">
+							<label for="supertype-energy"> Energy</label>
+						</div>
+					</form>
+				</section>
+				<section class="subtype-input-sec search-input">
+					<form>
+						<div class="subtype-input-div">
+							<h3>Set</h3>
+							<input class="type-input" type="checkbox" id="base" name="subtype" value="base1">
+							<label for="subtype-base"> Base</label>
+							<input class="type-input" type="checkbox" id="jungle" name="subtype" value="base2">
+							<label for="subtype-jungle"> Jungle</label>
+							<input class="type-input" type="checkbox" id="fossil" name="subtype" value="base3">
+							<label for="subtype-fossil"> Fossil</label>
+						</div>
+					</form>
+				</section>
 			</div>
 		</div>
 		<div id="search-results" class="panel tab-content">

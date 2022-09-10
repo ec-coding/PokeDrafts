@@ -64,3 +64,17 @@ router.delete('/delete-all-cards', ensureAuth, async (req, res) => {
 })
 
 module.exports = router
+
+
+// deck = {
+//     card 1:
+//         id: 35346346
+//         img: 354345345
+//         createdAt: Date
+//         createdBy: Name
+//     card 2:
+//         id: 35346346
+//         img: 354345345
+//         createdAt: Date
+//         createdBy: Name
+// }
