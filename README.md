@@ -44,11 +44,11 @@ MISC
 1. Card object on mongoDB should appear as the following:
 
 deck {  
-    card 1:  
-        id: 35346346  
-        img: 354345345
-        createdAt: Date
-        createdBy: Name
+    -card 1:  
+        --id: 35346346  
+        --img: 354345345  
+        --createdAt: Date  
+        --createdBy: Name  
     card 2:
         id: 35346346
         img: 354345345
