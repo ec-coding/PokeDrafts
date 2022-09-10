@@ -43,7 +43,7 @@ FUTURE GOALS
 MISC
 1. Card object on mongoDB should appear as the following:
 
-deck = 
+deck { 
     card 1:
         id: 35346346
         img: 354345345
