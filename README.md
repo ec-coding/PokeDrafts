@@ -31,4 +31,10 @@ DECK RULES
 3. No more than 4 of each card can be added to a deck, with the exception of energy cards.
 
 
+FUTURE GOALS
+1. Allow users to manage more than one deck.
+2. Allow users to toggle their decks as public or private.
+3. If a deck is made public, allow other users to view them.
+4. Render a limited number of files initially, and have the carousel render more as it goes on.
+
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
