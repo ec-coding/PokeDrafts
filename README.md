@@ -65,5 +65,6 @@ deck {
 
 CHALLENGES:
 1. How do you add information from an API's dataset to your own database?
+2. How do you connect a user's ID to a card they added into the database?
 
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
