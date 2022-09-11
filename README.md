@@ -75,5 +75,6 @@ LOGS:
 3. Enabled object name displays on mongoDB by linking it from the front-end code.
 4. Fixed user first name display on the profile page.
 5. Connected user ID's to each card that is added to the deck.
+6. Fixed redirects when re-loading the site as current user. (/decks -> /profile in /middleware/auth.js)
 
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
