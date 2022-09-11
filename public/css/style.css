@@ -133,6 +133,10 @@ label {
      font-size: 22px;
 }
 
+.card-name {
+     display: none;
+}
+
 img {
      margin: 10px 10px 0 10px;
      border-radius: 5px;

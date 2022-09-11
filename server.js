@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
-
 // Passport handles authentication and has strategies
 const passport = require('passport')
 const session = require('express-session')
@@ -14,6 +13,9 @@ const connectDB = require('./config/db')
 const bodyParser = require('body-parser')
 const app = express()
 const cors = require ('cors');
+const mainRoutes = require('./routes/main')
+const authRoutes = require('./routes/auth')
+const decksRoutes = require('./routes/decks')
 
 // Load Config
 dotenv.config({ path: './config/config.env' })
@@ -33,8 +35,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 let port = process.env.PORT || 8000; 
-
-
 
 //How do I put this in an env file?
 // let db,
@@ -82,9 +82,11 @@ app.use(function (req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-app.use('/', require('./routes/index'))
-app.use('/auth', require('./routes/auth'))
-app.use('/decks', require('./routes/decks'))
+app.use('/', mainRoutes)
+app.use('/auth', authRoutes)
+app.use('/decks', decksRoutes)
+
+
 
 // Port Info
 const PORT = process.env.PORT || 8000
@@ -94,11 +96,6 @@ app.listen(
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 )
 
-
-//A completed deck must have exactly 60 cards
-//Place a counter that shows you how many cards are currently in your deck
-//While building the deck, you cannot exceed 60 cards
-//You cannot have more than 4 of the same card in a single deck, with the exception being Energy cards
 
 //ADDITIONAL UI:
 //Wipe search results

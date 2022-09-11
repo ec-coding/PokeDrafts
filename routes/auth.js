@@ -12,7 +12,8 @@ router.get(
     '/google/callback', 
     passport.authenticate('google', { failureRedirect: '/' }), 
     (req, res) => {
-        res.redirect('/dashboard')
+        // After successful login, /profile directs them to the deck dashboard
+        res.redirect('/profile')
     }
 )
 

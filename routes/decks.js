@@ -2,79 +2,25 @@ const { request } = require('express')
 const express = require('express')
 const router = express.Router()
 const { ensureAuth } = require('../middleware/auth')
+const decksController = require('../controllers/decks')
 
-const Decks = require('../models/decks')
-
-
-// // @desc    Show add page
-// // @route   GET /decks/add
-// router.get('/add', ensureAuth, (req, res) => {
-//     res.render('decks/add')
-// })
-
-// @desc    Get collection of cards and render it on your index.ejs
-// @route   GET /
-router.get('/', ensureAuth, async (req, res) => {
-    try {
-        db.collection('cards').find().toArray()
-        res.render('index.ejs', { cards: results })
-    } catch (err) {
-        console.error(err)
-        res.render('error/500')
-    }
-})
+// // @desc    Get collection of cards and render it on your index.ejs
+// // @route   GET /
+// // This creates a "logged-in users only" section of the website
+// router.get('/profile', ensureAuth, decksController.getProfile)
 
 // @desc    Clones the card you clicked from search results and places it in the deck
 // @route   POST /cards
-router.post('/cards', ensureAuth, async (req, res) => {
-    try {
-        let result = await Decks.create({
-            // name: req.body.name,
-            value: req.body.value
-        })
-        res.json(result)
-    } catch (err) {
-        console.error(err)
-        res.render('error/500')
-    }
-})
+router.post('/createDeckCard', ensureAuth, decksController.createDeckCard)
 
 // @desc    Deletes a single card upon clicking it
 // @route   DELETE /delete-single-card
-router.delete('/delete-single-card', ensureAuth, async (req, res) => {
-    try {
-        await Decks.deleteOne({ _id: req.body.id })
-        return res.json('No decks to delete')
-        res.json('')
-    } catch (error) {
-        return res.render('error/500')
-    }
-})
+router.delete('/delete-card', ensureAuth, decksController.deleteCard)
 
 // @desc    Deletes all cards upon clicking the "Delete Deck" button
 // @route   DELETE /delete-all-cards
-router.delete('/delete-all-cards', ensureAuth, async (req, res) => {
-    try {
-        await Decks.deleteMany({
-        })
-        res.json('')
-    } catch (error) {
-        return res.render('error/500')
-    }
-})
+router.delete('/delete-deck', ensureAuth, decksController.deleteDeck)
 
 module.exports = router
 
 
-// deck = {
-//     card 1:
-//         id: 35346346
-//         img: 354345345
-//         createdAt: Date
-//         createdBy: Name
-//     card 2:
-//         id: 35346346
-//         img: 354345345
-//         createdAt: Date
-//         createdBy: Name
-// }

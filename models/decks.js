@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+// THE MODEL IS THE ONLY THING THAT ALLOWS US TO TALK TO THE DATABASE
+
 const DeckSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -10,10 +12,10 @@ const DeckSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User',
-    // },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
     createdAt: {
         type: Date,
         default: Date.now

@@ -99,12 +99,15 @@ function getCards() {
             cardContainer.innerText = ''
             for (var i = 0; i < responseData.data.length; i++) {
                 const newCard = document.createElement('li')
+                const newCardName = document.createElement('span')
+                newCardName.innerText = responseData.data[i].name
                 const newCardImg = document.createElement('img')
                 newCard.setAttribute('class', 'search-card search-slide slide');
+                newCardName.setAttribute('class', 'card-name');
                 newCardImg.setAttribute('class', 'card-img');
                 newCardImg.src = responseData.data[i].images.small
-                newCardImg.dataset.name = newCard.innerText
                 cardContainer.appendChild(newCard)
+                newCard.appendChild(newCardName)
                 newCard.appendChild(newCardImg)
                 formatSearchCards()
                 formatCards()
@@ -115,16 +118,18 @@ function getCards() {
             //Clones a card onto the deck and has its image persist upon reloading.
             async function addCardToDB(event) {
                 event.currentTarget;
-                let cardName = event.currentTarget.dataset.name
                 let img = event.currentTarget
+                let cardName = img.previousElementSibling.innerText
                 let selectedCard = {
-                    // 'categories': ['deck'],
                     'name': cardName,
-                    'value': img.src
+                    'value': img.src,
                 }
-                fetch('/decks/cards', {
+                fetch('/decks/createDeckCard', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
                     body: JSON.stringify(selectedCard)
                 })
                     .then((response) => response.json())
@@ -167,7 +172,6 @@ document.querySelectorAll('.deck-card').forEach(card => card.addEventListener('c
 async function deleteCardFromDB(event) {
 
     //FIND A WAY TO REMOVE THE SLIDE AFTER YOU DELETE A CARD!!
-    console.log('Card Deleted')
     const deletedCard = event.currentTarget;
     let deckCardID = event.currentTarget.dataset.id
     let deckCardName = event.currentTarget.dataset.name
@@ -178,16 +182,17 @@ async function deleteCardFromDB(event) {
         'name': deckCardName,
         'value': deckCardImg.src
     }
-    fetch('/decks/delete-single-card', {
+    fetch('/decks/delete-card', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
     })
         .then(res => {
             if (res.ok) {
+                console.log(`${selectedDeckCard.name} deleted`)
                 deletedCard.remove()
                 formatCards()
-                event.currentTarget.parent.remove('li')
+                // event.currentTarget.parent.remove('li')
                 goToNextCard()
                 return res
             }
@@ -200,7 +205,7 @@ async function deleteCardFromDB(event) {
 const deleteButton = document.querySelector('#delete-deck-button')
 
 deleteButton.addEventListener('click', _ => {
-    fetch('/decks/delete-all-cards', {
+    fetch('/decks/delete-deck', {
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
     })
