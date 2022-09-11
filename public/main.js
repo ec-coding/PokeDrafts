@@ -165,6 +165,8 @@ document.querySelectorAll('.deck-card').forEach(card => card.addEventListener('c
 
 // Removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
 async function deleteCardFromDB(event) {
+
+    //FIND A WAY TO REMOVE THE SLIDE AFTER YOU DELETE A CARD!!
     console.log('Card Deleted')
     const deletedCard = event.currentTarget;
     let deckCardID = event.currentTarget.dataset.id

@@ -103,5 +103,4 @@ app.listen(
 //ADDITIONAL UI:
 //Wipe search results
 
-//Zolere / Yggdrasil99!!
 
