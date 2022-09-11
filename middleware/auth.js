@@ -9,10 +9,10 @@ module.exports = {
         }
     },
     ensureGuest: function (req, res, next) {
-        if (req.isAuthenticated()) {
-            res.redirect('/decks')
-        } else {
+        if (!req.isAuthenticated()) {
             return next()
+        } else {
+            res.redirect('/profile')
         }
     },
 }
