@@ -15,11 +15,11 @@ router.post('/createDeckCard', ensureAuth, decksController.createDeckCard)
 
 // @desc    Deletes a single card upon clicking it
 // @route   DELETE /delete-single-card
-router.delete('/delete-card', ensureAuth, decksController.deleteCard)
+router.delete('/deleteCard', ensureAuth, decksController.deleteCard)
 
 // @desc    Deletes all cards upon clicking the "Delete Deck" button
 // @route   DELETE /delete-all-cards
-router.delete('/delete-deck', ensureAuth, decksController.deleteDeck)
+router.delete('/deleteDeck', ensureAuth, decksController.deleteDeck)
 
 module.exports = router
 

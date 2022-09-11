@@ -182,14 +182,13 @@ async function deleteCardFromDB(event) {
         'name': deckCardName,
         'value': deckCardImg.src
     }
-    fetch('/decks/delete-card', {
+    fetch('/decks/deleteCard', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
     })
         .then(res => {
             if (res.ok) {
-                console.log(`${selectedDeckCard.name} deleted`)
                 deletedCard.remove()
                 formatCards()
                 // event.currentTarget.parent.remove('li')
@@ -205,8 +204,8 @@ async function deleteCardFromDB(event) {
 const deleteButton = document.querySelector('#delete-deck-button')
 
 deleteButton.addEventListener('click', _ => {
-    fetch('/decks/delete-deck', {
-        method: 'delete',
+    fetch('/decks/deleteDeck', {
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     })
         .then(res => {
@@ -221,7 +220,6 @@ deleteButton.addEventListener('click', _ => {
 
 // CAROUSEL
 // SEARCH RESULT SLIDERS
-
 function formatSearchCards() {
     const searchSlides = document.querySelectorAll(".search-slide");
 
@@ -282,7 +280,6 @@ function formatSearchCards() {
 
 // CAROUSEL
 // DECK SLIDERS
-
 function formatCards() {
     const slides = document.querySelectorAll(".deck-slide");
 

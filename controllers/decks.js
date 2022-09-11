@@ -43,6 +43,7 @@ module.exports = {
     deleteCard: async (req, res) => {
         try {
             await Decks.deleteOne({ _id: req.body.id })
+            console.log(`Deleted card`)
             res.json('')
         } catch (error) {
             return res.render('error/500')
@@ -50,11 +51,12 @@ module.exports = {
     },
     deleteDeck: async (req, res) => {
         try {
-            await Decks.deleteMany({
-                _id: req.body.id
-            })
-            console.log(`All cards deleted for User ${req.user.id}.`)
+            const userID = req.user.id
+            await Decks.deleteMany({ 
+                user: userID
+             })
             res.json('')
+            console.log(`Deleted ${res.deletedCount} cards`)
         } catch (error) {
             return res.render('error/500')
         }
