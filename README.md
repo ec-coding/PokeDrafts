@@ -1,6 +1,7 @@
 <h1 align="center">PokéDrafts</h1>
 <h2 align="center">A customized deck builder app for the Pokémon Trading Card Game.</h2>
 <h3 align="center">Built for the 100Devs 100 Hours Project</h3>
+<a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
 
 
 This app aims to accomplish the following:
@@ -81,4 +82,4 @@ LOGS:
 
 9/11/2022
 1. Delete Deck button now only deletes individual user's deck, and not everyone's deck
-<a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
+
