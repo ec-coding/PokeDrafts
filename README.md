@@ -70,10 +70,10 @@ CHALLENGES:
 
 LOGS:
 9/10/2022
--Restructured server-side code to include controllers.
--Renamed router directories to better relate to their functions.
--Enabled object name displays on mongoDB by linking it from the front-end code.
--Fixed user first name display on the profile page.
+1. Restructured server-side code to include controllers.
+2. Renamed router directories to better relate to their functions.
+3. Enabled object name displays on mongoDB by linking it from the front-end code.
+4. Fixed user first name display on the profile page.
 
 
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
