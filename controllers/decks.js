@@ -51,7 +51,9 @@ module.exports = {
     deleteDeck: async (req, res) => {
         try {
             await Decks.deleteMany({
+                _id: req.body.id
             })
+            console.log(`All cards deleted for User ${req.user.id}.`)
             res.json('')
         } catch (error) {
             return res.render('error/500')
