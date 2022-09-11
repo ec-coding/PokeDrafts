@@ -66,6 +66,7 @@ deck {
 CHALLENGES:
 1. How do you add information from an API's dataset to your own database?
 2. How do you connect a user's ID to a card they added into the database?
+3. How can I remove a user's entire deck without affecting the cards in another user's deck?
 
 
 LOGS:
