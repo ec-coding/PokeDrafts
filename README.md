@@ -67,4 +67,13 @@ CHALLENGES:
 1. How do you add information from an API's dataset to your own database?
 2. How do you connect a user's ID to a card they added into the database?
 
+
+LOGS:
+9/10/2022
+-Restructured server-side code to include controllers.
+-Renamed router directories to better relate to their functions.
+-Enabled object name displays on mongoDB by linking it from the front-end code.
+-Fixed user first name display on the profile page.
+
+
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
