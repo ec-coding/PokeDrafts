@@ -19,7 +19,7 @@
 		<div id="title-container">
 			<h1>PokéDrafts</h1>
 			<h2>A Deck Builder App for the Pokémon Trading Card Game</h2>
-			<h3>Welcome <%= user.firstName %></h3>
+			<h3>Welcome <%= user.firstName %>!</h3>
 		</div>
 		<section id="nav-container">
 			<button id="logout-button"><a href="/auth/logout">Logout</a></button>
@@ -103,7 +103,10 @@
 			</div>
 		</div>
 		<div id="deck" class="panel tab-content">
-			<h2>Deck</h2>
+
+
+			<!-- How do I add card count?? -->
+			<h2>Deck ( /60)</h2>
 			<div id="deck-container">
 				<ul class="deck-cards deck-slider slider">
 					<% for(var i=0; i < cards.length; i++) {%>

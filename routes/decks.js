@@ -13,6 +13,10 @@ const decksController = require('../controllers/decks')
 // @route   POST /cards
 router.post('/createDeckCard', ensureAuth, decksController.createDeckCard)
 
+// @desc    Counts how many cards a user has in their deck
+// @route   GET /cards
+router.get('/countDeckCard', ensureAuth, decksController.countDeckCard)
+
 // @desc    Deletes a single card upon clicking it
 // @route   DELETE /delete-single-card
 router.delete('/deleteCard', ensureAuth, decksController.deleteCard)

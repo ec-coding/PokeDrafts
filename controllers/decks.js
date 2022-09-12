@@ -1,4 +1,3 @@
-
 const Decks = require('../models/decks')
 
 module.exports = {
@@ -17,7 +16,6 @@ module.exports = {
     },
     getCards: async (req, res) => {
         try {
-            // db.collection('cards').find().toArray()
             res.render('decks.ejs', { 
                 cards: results 
             })
@@ -38,6 +36,19 @@ module.exports = {
         } catch (err) {
             console.error(err)
             res.render('error/500')
+        }
+    },
+    countDeckCard: async (req, res) => {
+        try {
+            const userID = req.user.id
+            let cardCount = await Decks.countDocuments({ 
+                user: userID
+             })
+            res.render('decks.ejs', {
+                quantity: cardCount,
+            })
+        } catch (error) {
+            return res.render('error/500')
         }
     },
     deleteCard: async (req, res) => {

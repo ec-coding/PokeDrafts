@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const user = require('./user')
 
 // THE MODEL IS THE ONLY THING THAT ALLOWS US TO TALK TO THE DATABASE
 
@@ -16,8 +17,10 @@ const DeckSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    // quantity {
-    //     type: String,
+    // How are these defined?
+    // quantity: {
+    //     type: user.countDocuments({ user:mongoose.Schema.Types.ObjectId }),
+    //     default:0,
     //     required: false,
     // },
     createdAt: {
