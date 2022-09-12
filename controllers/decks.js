@@ -56,7 +56,7 @@ module.exports = {
                 user: userID
              })
             res.json('')
-            console.log(`Deleted ${res.deletedCount} cards`)
+            console.log(`Deleted deck`)
         } catch (error) {
             return res.render('error/500')
         }

@@ -52,10 +52,6 @@ header, body, footer {
      text-align: center;
 }
 
-h2 {
-     font-size: 24px;
-}
-
 h3 {
      font-size: 24px;
      margin-top: 10px;
@@ -73,7 +69,10 @@ h3 {
 }
 
 #title-container {
-     background-color: lightskyblue;
+     border-top: 2px solid black;
+     border-left: 2px solid black;
+     border-right: 2px solid black;
+     background-image: linear-gradient(cornflowerblue, lightblue, cornflowerblue);
      padding: 10px 0;
 }
 
@@ -83,18 +82,21 @@ h3 {
      position: relative;
      overflow: hidden;
      width: 100%;
+     border: 2px solid black;
 }
 
 #logout-button {
      width: 30%;
      font-size: 20px;
      font-weight: bold;
+     border: 1px solid black;
 }
 
 #nav-container .tab-button {
      width: 25%;
      font-size: 20px;
      font-weight: bold;
+     border: 1px solid black;
 }
 
 #nav-container .tab-button:active {
@@ -104,7 +106,7 @@ h3 {
 .panel {
      position: relative;
      height: 60vh;
-     background-color: tan;
+     background-image: linear-gradient(tan, lightyellow, tan);
      border: 2px solid black;
 }
 
