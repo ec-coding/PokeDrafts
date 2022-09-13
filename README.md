@@ -25,7 +25,7 @@ UI
 3. When the user hits the submit button on Card Search, switch the tab to Search Results. --COMPLETED
 4. Add radio inputs for Pokemon Type and Card Type. --COMPLETED
 5. Add checkbox inputs for Card Set. --COMPLETED
-6. Add a card counter on the Deck panel.
+6. Add a card counter on the Deck panel. --COMPLETED
 7. Show how much of each card is in a deck.
 
 DECK RULES
@@ -82,4 +82,8 @@ LOGS:
 
 9/11/2022
 1. Delete Deck button now only deletes individual user's deck, and not everyone's deck
+
+9/12/2022
+1. Implemented Card Counter to show how many cards exist in each user's deck.
+2. Implemented dynamic counter to update card count number each time user adds a card to their deck.
 
