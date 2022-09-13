@@ -29,8 +29,8 @@ UI
 7. Show how much of each card is in a deck.
 
 DECK RULES
-1. A completed deck must have exactly 60 cards.
-2. A deck cannot exceed 60 cards.
+1. A completed deck must have exactly 60 cards. --COMPLETED
+2. A deck cannot exceed 60 cards. --COMPLETED
 3. No more than 4 of each card can be added to a deck, with the exception of energy cards.
 
 
@@ -87,4 +87,5 @@ LOGS:
 1. Implemented Card Counter to show how many cards exist in each user's deck.
 2. Implemented dynamic counter to update card count number each time user adds a card to their deck.
 3. Enabled single card deletion to also update the card counter appropriately.
+4. Blocks users from adding cards to their deck once the card counter has reached 60.
 
