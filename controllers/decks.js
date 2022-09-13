@@ -5,9 +5,14 @@ module.exports = {
         console.log(req.user)
         try {
             const cards = await Decks.find({ user:req.user.id }).lean()
+            let cardCount = await Decks.countDocuments({ 
+                userID: req.user.id
+             })
+            parseInt(cardCount)
             res.render('decks.ejs', {
                 name: req.user.firstName,
-                cards
+                cards,
+                quantity: cardCount
             })
         } catch (err) {
             console.error(err)
@@ -40,14 +45,13 @@ module.exports = {
     },
     countDeckCard: async (req, res) => {
         try {
-            const userID = req.user.id
-            let cardCount = await Decks.countDocuments({ 
-                user: userID
-             })
+
+            console.log(cardCount)
             res.render('decks.ejs', {
                 quantity: cardCount,
             })
-        } catch (error) {
+            res.json('')
+        } catch (err) {
             return res.render('error/500')
         }
     },
@@ -56,7 +60,7 @@ module.exports = {
             await Decks.deleteOne({ _id: req.body.id })
             console.log(`Deleted card`)
             res.json('')
-        } catch (error) {
+        } catch (err) {
             return res.render('error/500')
         }
     },
@@ -68,7 +72,7 @@ module.exports = {
              })
             res.json('')
             console.log(`Deleted deck`)
-        } catch (error) {
+        } catch (err) {
             return res.render('error/500')
         }
     }

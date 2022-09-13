@@ -17,7 +17,9 @@
 <body>
 	<div id="app-container">
 		<div id="title-container">
-			<h1>PokéDrafts</h1>
+			<h1>
+				<!-- <img src="https://fontmeme.com/permalink/220913/6616344a537ac211b127d78d504e7ac9.png" alt="trim-images" border="0"> -->
+			</h1>
 			<h2>A Deck Builder App for the Pokémon Trading Card Game</h2>
 			<h3>Welcome <%= user.firstName %>!</h3>
 		</div>
@@ -106,7 +108,7 @@
 
 
 			<!-- How do I add card count?? -->
-			<h2>Deck ( /60)</h2>
+			<h2 id="deck-card-count">Deck ( <span id="card-count" value="Change"><%= quantity %></span> /60)</h2>
 			<div id="deck-container">
 				<ul class="deck-cards deck-slider slider">
 					<% for(var i=0; i < cards.length; i++) {%>

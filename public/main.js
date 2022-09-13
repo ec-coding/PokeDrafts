@@ -117,6 +117,12 @@ function getCards() {
 
             //Clones a card onto the deck and has its image persist upon reloading.
             async function addCardToDB(event) {
+                let cardCount = document.getElementById("card-count").innerHTML
+                let updateCount = parseInt(cardCount, 0) + 1
+                let maxCount = 60
+
+                if (cardCount < maxCount) { 
+                document.getElementById("card-count").innerHTML = updateCount
                 event.currentTarget;
                 let img = event.currentTarget
                 let cardName = img.previousElementSibling.innerText
@@ -138,6 +144,9 @@ function getCards() {
                         // add card AFTER it is saved to DB
                         createCardReplica(data.insertedId, selectedCard)
                     })
+                } else if (cardCount == maxCount) {
+                    alert(`You can't add anymore cards!`)
+                }
             }
         })
         .catch(err => {
@@ -146,10 +155,8 @@ function getCards() {
 }
 
 function createCardReplica(id, selectedCard) {
-
-    moveSlidesWhenAddingCard()
-
     console.log('Card added to deck')
+    moveSlidesWhenAddingCard()
     const deckContainer = document.querySelector('#deck-container .deck-slider')
     const newDeckCard = document.createElement('li')
     const newDeckCardImg = document.createElement('img')
@@ -163,13 +170,15 @@ function createCardReplica(id, selectedCard) {
     newDeckCardImg.addEventListener('click', deleteCardFromDB)
 }
 
-
 // DELETING CARDS
-
 document.querySelectorAll('.deck-card').forEach(card => card.addEventListener('click', deleteCardFromDB))
 
 // Removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
 async function deleteCardFromDB(event) {
+
+    let cardCount = document.getElementById("card-count").innerHTML
+    let updateCount = parseInt(cardCount, 0) - 1
+    document.getElementById("card-count").innerHTML = updateCount
 
     //FIND A WAY TO REMOVE THE SLIDE AFTER YOU DELETE A CARD!!
     const deletedCard = event.currentTarget;
@@ -201,6 +210,7 @@ async function deleteCardFromDB(event) {
     // }) 
 }
 
+// DELETE DECK
 const deleteButton = document.querySelector('#delete-deck-button')
 
 deleteButton.addEventListener('click', _ => {

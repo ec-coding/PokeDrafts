@@ -18,11 +18,11 @@ const DeckSchema = new mongoose.Schema({
         ref: 'User',
     },
     // How are these defined?
-    // quantity: {
-    //     type: user.countDocuments({ user:mongoose.Schema.Types.ObjectId }),
-    //     default:0,
-    //     required: false,
-    // },
+    cardCount: {
+        type: Number,
+        default:0,
+        required: false,
+    },
     createdAt: {
         type: Date,
         default: Date.now
