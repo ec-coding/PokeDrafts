@@ -12,7 +12,8 @@ SERVER-SIDE
 3. Ensure that each user has access to their own individual deck. --COMPLETED
 4. Connect each user's deck to a separate database (MongoDB).
 5. Arrange the user's deck as an object on MongoDB.
-6. Successfully deploy app on Heroku. --COMPLETED
+6. Create a relational database called "Cards" that links from the "Decks" database for each user.
+7. Successfully deploy app on Heroku. --COMPLETED
 
 FRONT-END
 1. Create customizable decks for each user.
