@@ -86,4 +86,5 @@ LOGS:
 9/12/2022
 1. Implemented Card Counter to show how many cards exist in each user's deck.
 2. Implemented dynamic counter to update card count number each time user adds a card to their deck.
+3. Enabled single card deletion to also update the card counter appropriately.
 
