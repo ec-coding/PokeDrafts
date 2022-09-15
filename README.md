@@ -28,6 +28,7 @@ UI
 5. Add checkbox inputs for Card Set. --COMPLETED
 6. Add a card counter on the Deck panel. --COMPLETED
 7. Show how much of each card is in a deck.
+8. When a user is typing in the name of a card, have the search bar offer suggestions.
 
 DECK RULES
 1. A completed deck must have exactly 60 cards. --COMPLETED
