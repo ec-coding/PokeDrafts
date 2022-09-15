@@ -20,11 +20,6 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    // cardCount: {
-    //     type: Number,
-    //     default:0,
-    //     required: false,
-    // },
     createdAt: {
         type: Date,
         default: Date.now
