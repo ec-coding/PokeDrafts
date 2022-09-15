@@ -30,4 +30,5 @@ const DeckSchema = new mongoose.Schema({
 })
 
 // What is 'Decks' ?
+// It is the name of the database that is created on MongoDB
 module.exports = mongoose.model('Decks', DeckSchema)

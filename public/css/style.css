@@ -93,6 +93,16 @@ h3 {
      border: 2px solid black;
 }
 
+#login-button {
+     font-size: 20px;
+     font-weight: bold;
+     border: 1px solid black;
+}
+
+#login-button:hover {
+     background-color: lightgreen;
+}
+
 #logout-button {
      width: 30%;
      font-size: 20px;
@@ -107,15 +117,28 @@ h3 {
      border: 1px solid black;
 }
 
-#nav-container .tab-button:active {
+#nav-container button:hover {
      background-color: lightgreen;
 }
 
 .panel {
      position: relative;
      height: 60vh;
-     background-image: linear-gradient(rgb(220, 100, 100), rgb(220, 200, 200), rgb(220, 100, 100));
      border: 2px solid black;
+     background-image: linear-gradient(rgb(220, 100, 100), rgb(220, 200, 200), rgb(220, 100, 100));
+}
+
+#search-param {
+     background-image: linear-gradient(rgb(220, 100, 100), rgb(220, 200, 200), rgb(220, 100, 100));
+}
+
+#search-results {
+     background-image: linear-gradient(rgb(75, 155, 110), #d0f0c0, rgb(75, 155, 110));
+}
+
+#deck {
+     background-image: linear-gradient(rgb(180, 145, 95), lightyellow, rgb(180, 145, 95));
+
 }
 
 .search-input {
@@ -166,6 +189,12 @@ img:active {
      place-items: center;
 }
 
+#card-add-info {
+     border: 2px solid black;
+     background-color: white;
+     padding: 10px 80px;
+}
+
 #deck-container {
      display: grid;
      place-items: center;
@@ -185,7 +214,7 @@ img:active {
 .slider {
      width: 100%;
      max-width: 400px;
-     height: 400px;
+     height: 375px;
      position: relative;
      overflow: hidden;
      border-radius: 15px;
