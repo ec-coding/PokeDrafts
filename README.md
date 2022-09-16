@@ -91,3 +91,5 @@ LOGS:
 3. Enabled single card deletion to also update the card counter appropriately.
 4. Blocks users from adding cards to their deck once the card counter has reached 60.
 
+9/15/2022
+1. Added update bar on Search Results to show the names of cards added to the user's deck.
