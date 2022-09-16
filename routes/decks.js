@@ -9,6 +9,10 @@ const decksController = require('../controllers/decks')
 // This creates a "logged-in users only" section of the website
 router.get('/profile', ensureAuth, decksController.getProfile)
 
+// // @desc    Get name of card that was clicked and render it on your index.ejs
+// // @route   PUT /
+router.get('/putCardName', ensureAuth, decksController.putCardName)
+
 // @desc    Clones the card you clicked from search results and places it in the deck
 // @route   POST /cards
 router.post('/createDeckCard', ensureAuth, decksController.createDeckCard)

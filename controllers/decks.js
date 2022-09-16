@@ -6,6 +6,7 @@ module.exports = {
         try {
             req.body.user = req.user.id
             const cards = await Decks.find({ user:req.user.id }).lean()
+            const cardName = req.body.name
             let cardCount = await Decks.countDocuments({ 
                 user: req.user.id
              })
@@ -14,6 +15,7 @@ module.exports = {
                 name: req.user.firstName,
                 cards,
                 quantity: cardCount,
+                cardName
                 // ofEachCard: specificCardCount
             })
         } catch (err) {
@@ -25,6 +27,17 @@ module.exports = {
         try {
             res.render('decks.ejs', { 
                 cards: results 
+            })
+        } catch (err) {
+            console.error(err)
+            res.render('error/500')
+        }
+    },
+    putCardName: async (req, res) => {
+        try {
+            const cardName = await Decks.findById(req.params.id);
+            res.render('decks.ejs', { 
+                cardName
             })
         } catch (err) {
             console.error(err)
