@@ -120,12 +120,13 @@ function getCards() {
                 let cardCount = document.getElementById("card-count").innerHTML
                 let updateCount = parseInt(cardCount, 0) + 1
                 let maxCount = 60
-
                 if (cardCount < maxCount) { 
                 document.getElementById("card-count").innerHTML = updateCount
                 event.currentTarget;
                 let img = event.currentTarget
                 let cardName = img.previousElementSibling.innerText
+                document.getElementById("card-add-info").style.display = 'block'
+                document.getElementById("put-card-name").innerHTML = cardName
                 let selectedCard = {
                     'name': cardName,
                     'value': img.src,
