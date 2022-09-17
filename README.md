@@ -93,3 +93,4 @@ LOGS:
 
 9/15/2022
 1. Added update bar on Search Results to show the names of cards added to the user's deck.
+2. Added update bar on Deck to show the names of cards deleted from the user's deck.
