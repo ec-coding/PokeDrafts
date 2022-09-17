@@ -12,7 +12,7 @@ SERVER-SIDE
 3. Ensure that each user has access to their own individual deck. --COMPLETED
 4. Connect each user's deck to a separate database (MongoDB).
 5. Arrange the user's deck as an object on MongoDB.
-6. Create a relational database called "Cards" that links from the "Decks" database for each user.
+6. Create a relational database called "Cards" that links from the "Decks" database for each user. (Use [] notation in the model)
 7. Successfully deploy app on Heroku. --COMPLETED
 
 FRONT-END
@@ -93,3 +93,5 @@ LOGS:
 
 9/15/2022
 1. Added update bar on Search Results to show the names of cards added to the user's deck.
+2. Added update bar on Deck to show the names of cards deleted from the user's deck. 
+(This was done by adding data-name="<%= cards[i].name %>" to the deck-slide li on Decks.ejs)
