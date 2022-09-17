@@ -1,4 +1,5 @@
 const Decks = require('../models/decks')
+const Cards = require('../models/cards')
 
 module.exports = {
     getProfile: async (req, res) => {
@@ -39,6 +40,19 @@ module.exports = {
             res.render('decks.ejs', { 
                 cardName
             })
+        } catch (err) {
+            console.error(err)
+            res.render('error/500')
+        }
+    },
+    createDeck: async (req, res) => {
+        try {
+            req.body.user = req.user.id
+            let result = await Cards.create({
+                name: req.body.name,
+                user: req.user.id
+            })
+            res.json(result)
         } catch (err) {
             console.error(err)
             res.render('error/500')

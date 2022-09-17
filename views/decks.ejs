@@ -36,29 +36,6 @@
 				<button id="search-button">Submit</button>
 			</section>
 			<div id="choice-params">
-				<section class="type-input-sec search-input">
-					<form action="" method="" id="type-input-form">
-						<h3>Type</h3>
-						<div class="type-input-div">
-							<input class="type-input" type="radio" id="colorless" name="type" value="Colorless">
-							<label for="type-colorless"> Colorless</label>
-							<input class="type-input" type="radio" id="psychic" name="type" value="Psychic">
-							<label for="type-psychic"> Psychic</label>
-							<input class="type-input" type="radio" id="water" name="type" value="Water">
-							<label for="type-water"> Water</label>
-						</div>
-						<div class="type-input-div">
-							<input class="type-input" type="radio" id="fire" name="type" value="Fire">
-							<label for="type-fire"> Fire</label>
-							<input class="type-input" type="radio" id="grass" name="type" value="Grass">
-							<label for="type-grass"> Grass</label>
-							<input class="type-input" type="radio" id="lightning" name="type" value="Lightning">
-							<label for="type-lightning"> Lightning</label>
-							<input class="type-input" type="radio" id="fighting" name="type" value="Fighting">
-							<label for="type-fighting"> Fighting</label>
-						</div>
-					</form>
-				</section>
 				<section class="supertype-input-sec search-input">
 					<form>
 						<div class="supertype-input-div">
@@ -88,6 +65,29 @@
 						</div>
 					</form>
 				</section>
+				<section class="type-input-sec search-input">
+					<form action="" method="" id="type-input-form">
+						<h3>Type</h3>
+						<div class="type-input-div">
+							<input class="type-input" type="radio" id="colorless" name="type" value="Colorless">
+							<label for="type-colorless"> Colorless</label>
+							<input class="type-input" type="radio" id="psychic" name="type" value="Psychic">
+							<label for="type-psychic"> Psychic</label>
+							<input class="type-input" type="radio" id="water" name="type" value="Water">
+							<label for="type-water"> Water</label>
+						</div>
+						<div class="type-input-div">
+							<input class="type-input" type="radio" id="fire" name="type" value="Fire">
+							<label for="type-fire"> Fire</label>
+							<input class="type-input" type="radio" id="grass" name="type" value="Grass">
+							<label for="type-grass"> Grass</label>
+							<input class="type-input" type="radio" id="lightning" name="type" value="Lightning">
+							<label for="type-lightning"> Lightning</label>
+							<input class="type-input" type="radio" id="fighting" name="type" value="Fighting">
+							<label for="type-fighting"> Fighting</label>
+						</div>
+					</form>
+				</section>
 			</div>
 		</div>
 		<div id="search-results" class="panel tab-content">
@@ -113,7 +113,7 @@
 			<div id="deck-container">
 				<ul class="deck-cards deck-slider slider">
 					<% for(var i=0; i < cards.length; i++) {%>
-						<li data-id="<%= cards[i]._id %>" class="deck-card deck-slide slide">
+						<li data-id="<%= cards[i]._id %>" data-name="<%= cards[i].name %>" class="deck-card deck-slide slide">
 							<img class="card-img" src="<%= cards[i].value %>">
 						</li>
 						<% } %>
@@ -121,6 +121,7 @@
 				<button class="btn deck-btn-next">&gt;</button>
 				<button class="btn deck-btn-prev">&lt;</button>
 			</div>
+			<span id="card-delete-info"><span id="deleted-card-name" value="Change"><%= cardName %></span> was deleted from your deck.</span>
 			<button id="delete-deck-button">Delete Deck</button>
 		</div>
 	</div>

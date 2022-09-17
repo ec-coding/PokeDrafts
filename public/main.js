@@ -18,6 +18,7 @@ function getCards() {
     let subtypeInput = ''
     let subtypeParam = ''
 
+    // Figure out how to compress this, or convert to back-end
     if (typeInputColorless == true) {
         typeInput = document.querySelector('#colorless').value
     } else if (typeInputPsychic == true) {
@@ -117,34 +118,45 @@ function getCards() {
 
             //Clones a card onto the deck and has its image persist upon reloading.
             async function addCardToDB(event) {
-                let cardCount = document.getElementById("card-count").innerHTML
+                let cardCount = document.getElementById("card-count").innerText
                 let updateCount = parseInt(cardCount, 0) + 1
                 let maxCount = 60
-                if (cardCount < maxCount) { 
-                document.getElementById("card-count").innerHTML = updateCount
-                event.currentTarget;
-                let img = event.currentTarget
-                let cardName = img.previousElementSibling.innerText
-                document.getElementById("card-add-info").style.display = 'block'
-                document.getElementById("put-card-name").innerHTML = cardName
-                let selectedCard = {
-                    'name': cardName,
-                    'value': img.src,
-                }
-                fetch('/decks/createDeckCard', {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(selectedCard)
-                })
-                    .then((response) => response.json())
-                    .then(data => {
-                        formatCards()
-                        // add card AFTER it is saved to DB
-                        createCardReplica(data.insertedId, selectedCard)
+                if (cardCount < maxCount) {
+                    document.getElementById("card-count").innerText = updateCount
+                    event.currentTarget;
+                    let img = event.currentTarget
+                    let cardName = img.previousElementSibling.innerText
+                    document.getElementById("card-add-info").style.display = 'block'
+                    document.getElementById("put-card-name").innerText = cardName
+                    let selectedCard = {
+                        'name': cardName,
+                        'value': img.src,
+                    }
+
+                    fetch('/decks/createDeck', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(selectedCard)
                     })
+                        .then((response) => response.json())
+
+                    fetch('/decks/createDeckCard', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(selectedCard)
+                    })
+                        .then((response) => response.json())
+                        .then(data => {
+                            formatCards()
+                            // add card AFTER it is saved to DB
+                            createCardReplica(data.insertedId, selectedCard)
+                        })
                 } else if (cardCount == maxCount) {
                     alert(`You can't add anymore cards!`)
                 }
@@ -166,7 +178,7 @@ function createCardReplica(id, selectedCard) {
     newDeckCardImg.dataset.id = id
     newDeckCard.appendChild(newDeckCardImg)
     deckContainer.appendChild(newDeckCard)
-    newDeckCard.style.transform = `translateX(0%)`;
+    // newDeckCard.style.transform = `translateX(0%)`;
     formatCards()
     newDeckCardImg.addEventListener('click', deleteCardFromDB)
 }
@@ -177,21 +189,24 @@ document.querySelectorAll('.deck-card').forEach(card => card.addEventListener('c
 // Removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
 async function deleteCardFromDB(event) {
 
-    let cardCount = document.getElementById("card-count").innerHTML
+    let cardCount = document.getElementById("card-count").innerText
     let updateCount = parseInt(cardCount, 0) - 1
-    document.getElementById("card-count").innerHTML = updateCount
+    document.getElementById("card-count").innerText = updateCount
 
     //FIND A WAY TO REMOVE THE SLIDE AFTER YOU DELETE A CARD!!
     const deletedCard = event.currentTarget;
     let deckCardID = event.currentTarget.dataset.id
     let deckCardName = event.currentTarget.dataset.name
-    let deckCardImg = event.currentTarget
+
+    document.getElementById("card-delete-info").style.display = 'block'
+    document.getElementById("deleted-card-name").innerText = deckCardName
+
     let selectedDeckCard = {
         'id': deckCardID,
-        'categories': ['deck'],
-        'name': deckCardName,
-        'value': deckCardImg.src
     }
+
+    console.log(deckCardName)
+
     fetch('/decks/deleteCard', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -206,9 +221,6 @@ async function deleteCardFromDB(event) {
                 return res
             }
         })
-    // .then(res => {
-    //     window.location.reload()
-    // }) 
 }
 
 // DELETE DECK

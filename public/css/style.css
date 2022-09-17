@@ -190,7 +190,7 @@ img:active {
      place-items: center;
 }
 
-#card-add-info {
+#card-add-info, #card-delete-info {
      /* border: 2px solid black;
      background-color: white;
      padding: 10px 50px; */

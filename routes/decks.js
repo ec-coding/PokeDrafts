@@ -13,8 +13,15 @@ router.get('/profile', ensureAuth, decksController.getProfile)
 // // @route   PUT /
 router.get('/putCardName', ensureAuth, decksController.putCardName)
 
+// Pass in API URL and use back-end to call data and render it on ejs
+
+
 // @desc    Clones the card you clicked from search results and places it in the deck
-// @route   POST /cards
+// @route   POST /createDeck
+router.post('/createDeck', ensureAuth, decksController.createDeck)
+
+// @desc    Clones the card you clicked from search results and places it in the deck
+// @route   POST /createDeckCard
 router.post('/createDeckCard', ensureAuth, decksController.createDeckCard)
 
 // @desc    Counts how many cards a user has in their deck
