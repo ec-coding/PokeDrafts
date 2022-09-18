@@ -3,7 +3,7 @@
 <h3 align="center">Built for the 100Devs 100 Hours Project</h3>
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
 
-
+<p align="left>
 This app aims to accomplish the following:
 
 SERVER-SIDE
@@ -77,3 +77,4 @@ LOGS:
 
 9/17/2022
 1. Converted Cards schema into Deck schema, which organizes a user's added cards into their own individual deck on mongoDB
+</p>
