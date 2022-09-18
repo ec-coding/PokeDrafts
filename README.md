@@ -60,7 +60,7 @@ CHALLENGES:
 </tr>
 </table>
   
-<h2>PROJECT ACHIEVEMENTS:</h2>
+<h2>PROJECT LOGS:</h2>
 <table bordercolor="#66b2b2">
 <tr>
 
