@@ -1,9 +1,11 @@
-<h1 align="center">PokéDrafts</h1>
+<img src="https://github.com/ec-coding/PokeDrafts/blob/main/public/css/pokedrafts.png" width="50%" align="center">
 <h2 align="center">A customized deck builder app for the Pokémon Trading Card Game.</h2>
 <h3 align="center">Built for the 100Devs 100 Hours Project</h3>
+<p align="center">
   <a href="http://pokedrafts.herokuapp.com/" target="_blank">
     <img src="https://img.shields.io/static/v1?label=|&message=WEBSITE&color=23555f&style=plastic&logo=react&logo-color=white"/>
   </a>
+</p>
 
 <p align="left">
 This app aims to accomplish the following:
