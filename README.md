@@ -2,7 +2,10 @@
 <img src="https://github.com/ec-coding/PokeDrafts/blob/main/public/css/pokedrafts.png" width="50%">
 </p>
 <h2 align="center">A customized deck builder app for the Pokémon Trading Card Game.</h2>
-<h3 align="center">Built for the 100Devs 100 Hours Project</h3>
+<p align="center">
+<img src="https://www.kindpng.com/picc/m/368-3683364_custom-banner-pokemon-starters-never-forget-hd-png.png" width="50%">
+</p>
+<h3 align="center">Built for the 100Devs 100-Hours Project</h3>
 <p align="center">
   <a href="http://pokedrafts.herokuapp.com/" target="_blank">
     <img src="https://img.shields.io/static/v1?label=|&message=WEBSITE&color=23555f&style=plastic&logo=react&logo-color=white"/>
@@ -28,7 +31,7 @@ FRONT-END
 2. Establish dynamic carousels to accommodate all card results.
 3. Create tab views for Search, Search Results, and Deck. --COMPLETED
 
-UI
+USER INTERFACE
 1. Highlight the button of whichever tab is active.
 2. When a user deletes a card, remove the slide it is on as well. --50% COMPLETE
 3. When the user hits the submit button on Card Search, switch the tab to Search Results. --COMPLETED
