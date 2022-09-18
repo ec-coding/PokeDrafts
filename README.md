@@ -9,9 +9,10 @@
   </a>
 </p>
 
-<p align="left">
-This app aims to accomplish the following:
 
+PROJECT GOALS:
+<table bordercolor="#66b2b2">
+<p align="left">
 SERVER-SIDE
 1. Utilize MVC architecture to organize all server-side code. --COMPLETED
 2. Enable Google Authentication for user logins. --COMPLETED
@@ -53,9 +54,12 @@ CHALLENGES:
 1. How do you add information from an API's dataset to your own database? --COMPLETED
 2. How do you connect a user's ID to a card they added into the database? --COMPLETED
 3. How can I remove a user's entire deck without affecting the cards in another user's deck? --COMPLETED
-
-PROGRESS LOGS:
-
+</p>
+</table>
+  
+PROJECT ACHIEVEMENTS:
+<table bordercolor="#66b2b2">
+<p align="left">
 9/10/2022
 1. Restructured server-side code to include controllers.
 2. Renamed router directories to better relate to their functions.
@@ -84,3 +88,4 @@ PROGRESS LOGS:
 9/17/2022
 1. Converted Cards schema into Deck schema, which organizes a user's added cards into their own individual deck on mongoDB
 </p>
+</table>
