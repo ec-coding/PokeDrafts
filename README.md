@@ -55,7 +55,7 @@ CHALLENGES:
 3. How can I remove a user's entire deck without affecting the cards in another user's deck? --COMPLETED
 
 <p>
-PROGRESS LOGS: <br />
+PROGRESS LOGS:
 9/10/2022
 1. Restructured server-side code to include controllers.
 2. Renamed router directories to better relate to their functions.
