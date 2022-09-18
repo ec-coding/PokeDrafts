@@ -54,7 +54,6 @@ CHALLENGES:
 2. How do you connect a user's ID to a card they added into the database? --COMPLETED
 3. How can I remove a user's entire deck without affecting the cards in another user's deck? --COMPLETED
 
-<p>
 PROGRESS LOGS:
 9/10/2022
 1. Restructured server-side code to include controllers.
@@ -83,5 +82,4 @@ PROGRESS LOGS:
 
 9/17/2022
 1. Converted Cards schema into Deck schema, which organizes a user's added cards into their own individual deck on mongoDB
-</p>
 </p>
