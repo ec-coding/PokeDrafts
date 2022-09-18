@@ -93,5 +93,10 @@ LOGS:
 
 9/15/2022
 1. Added update bar on Search Results to show the names of cards added to the user's deck.
-2. Added update bar on Deck to show the names of cards deleted from the user's deck. 
+
+9/16/2022
+1. Added update bar on Deck to show the names of cards deleted from the user's deck. 
 (This was done by adding data-name="<%= cards[i].name %>" to the deck-slide li on Decks.ejs)
+
+9/17/2022
+1. Converted Cards schema into Deck schema, which organizes a user's added cards into their own individual deck on mongoDB
