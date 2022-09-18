@@ -1,4 +1,6 @@
-<img src="https://github.com/ec-coding/PokeDrafts/blob/main/public/css/pokedrafts.png" width="100%" align="center">
+<p align="center">
+<img src="https://github.com/ec-coding/PokeDrafts/blob/main/public/css/pokedrafts.png" width="50%">
+</p>
 <h2 align="center">A customized deck builder app for the Pokémon Trading Card Game.</h2>
 <h3 align="center">Built for the 100Devs 100 Hours Project</h3>
 <p align="center">
