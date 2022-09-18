@@ -31,7 +31,7 @@ FRONT-END
 2. Establish dynamic carousels to accommodate all card results.
 3. Create tab views for Search, Search Results, and Deck. --COMPLETED
 
-UI
+USER INTERFACE
 1. Highlight the button of whichever tab is active.
 2. When a user deletes a card, remove the slide it is on as well. --50% COMPLETE
 3. When the user hits the submit button on Card Search, switch the tab to Search Results. --COMPLETED
