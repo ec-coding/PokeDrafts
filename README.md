@@ -3,9 +3,10 @@
 <h3 align="center">Built for the 100Devs 100 Hours Project</h3>
 <a href="https://github.com/ec-coding/Pkmn-TCG-Deck-Builder">App Link</a>
 
-<p align="left>
+
 This app aims to accomplish the following:
 
+<p align="left>
 SERVER-SIDE
 1. Utilize MVC architecture to organize all server-side code. --COMPLETED
 2. Enable Google Authentication for user logins. --COMPLETED
@@ -13,7 +14,8 @@ SERVER-SIDE
 4. Connect each user's deck to a separate database (MongoDB).
 5. Arrange the user's deck as an object on MongoDB. --COMPLETED
 6. Successfully deploy app on Heroku. --COMPLETED
-
+</p>
+          
 FRONT-END
 1. Create customizable decks for each user.
 2. Establish dynamic carousels to accommodate all card results.
@@ -77,4 +79,4 @@ LOGS:
 
 9/17/2022
 1. Converted Cards schema into Deck schema, which organizes a user's added cards into their own individual deck on mongoDB
-</p>
+
