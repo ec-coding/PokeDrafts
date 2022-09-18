@@ -83,5 +83,5 @@ PROGRESS LOGS:
 
 9/17/2022
 1. Converted Cards schema into Deck schema, which organizes a user's added cards into their own individual deck on mongoDB
-<p>
+</p>
 </p>
