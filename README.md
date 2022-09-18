@@ -11,9 +11,8 @@ SERVER-SIDE
 2. Enable Google Authentication for user logins. --COMPLETED
 3. Ensure that each user has access to their own individual deck. --COMPLETED
 4. Connect each user's deck to a separate database (MongoDB).
-5. Arrange the user's deck as an object on MongoDB.
-6. Create a relational database called "Cards" that links from the "Decks" database for each user. (Use [] notation in the model)
-7. Successfully deploy app on Heroku. --COMPLETED
+5. Arrange the user's deck as an object on MongoDB. --COMPLETED
+6. Successfully deploy app on Heroku. --COMPLETED
 
 FRONT-END
 1. Create customizable decks for each user.
@@ -43,29 +42,6 @@ FUTURE GOALS
 4. Render a limited number of files initially, and have the carousel render more as it goes on.
 5. Provide an option for users to sort the deck in various ways.
 6. Enable more avenues of authentication
-
-MISC
-1. Card object on mongoDB should appear as the following:
-
-```
-deck {  
---card 1:  
-----id: 35346346  
-----img: 354345345  
-----createdAt: Date  
-----createdBy: Name  
---card 2:  
-----id: 35346346  
-----img: 354345345  
-----createdAt: Date  
-----createdBy: Name   
---card 3:  
-----id: 35346346  
-----img: 354345345  
-----createdAt: Date  
-----createdBy: Name   
-}
-```
 
 CHALLENGES:
 1. How do you add information from an API's dataset to your own database? --COMPLETED
