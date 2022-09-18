@@ -47,6 +47,7 @@ FUTURE GOALS
 MISC
 1. Card object on mongoDB should appear as the following:
 
+```
 deck {  
 --card 1:  
 ----id: 35346346  
@@ -64,7 +65,7 @@ deck {
 ----createdAt: Date  
 ----createdBy: Name   
 }
-
+```
 
 CHALLENGES:
 1. How do you add information from an API's dataset to your own database? --COMPLETED
