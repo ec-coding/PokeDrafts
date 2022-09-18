@@ -5,13 +5,25 @@ module.exports = {
     getProfile: async (req, res) => {
         console.log(req.user)
         try {
-            req.body.user = req.user.id
-            const cards = await Decks.find({ user:req.user.id }).lean()
+            // req.body.user = req.user.id
+            // const cards = await Cards.find({ user:req.user.id }).lean()
+
+            // let cardCount = await Cards.countDocuments({ 
+            //     user: req.user.id
+            //  })
+            // parseInt(cardCount)
+
+            let deck = await Decks.findOne({ 
+                user:req.user.id 
+            })
+
+            if (deck === null) {
+                deck = new Decks ()
+            }
+
+            const cards = deck.cards
+            const cardCount = cards.length
             const cardName = req.body.name
-            let cardCount = await Decks.countDocuments({ 
-                user: req.user.id
-             })
-            parseInt(cardCount)
             res.render('decks.ejs', {
                 name: req.user.firstName,
                 cards,
@@ -34,9 +46,11 @@ module.exports = {
             res.render('error/500')
         }
     },
+
+    //This function is obsolete, delete this + its route later
     putCardName: async (req, res) => {
         try {
-            const cardName = await Decks.findById(req.params.id);
+            const cardName = await Cards.findById(req.params.id);
             res.render('decks.ejs', { 
                 cardName
             })
@@ -45,28 +59,31 @@ module.exports = {
             res.render('error/500')
         }
     },
-    createDeck: async (req, res) => {
-        try {
-            req.body.user = req.user.id
-            let result = await Cards.create({
-                name: req.body.name,
-                user: req.user.id
-            })
-            res.json(result)
-        } catch (err) {
-            console.error(err)
-            res.render('error/500')
-        }
-    },
+
     createDeckCard: async (req, res) => {
         try {
-            req.body.user = req.user.id
-            let result = await Decks.create({
-                name: req.body.name,
-                value: req.body.value,
-                user: req.body.user,
+            let deck = await Decks.findOne({ 
+                user:req.user.id 
             })
-            res.json(result)
+            if (deck === null) {
+                deck = new Decks ({ 
+                    user:req.user.id 
+                })
+            }
+            // let result = await Cards.create({
+            //     name: req.body.name,
+            //     value: req.body.value,
+            // })
+			deck.cards.push(
+                {
+                    name: req.body.name,
+                    value: req.body.value,
+                }
+            )
+
+            // .save() saves it to the database
+            deck.save()
+            res.json('')
         } catch (err) {
             console.error(err)
             res.render('error/500')
@@ -84,6 +101,8 @@ module.exports = {
     //         return res.render('error/500')
     //     }
     // },
+
+    //This is for counting how many of each card are in a deck
     countDeckCard: async (req, res) => {
         try {
 
@@ -98,7 +117,10 @@ module.exports = {
     },
     deleteCard: async (req, res) => {
         try {
-            await Decks.deleteOne({ _id: req.body.id })
+            const userID = req.user.id
+            const deck = await Decks.findOne({ user: userID })
+            deck.cards = deck.cards.filter(card => card._id != req.body.id)
+            deck.save()
             console.log(`Deleted card`)
             res.json('')
         } catch (err) {
@@ -108,7 +130,7 @@ module.exports = {
     deleteDeck: async (req, res) => {
         try {
             const userID = req.user.id
-            await Decks.deleteMany({ 
+            await Decks.deleteOne({ 
                 user: userID
              })
             res.json('')

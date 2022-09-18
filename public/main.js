@@ -132,18 +132,7 @@ function getCards() {
                         'name': cardName,
                         'value': img.src,
                     }
-
-                    fetch('/decks/createDeck', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(selectedCard)
-                    })
-                        .then((response) => response.json())
-
-                    fetch('/decks/createDeckCard', {
+                    fetch('/cards/createDeckCard', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -178,7 +167,6 @@ function createCardReplica(id, selectedCard) {
     newDeckCardImg.dataset.id = id
     newDeckCard.appendChild(newDeckCardImg)
     deckContainer.appendChild(newDeckCard)
-    // newDeckCard.style.transform = `translateX(0%)`;
     formatCards()
     newDeckCardImg.addEventListener('click', deleteCardFromDB)
 }
@@ -197,17 +185,12 @@ async function deleteCardFromDB(event) {
     const deletedCard = event.currentTarget;
     let deckCardID = event.currentTarget.dataset.id
     let deckCardName = event.currentTarget.dataset.name
-
     document.getElementById("card-delete-info").style.display = 'block'
     document.getElementById("deleted-card-name").innerText = deckCardName
-
     let selectedDeckCard = {
         'id': deckCardID,
     }
-
-    console.log(deckCardName)
-
-    fetch('/decks/deleteCard', {
+    fetch('/cards/deleteCard', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(selectedDeckCard)
@@ -227,7 +210,7 @@ async function deleteCardFromDB(event) {
 const deleteButton = document.querySelector('#delete-deck-button')
 
 deleteButton.addEventListener('click', _ => {
-    fetch('/decks/deleteDeck', {
+    fetch('/cards/deleteDeck', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     })
@@ -250,7 +233,6 @@ function formatSearchCards() {
         slide.style.transform = `translateX(${indx * 100}%)`;
     });
 
-    // Why was all of the below put into a function?
     // Loop through slides and set each slide's translateX property to index * 100%
     searchSlides.forEach((slide, indx) => {
         slide.style.transform = `translateX(${indx * 100}%)`;
@@ -399,7 +381,6 @@ let maxSlide = slides.length - 1;
 
 // when you add a card to the deck, maybe create an empty slide first, go to it, and then have the card appear?
 
-
 // TAB SLIDES
 function openTab(evt, tabName) {
     let i, tabcontent, tablinks;
@@ -415,4 +396,16 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-// Get the element with id="default-open" and click on it
+// SEARCH PARAMETERS
+document.querySelector('#card-type-trainer').addEventListener('click', visibilityForTypes)
+document.querySelector('#card-type-energy').addEventListener('click', visibilityForTypes)
+document.querySelector('#card-type-pokemon').addEventListener('click', visibilityForTypes)
+
+function visibilityForTypes() {
+    if (document.getElementById('card-type-pokemon').checked) {
+        document.querySelector('.type-input-sec').style.display = 'block'
+    } else {
+        document.querySelector('.type-input-sec').style.display = 'none'
+        document.querySelectorAll('[name="type"]').forEach(x => x.checked = false);  
+    }
+}
