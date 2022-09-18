@@ -5,7 +5,7 @@
 <p align="center">
 <img src="https://www.kindpng.com/picc/m/368-3683364_custom-banner-pokemon-starters-never-forget-hd-png.png" width="50%">
 </p>
-<h3 align="center">Built for the 100Devs 100 Hours Project</h3>
+<h3 align="center">Built for the 100Devs 100-Hours Project</h3>
 <p align="center">
   <a href="http://pokedrafts.herokuapp.com/" target="_blank">
     <img src="https://img.shields.io/static/v1?label=|&message=WEBSITE&color=23555f&style=plastic&logo=react&logo-color=white"/>
