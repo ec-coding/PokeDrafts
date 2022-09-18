@@ -14,6 +14,7 @@
 <table bordercolor="#66b2b2">
 <tr>
   <td width="100%" valign="top">
+    
 SERVER-SIDE
 1. Utilize MVC architecture to organize all server-side code. --COMPLETED
 2. Enable Google Authentication for user logins. --COMPLETED
@@ -63,6 +64,7 @@ CHALLENGES:
 <table bordercolor="#66b2b2">
 <tr>
     <td width="100%" valign="top">
+      
 9/10/2022
 1. Restructured server-side code to include controllers.
 2. Renamed router directories to better relate to their functions.
