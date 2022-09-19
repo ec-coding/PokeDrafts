@@ -70,18 +70,16 @@ module.exports = {
                     user:req.user.id 
                 })
             }
-            // let result = await Cards.create({
-            //     name: req.body.name,
-            //     value: req.body.value,
-            // })
 			deck.cards.push(
                 {
                     name: req.body.name,
                     value: req.body.value,
-                }
+                },
+                // res.render('decks.ejs', { 
+                //     cards
+                // })
             )
 
-            // .save() saves it to the database
             deck.save()
             res.json('')
         } catch (err) {

@@ -11,10 +11,6 @@ const CardSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User',
-    // },
     // How are these defined?
     // cardCount: {
     //     type: Number,
