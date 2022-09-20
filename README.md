@@ -96,5 +96,10 @@ CHALLENGES:
 9/17/2022
 1. Converted Cards schema into Deck schema, which organizes a user's added cards into their own individual deck on mongoDB
 
+9/19/2022
+1. Finally fixed the issue with a user not being able to delete individual cards from their deeck without having to reload the page.
+  - .at(-1) was added to the card variable, and returned as the json response, since that was the last card added to the deck db.
+  - This is then returned to the front-end's fetch request, and subsequently rendered on the HTML.
+
 </tr>
 </table>
