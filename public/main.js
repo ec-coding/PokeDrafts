@@ -129,6 +129,7 @@ function getCards() {
                     document.getElementById("card-add-info").style.display = 'block'
                     document.getElementById("put-card-name").innerText = cardName
                     let selectedCard = {
+                        // 'id': event.currentTarget.id,
                         'name': cardName,
                         'value': img.src,
                     }
@@ -144,7 +145,9 @@ function getCards() {
                         .then(data => {
                             formatCards()
                             // add card AFTER it is saved to DB
-                            createCardReplica(data.insertedId, selectedCard)
+                            console.log(data)
+                            createCardReplica(data)
+
                         })
                 } else if (cardCount == maxCount) {
                     alert(`You can't add anymore cards!`)
@@ -156,19 +159,22 @@ function getCards() {
         })
 }
 
-function createCardReplica(id, selectedCard) {
-    console.log('Card added to deck')
-    moveSlidesWhenAddingCard()
+function createCardReplica(card) {
     const deckContainer = document.querySelector('#deck-container .deck-slider')
+    // deckContainer.innerText = ''
+    // moveSlidesWhenAddingCard()
     const newDeckCard = document.createElement('li')
     const newDeckCardImg = document.createElement('img')
-    newDeckCardImg.src = selectedCard.value
     newDeckCard.setAttribute('class', 'deck-card deck-slide slide')
-    newDeckCardImg.dataset.id = id
-    newDeckCard.appendChild(newDeckCardImg)
+    newDeckCardImg.setAttribute('class', 'deck-card-img')
+    newDeckCardImg.src = card.value
+    newDeckCardImg.dataset.id = card._id
+    newDeckCard.dataset.id = card._id
+    newDeckCard.dataset.name = card.name
     deckContainer.appendChild(newDeckCard)
+    newDeckCard.appendChild(newDeckCardImg)
     formatCards()
-    newDeckCardImg.addEventListener('click', deleteCardFromDB)
+    newDeckCard.addEventListener('click', deleteCardFromDB)
 }
 
 // DELETING CARDS
@@ -406,6 +412,6 @@ function visibilityForTypes() {
         document.querySelector('.type-input-sec').style.display = 'block'
     } else {
         document.querySelector('.type-input-sec').style.display = 'none'
-        document.querySelectorAll('[name="type"]').forEach(x => x.checked = false);  
+        document.querySelectorAll('[name="type"]').forEach(x => x.checked = false);
     }
 }

@@ -15,7 +15,7 @@ const app = express()
 const cors = require ('cors');
 const mainRoutes = require('./routes/main')
 const authRoutes = require('./routes/auth')
-const decksRoutes = require('./routes/decks')
+const cardsRoutes = require('./routes/cards')
 
 // Load Config
 dotenv.config({ path: './config/config.env' })
@@ -84,9 +84,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', mainRoutes)
 app.use('/auth', authRoutes)
-app.use('/decks', decksRoutes)
-
-
+app.use('/cards', cardsRoutes)
 
 // Port Info
 const PORT = process.env.PORT || 8000
@@ -95,7 +93,6 @@ app.listen(
     PORT, 
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 )
-
 
 //ADDITIONAL UI:
 //Wipe search results

@@ -8,19 +8,12 @@ module.exports = {
             // req.body.user = req.user.id
             // const cards = await Cards.find({ user:req.user.id }).lean()
 
-            // let cardCount = await Cards.countDocuments({ 
-            //     user: req.user.id
-            //  })
-            // parseInt(cardCount)
-
             let deck = await Decks.findOne({ 
                 user:req.user.id 
             })
-
             if (deck === null) {
                 deck = new Decks ()
             }
-
             const cards = deck.cards
             const cardCount = cards.length
             const cardName = req.body.name
@@ -70,20 +63,15 @@ module.exports = {
                     user:req.user.id 
                 })
             }
-            // let result = await Cards.create({
-            //     name: req.body.name,
-            //     value: req.body.value,
-            // })
 			deck.cards.push(
                 {
                     name: req.body.name,
                     value: req.body.value,
-                }
+                },
             )
-
-            // .save() saves it to the database
             deck.save()
-            res.json('')
+            let card = deck.cards.at(-1)
+            res.json(card)
         } catch (err) {
             console.error(err)
             res.render('error/500')

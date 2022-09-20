@@ -33,15 +33,15 @@
 			<section class="name-input">
 				<h2 id="search-header">Search Cards</h2>
 				<input type="text" id="name-search" placeholder="Search by name...">
-				<button id="search-button">Submit</button>
+				<button type="submit" id="search-button">Submit</button>
+				<button type="reset">Reset</button>
 			</section>
 			<div id="choice-params">
 				<section class="supertype-input-sec search-input">
-					<form>
 						<div class="supertype-input-div">
 							<h3>Card Type</h3>
 							<input class="type-input" type="radio" id="card-type-pokemon" name="supertype"
-								value="Pokémon">
+								value="Pokémon" checked>
 							<label for="supertype-pokemon"> Pokémon</label>
 							<input class="type-input" type="radio" id="card-type-trainer" name="supertype"
 								value="Trainer">
@@ -50,10 +50,8 @@
 								value="Energy">
 							<label for="supertype-energy"> Energy</label>
 						</div>
-					</form>
 				</section>
 				<section class="subtype-input-sec search-input">
-					<form>
 						<div class="subtype-input-div">
 							<h3>Set</h3>
 							<input class="type-input" type="checkbox" id="base" name="subtype" value="base1">
@@ -63,10 +61,8 @@
 							<input class="type-input" type="checkbox" id="fossil" name="subtype" value="base3">
 							<label for="subtype-fossil"> Fossil</label>
 						</div>
-					</form>
 				</section>
 				<section class="type-input-sec search-input">
-					<form action="" method="" id="type-input-form">
 						<h3>Type</h3>
 						<div class="type-input-div">
 							<input class="type-input" type="radio" id="colorless" name="type" value="Colorless">
@@ -86,7 +82,6 @@
 							<input class="type-input" type="radio" id="fighting" name="type" value="Fighting">
 							<label for="type-fighting"> Fighting</label>
 						</div>
-					</form>
 				</section>
 			</div>
 		</div>
@@ -114,9 +109,9 @@
 				<ul class="deck-cards deck-slider slider">
 					<% for(var i=0; i < cards.length; i++) {%>
 						<li data-id="<%= cards[i]._id %>" data-name="<%= cards[i].name %>" class="deck-card deck-slide slide">
-							<img class="card-img" src="<%= cards[i].value %>">
+							<img class="deck-card-img" src="<%= cards[i].value %>">
 						</li>
-						<% } %>
+					<% } %>
 				</ul>
 				<button class="btn deck-btn-next">&gt;</button>
 				<button class="btn deck-btn-prev">&lt;</button>
