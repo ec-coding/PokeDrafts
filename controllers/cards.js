@@ -8,19 +8,12 @@ module.exports = {
             // req.body.user = req.user.id
             // const cards = await Cards.find({ user:req.user.id }).lean()
 
-            // let cardCount = await Cards.countDocuments({ 
-            //     user: req.user.id
-            //  })
-            // parseInt(cardCount)
-
             let deck = await Decks.findOne({ 
                 user:req.user.id 
             })
-
             if (deck === null) {
                 deck = new Decks ()
             }
-
             const cards = deck.cards
             const cardCount = cards.length
             const cardName = req.body.name
@@ -75,13 +68,10 @@ module.exports = {
                     name: req.body.name,
                     value: req.body.value,
                 },
-                // res.render('decks.ejs', { 
-                //     cards
-                // })
             )
-
             deck.save()
-            res.json('')
+            let card = deck.cards.at(-1)
+            res.json(card)
         } catch (err) {
             console.error(err)
             res.render('error/500')
