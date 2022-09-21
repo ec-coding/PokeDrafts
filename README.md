@@ -101,5 +101,8 @@ CHALLENGES:
   - .at(-1) was added to the card variable, and returned as the json response, since that was the last card added to the deck db.
   - This is then returned to the front-end's fetch request, and subsequently rendered on the HTML.
 
+9/20/2022
+1. Added 3 new card sets onto the UI: Team Rocket, Gym Heroes, and Gym Challenge.
+  
 </tr>
 </table>
