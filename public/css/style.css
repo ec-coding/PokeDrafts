@@ -63,7 +63,7 @@ h3 {
 /*******************************************/
 
 #app-container {
-     margin-top: 50px;
+     margin: 0 auto;
      position: absolute;
      min-width: 576px;
 }
