@@ -20,7 +20,7 @@
     <img src="https://img.shields.io/static/v1?label=|&message=MONGO-DB&color=cdd148&style=plastic&logo=mongodb"/>
     <img src="https://img.shields.io/static/v1?label=|&message=EXPRESS&color=bbb111&style=plastic&logo=express"/>
 
-PokéDrafts is a full-stack web app that allows you to build your very own deck from the first 3 sets of the Pokémon Trading Card Game.
+PokéDrafts is a full-stack web app that allows you to build your very own deck from various sets of the Pokémon Trading Card Game.
 
 ## Optimizations
 
