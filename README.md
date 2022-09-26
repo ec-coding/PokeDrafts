@@ -40,20 +40,20 @@ Building this app has allowed me to learn and exercise a variety of different co
 ## Completed Goals:
 
 - The following features have been sucessfully implemented in the app:
-  - Utilize MVC architecture to organize all server-side code. --COMPLETED
-  - Enable Google Authentication for user logins. --COMPLETED
-  - Ensure that each user has access to their own individual deck. --COMPLETED
-  - Arrange the user's deck as an object on MongoDB. --COMPLETED
-  - Successfully deploy app on Heroku. --COMPLETED
-  - Establish dynamic carousels to accommodate all card results. --COMPLETED
-  - Create tab views for Search, Search Results, and Deck. --COMPLETED
-  - When a user deletes a card, remove the slide it is on as well. --COMPLETED
-  - When the user hits the submit button on Card Search, switch the tab to Search Results. --COMPLETED
-  - Add radio inputs for Pokemon Type and Card Type. --COMPLETED
-  - Add checkbox inputs for Card Set. --COMPLETED
-  - Add a card counter on the Deck panel. --COMPLETED
-  - A completed deck must have exactly 60 cards. --COMPLETED
-  - A deck cannot exceed 60 cards. --COMPLETED
-  - How do you add information from an API's dataset to your own database? --COMPLETED
-  - How do you connect a user's ID to a card they added into the database? --COMPLETED
-  - How can I remove a user's entire deck without affecting the cards in another user's deck? --COMPLETED
+  - Utilize MVC architecture to organize all server-side code.
+  - Enable Google Authentication for user logins.
+  - Ensure that each user has access to their own individual deck.
+  - Arrange the user's deck as an object on MongoDB.
+  - Successfully deploy app on Heroku.
+  - Establish dynamic carousels to accommodate all card results.
+  - Create tab views for Search, Search Results, and Deck.
+  - When a user deletes a card, remove the slide it is on as well.
+  - When the user hits the submit button on Card Search, switch the tab to Search Results.
+  - Add radio inputs for Pokemon Type and Card Type.
+  - Add checkbox inputs for Card Set.
+  - Add a card counter on the Deck panel.
+  - A completed deck must have exactly 60 cards.
+  - A deck cannot exceed 60 cards.
+  - How do you add information from an API's dataset to your own database?
+  - How do you connect a user's ID to a card they added into the database?
+  - How can I remove a user's entire deck without affecting the cards in another user's deck?
