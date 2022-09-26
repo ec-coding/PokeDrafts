@@ -7,8 +7,8 @@
 </p>
 <h3 align="center">Built for the 100Devs 100-Hours Project</h3>
 <p align="center">
-  <a href="http://pokedrafts.herokuapp.com/" target="_blank">
-    <img src="https://img.shields.io/static/v1?label=|&message=WEBSITE&color=23555f&style=plastic&logo=react&logo-color=white"/>
+  <a href="" target="_blank">
+    <h3>Access the App <a target="_blank" href="http://pokedrafts.herokuapp.com/">Here</a></h3>
   </a>
 </p>
 
