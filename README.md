@@ -7,7 +7,7 @@
 </p>
 <h3 align="center">Built for the 100Devs 100-Hours Project</h3>
 <p align="center">
-    <h3 align="center">Access the App <a target="blank" href="http://pokedrafts.herokuapp.com/">Here</a></h3>
+    <h3 align="center">Access the App <a href="http://pokedrafts.herokuapp.com/" target="blank">Here</a></h3>
 </p>
 
 ## How It's Made:
