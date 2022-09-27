@@ -104,8 +104,14 @@ Building this app has allowed me to learn and exercise a variety of different co
 3. Due to Heroku uploading troubleshoots, updated mongoDB IP address to accommodate global access via address 0.0.0.0.
 
 8/28/2022
-1. Due to frustrations with more Heroku upload issues, began working on ways to split back-end code into multiple segments, via MVC architecture.
-2. 
+1. Due to frustrations with more Heroku upload issues, began working on ways to split code into multiple segments, via MVC architecture.
+2. Back-end code has been successfully split into routes and controllers. Pending further split to include models.
+
+9/3/2022
+1. Added Google Authentication to allow individual deck creation for each logged in user.
+
+9/5/2022
+1. Implemented successful use of single-card removal from the user's deck via DELETE request 
 
 9/10/2022
 1. Restructured server-side code to include controllers.
