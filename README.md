@@ -63,6 +63,50 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 ## Project Logs:
 
+8/18/2022
+1. Began work on the app. Established front-end files and back-end initialization.
+2. Built basic page layout with name search bar. 
+3. Added additional checkbox parameters in the form of Type, Card Type, and Set.
+
+8/19/2022
+1. Registered account on https://pokemontcg.io/ and obtained personal API key.
+2. Connected API key with app.
+3. Linked API url with a fetchURLText variable that connects it to the results garnered from user's the search parameters.
+4. Successfully managed to draw card images upon using the search feature. <a href="https://i.imgur.com/sBmMzsl.png">Preview</a>
+
+8/20/2022
+1. Established database for the app through MongoDB with a unique Mongo URI.
+2. Began work on click event listeners to allow users to add cards to the deck aspect of the page.
+
+8/21/2022
+1. Modified search results to return nothing if the user's input in the search bar does not align with the other parameters.
+2. Successfully hosted app on Heroku.
+
+8/22/2022
+1. Began work on connecting click events to functions on the back-end, namely POST requests to allow users to add cards from the search results to their deck.
+2. Cards can now be added to the deck, but they overwrite previous cards that were added. Pending fix.
+
+8/24/2022
+1. Developed schema for card objects being uploaded to mongoDB.
+2. Schema properly displays the card name and image URL. <a href="https://i.imgur.com/eihLQ5T.png">Preview</a>
+
+8/25/2022
+1. Added 'Delete Deck' button which wipes all cards from the deck section of the app. It is currently global, since no authentication has been added yet.
+2. Fixed GET request so that it properly displays cards that users had added to the deck before reloading the page.
+
+8/26/2022
+1. Studied tree structure to better understand how to append HTML elements on card generation.
+2. Current structure appends card names (li) and card images (img) to the card 'container' which is their parent div element.
+
+8/27/2022
+1. Discovered that the main ejs file had not been placed in the proper directly, so many styling changes were not being applied. Now placed in proper directory.
+2. Began work on carousel function to accommodate single card displays via separate slides in both search results and deck.
+3. Due to Heroku uploading troubleshoots, updated mongoDB IP address to accommodate global access via address 0.0.0.0.
+
+8/28/2022
+1. Due to frustrations with more Heroku upload issues, began working on ways to split back-end code into multiple segments, via MVC architecture.
+2. 
+
 9/10/2022
 1. Restructured server-side code to include controllers.
 2. Renamed router directories to better relate to their functions.
