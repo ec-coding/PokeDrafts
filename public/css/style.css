@@ -67,9 +67,8 @@ h3 {
 /*******************************************/
 
 #app-container {
-     width: 375px;
+     min-width: 375px;
      margin: 0 auto;
-     position: absolute;
 }
 
 #title-container {
