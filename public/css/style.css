@@ -187,9 +187,8 @@ img:active {
      background-image: linear-gradient(rgba(137, 43, 226, 0.425), rgba(180, 145, 220, 0.425), rgba(137, 43, 226, 0.425));
      border: 2px solid black;
      margin-top: 20px;
-     height: 70px;
+     min-height: 70px;
      width: 100%;    
-     display: inline-block;
 }
 
 .instructions-text {
