@@ -67,7 +67,7 @@ h3 {
 /*******************************************/
 
 #app-container {
-     width: 576px;
+     width: 375px;
      margin: 0 auto;
      position: absolute;
 }
@@ -147,7 +147,7 @@ h3 {
 
 .search-input {
      border: 2px solid black;
-     margin: 20px 0;
+     margin: 10px 0;
      padding-bottom: 10px;
 }
 
@@ -200,13 +200,13 @@ img:active {
 
 #top-params {
      display: flex;
-     margin: 20px auto;
-     gap: 3px;
+     margin: 10px auto;
+     gap: 5px;
 }
 
 #top-params input {
      border: 2px solid black;
-     padding: 3px 20px;
+     padding: 3px 8px;
      font-size: 18px;
 }
 
@@ -218,12 +218,16 @@ img:active {
      width: 100%;
 }
 
+#top-params .button-input {
+     padding: 5px;
+}
+
 #top-params div button {
-     border: 2px solid black;
+     border: 2px solid rgb(8, 8, 8);
      border-radius: 5px;
-     margin: 0 20px;
-     padding: 3px 8px;
-     font-size: 16px;
+     margin: 0 3px 3px 3px;
+     padding: 5px 10px;
+     font-size: 20px;
      font-weight: bold;
 }
 
