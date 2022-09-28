@@ -63,6 +63,7 @@ h3 {
 /*******************************************/
 
 #app-container {
+     width: 576px;
      margin: 0 auto;
      position: absolute;
 
@@ -81,11 +82,7 @@ h3 {
      background-position: center top;
      background-repeat: no-repeat;
      background-size: 50%;
-     min-height: 50px;
-}
-
-#title-container h2 {
-
+     min-height: 80px;
 }
 
 #nav-container {
