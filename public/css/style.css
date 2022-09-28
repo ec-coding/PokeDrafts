@@ -69,6 +69,7 @@ h3 {
 #app-container {
      min-width: 375px;
      margin: 0 auto;
+     min-height: 812px;
 }
 
 #title-container {
@@ -85,6 +86,7 @@ h3 {
      background-repeat: no-repeat;
      background-size: 50%;
      min-height: 80px;
+     margin: 5px;
 }
 
 #nav-container {
