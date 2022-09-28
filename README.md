@@ -7,67 +7,112 @@
 </p>
 <h3 align="center">Built for the 100Devs 100-Hours Project</h3>
 <p align="center">
-  <a href="http://pokedrafts.herokuapp.com/" target="_blank">
-    <img src="https://img.shields.io/static/v1?label=|&message=WEBSITE&color=23555f&style=plastic&logo=react&logo-color=white"/>
-  </a>
+    <h3 align="center">Access the App <a href="http://pokedrafts.herokuapp.com/" target="blank">Here</a></h3>
 </p>
 
+## How It's Made:
 
-<h2>PROJECT GOALS:</h2>
-<table bordercolor="#66b2b2">
-<tr>
+**Tech used:** 
+    <img src="https://img.shields.io/static/v1?label=|&message=EJS&color=cbb148&style=plastic&logo=ejs">
+    <img src="https://img.shields.io/static/v1?label=|&message=CSS3&color=285f65&style=plastic&logo=css3"/>
+    <img src="https://img.shields.io/static/v1?label=|&message=JAVASCRIPT&color=3c7f5d&style=plastic&logo=javascript"/>
+    <img src="https://img.shields.io/static/v1?label=|&message=NODE.JS&color=cdf998&style=plastic&logo=node.js"/>	
+    <img src="https://img.shields.io/static/v1?label=|&message=MONGO-DB&color=cdd148&style=plastic&logo=mongodb"/>
+    <img src="https://img.shields.io/static/v1?label=|&message=EXPRESS&color=bbb111&style=plastic&logo=express"/>
 
-    
-SERVER-SIDE
-1. Utilize MVC architecture to organize all server-side code. --COMPLETED
-2. Enable Google Authentication for user logins. --COMPLETED
-3. Ensure that each user has access to their own individual deck. --COMPLETED
-4. Connect each user's deck to a separate database (MongoDB).
-5. Arrange the user's deck as an object on MongoDB. --COMPLETED
-6. Successfully deploy app on Heroku. --COMPLETED
-          
-FRONT-END
-1. Create customizable decks for each user.
-2. Establish dynamic carousels to accommodate all card results.
-3. Create tab views for Search, Search Results, and Deck. --COMPLETED
+PokéDrafts is a full-stack web app that allows you to build your very own deck from various sets of the Pokémon Trading Card Game.
 
-USER INTERFACE
-1. Highlight the button of whichever tab is active.
-2. When a user deletes a card, remove the slide it is on as well. --50% COMPLETE
-3. When the user hits the submit button on Card Search, switch the tab to Search Results. --COMPLETED
-4. Add radio inputs for Pokemon Type and Card Type. --COMPLETED
-5. Add checkbox inputs for Card Set. --COMPLETED
-6. Add a card counter on the Deck panel. --COMPLETED
-7. Show how much of each card is in a deck.
-8. When a user is typing in the name of a card, have the search bar offer suggestions.
+## Optimizations
 
-DECK RULES
-1. A completed deck must have exactly 60 cards. --COMPLETED
-2. A deck cannot exceed 60 cards. --COMPLETED
-3. No more than 4 of each card can be added to a deck, with the exception of energy cards.
+- I plan to implement the following features over time:
+  - Allow users to manage more than one deck.
+  - Allow users to toggle their decks as public or private.
+  - If a deck is made public, allow other users to view them.
+  - Render a limited number of files initially, and have the carousel render more as it goes on.
+  - Provide an option for users to sort the deck in various ways.
+  - Enable more avenues of authentication
+  - Show how much of each card is in a deck.
+  - When a user is typing in the name of a card, have the search bar offer suggestions.
+  - Highlight the button of whichever tab is active.
+  - No more than 4 of each card can be added to a deck, with the exception of energy cards.
 
+## Lessons Learned:
 
-FUTURE GOALS
-1. Allow users to manage more than one deck.
-2. Allow users to toggle their decks as public or private.
-3. If a deck is made public, allow other users to view them.
-4. Render a limited number of files initially, and have the carousel render more as it goes on.
-5. Provide an option for users to sort the deck in various ways.
-6. Enable more avenues of authentication
+Building this app has allowed me to learn and exercise a variety of different coding paradigms, such as MVC architecture, Google authentication, and CRUD operations.
 
-CHALLENGES:
-1. How do you add information from an API's dataset to your own database? --COMPLETED
-2. How do you connect a user's ID to a card they added into the database? --COMPLETED
-3. How can I remove a user's entire deck without affecting the cards in another user's deck? --COMPLETED
+## Completed Goals:
 
-</tr>
-</table>
-  
-<h2>PROJECT LOGS:</h2>
-<table bordercolor="#66b2b2">
-<tr>
+- The following features have been sucessfully implemented in the app:
+  - Utilize MVC architecture to organize all server-side code.
+  - Enable Google Authentication for user logins.
+  - Ensure that each user has access to their own individual deck.
+  - Arrange the user's deck as an object on MongoDB.
+  - Successfully deploy app on Heroku.
+  - Establish dynamic carousels to accommodate all card results.
+  - Create tab views for Search, Search Results, and Deck.
+  - When a user deletes a card, remove the slide it is on as well.
+  - When the user hits the submit button on Card Search, switch the tab to Search Results.
+  - Add radio inputs for Pokemon Type and Card Type.
+  - Add checkbox inputs for Card Set.
+  - Add a card counter on the Deck panel.
+  - A completed deck must have exactly 60 cards.
+  - A deck cannot exceed 60 cards.
+  - How do you add information from an API's dataset to your own database?
+  - How do you connect a user's ID to a card they added into the database?
+  - How can I remove a user's entire deck without affecting the cards in another user's deck?
 
-      
+## Project Logs:
+
+8/18/2022
+1. Began work on the app. Established front-end files and back-end initialization.
+2. Built basic page layout with name search bar. 
+3. Added additional checkbox parameters in the form of Type, Card Type, and Set.
+
+8/19/2022
+1. Registered account on https://pokemontcg.io/ and obtained personal API key.
+2. Connected API key with app.
+3. Linked API url with a fetchURLText variable that connects it to the results garnered from user's the search parameters.
+4. Successfully managed to draw card images upon using the search feature. <a href="https://i.imgur.com/sBmMzsl.png">Preview</a>
+
+8/20/2022
+1. Established database for the app through MongoDB with a unique Mongo URI.
+2. Began work on click event listeners to allow users to add cards to the deck aspect of the page.
+
+8/21/2022
+1. Modified search results to return nothing if the user's input in the search bar does not align with the other parameters.
+2. Successfully hosted app on Heroku.
+
+8/22/2022
+1. Began work on connecting click events to functions on the back-end, namely POST requests to allow users to add cards from the search results to their deck.
+2. Cards can now be added to the deck, but they overwrite previous cards that were added. Pending fix.
+
+8/24/2022
+1. Developed schema for card objects being uploaded to mongoDB.
+2. Schema properly displays the card name and image URL. <a href="https://i.imgur.com/eihLQ5T.png">Preview</a>
+
+8/25/2022
+1. Added 'Delete Deck' button which wipes all cards from the deck section of the app. It is currently global, since no authentication has been added yet.
+2. Fixed GET request so that it properly displays cards that users had added to the deck before reloading the page.
+
+8/26/2022
+1. Studied tree structure to better understand how to append HTML elements on card generation.
+2. Current structure appends card names (li) and card images (img) to the card 'container' which is their parent div element.
+
+8/27/2022
+1. Discovered that the main ejs file had not been placed in the proper directly, so many styling changes were not being applied. Now placed in proper directory.
+2. Began work on carousel function to accommodate single card displays via separate slides in both search results and deck.
+3. Due to Heroku uploading troubleshoots, updated mongoDB IP address to accommodate global access via address 0.0.0.0.
+
+8/28/2022
+1. Due to frustrations with more Heroku upload issues, began working on ways to split code into multiple segments, via MVC architecture.
+2. Back-end code has been successfully split into routes and controllers. Pending further split to include models.
+
+9/3/2022
+1. Added Google Authentication to allow individual deck creation for each logged in user.
+
+9/5/2022
+1. Implemented successful use of single-card removal from the user's deck via DELETE request 
+
 9/10/2022
 1. Restructured server-side code to include controllers.
 2. Renamed router directories to better relate to their functions.
@@ -75,7 +120,6 @@ CHALLENGES:
 4. Fixed user first name display on the profile page.
 5. Connected user ID's to each card that is added to the deck.
 6. Fixed redirects when re-loading the site as current user. (/decks -> /profile in /middleware/auth.js)
-
 
 9/11/2022
 1. Delete Deck button now only deletes individual user's deck, and not everyone's deck
@@ -90,7 +134,7 @@ CHALLENGES:
 1. Added update bar on Search Results to show the names of cards added to the user's deck.
 
 9/16/2022
-1. Added update bar on Deck to show the names of cards deleted from the user's deck. 
+1. Added update bar on Deck to show the names of cards deleted from the user's deck.
 (This was done by adding data-name="<%= cards[i].name %>" to the deck-slide li on Decks.ejs)
 
 9/17/2022
@@ -98,11 +142,8 @@ CHALLENGES:
 
 9/19/2022
 1. Finally fixed the issue with a user not being able to delete individual cards from their deeck without having to reload the page.
-  - .at(-1) was added to the card variable, and returned as the json response, since that was the last card added to the deck db.
-  - This is then returned to the front-end's fetch request, and subsequently rendered on the HTML.
+- .at(-1) was added to the card variable, and returned as the json response, since that was the last card added to the deck db.
+- This is then returned to the front-end's fetch request, and subsequently rendered on the HTML.
 
 9/20/2022
 1. Added 3 new card sets onto the UI: Team Rocket, Gym Heroes, and Gym Challenge.
-  
-</tr>
-</table>
