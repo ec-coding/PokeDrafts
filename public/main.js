@@ -435,3 +435,13 @@ function visibilityForTypes() {
         document.querySelectorAll('[name="type"]').forEach(x => x.checked = false);
     }
 }
+
+// RESET SEARCH PARAMETERS
+document.querySelector('#reset-button').addEventListener('click', resetParams)
+
+function resetParams() {
+    document.querySelectorAll('[name="supertype"]').forEach(x => x.checked = false);
+    document.querySelectorAll('[name="type"]').forEach(x => x.checked = false);
+    document.querySelectorAll('[name="subtype"]').forEach(x => x.checked = false);
+    document.querySelector('#card-type-pokemon').checked = true;
+}

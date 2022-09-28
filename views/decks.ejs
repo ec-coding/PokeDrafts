@@ -20,7 +20,7 @@
 			<h1>
 				<!-- <img src="https://fontmeme.com/permalink/220913/6616344a537ac211b127d78d504e7ac9.png" alt="trim-images" border="0"> -->
 			</h1>
-			<h2>A Deck Builder App for <br>the Pokémon Trading Card Game</h2>
+			<!-- <h2>A Deck Builder App for <br>the Pokémon Trading Card Game</h2> -->
 			<h3>Welcome <%= user.firstName %>!</h3>
 		</div>
 		<section id="nav-container">
@@ -30,11 +30,18 @@
 			<button id="nav-deck" class="tab-button" onclick="openTab(event, 'deck')">Deck</button>
 		</section>
 		<div id="search-param" class="panel tab-content">
-			<section class="name-input">
-				<h2 id="search-header">Search Cards</h2>
-				<input type="text" id="name-search" placeholder="Search by name...">
-				<button type="submit" id="search-button">Submit</button>
-				<button type="reset">Reset</button>
+			<h2 id="search-header">Search Cards</h2>
+			<section class="instructions">
+				<p class="instructions-text">Instructions: Select the parameters for the type of card(s)<br> you wish return, then hit the Submit button!</p>
+			</section>
+			<section id="top-params">
+				<div class="name-input">
+					<input type="text" id="name-search" placeholder="Search by card name...">
+				</div>
+				<div class="button-input">
+					<button type="submit" id="search-button">Submit</button>
+					<button type="reset" id="reset-button">Reset</button>
+				</div>
 			</section>
 			<div id="choice-params">
 				<section class="supertype-input-sec search-input">
@@ -59,11 +66,11 @@
 							<input class="type-input" type="checkbox" id="jungle" name="subtype" value="base2">
 							<label for="subtype-jungle"> Jungle</label>
 							<input class="type-input" type="checkbox" id="fossil" name="subtype" value="base3">
-							<label for="subtype-fossil"> Fossil</label><br>
+							<label for="subtype-fossil"> Fossil</label>
 							<input class="type-input" type="checkbox" id="base-two" name="subtype" value="base4">
-							<label for="subtype-fossil"> Base 2</label>
+							<label for="subtype-fossil"> Base 2</label><br>
 							<input class="type-input" type="checkbox" id="team-rocket" name="subtype" value="base5">
-							<label for="subtype-team-rocket"> Team Rocket</label><br>
+							<label for="subtype-team-rocket"> Team Rocket</label>
 							<input class="type-input" type="checkbox" id="gym-heroes" name="subtype" value="gym1">
 							<label for="subtype-gym-heroes"> Gym Heroes</label>
 							<input class="type-input" type="checkbox" id="gym-challenge" name="subtype" value="gym2">
