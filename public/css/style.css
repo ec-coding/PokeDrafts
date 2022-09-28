@@ -65,7 +65,7 @@ h3 {
 #app-container {
      margin: 0 auto;
      position: absolute;
-     min-width: 576px;
+
 }
 
 #title-container {
@@ -81,7 +81,11 @@ h3 {
      background-position: center top;
      background-repeat: no-repeat;
      background-size: 50%;
-     height: 80px;
+     min-height: 50px;
+}
+
+#title-container h2 {
+
 }
 
 #nav-container {
@@ -123,7 +127,7 @@ h3 {
 
 .panel {
      position: relative;
-     height: 60vh;
+     min-height: 60vh;
      border: 2px solid black;
      background-image: linear-gradient(rgb(220, 100, 100), rgb(220, 200, 200), rgb(220, 100, 100));
 }
@@ -286,3 +290,5 @@ img:active {
      padding: 6px 12px;
      border-top: none;
 }
+
+/* media query - make the margins smaller for smaller devices - by about 5 px */

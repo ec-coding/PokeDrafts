@@ -52,6 +52,7 @@ function getCards() {
     const subtypeInputBase = document.querySelector('#base').checked
     const subtypeInputJungle = document.querySelector('#jungle').checked
     const subtypeInputFossil = document.querySelector('#fossil').checked
+    const subtypeInputBaseTwo = document.querySelector('#base-two').checked
     const subtypeInputTeamRocket = document.querySelector('#team-rocket').checked
     const subtypeInputGymHeroes = document.querySelector('#gym-heroes').checked
     const subtypeInputGymChallenge = document.querySelector('#gym-challenge').checked
@@ -68,6 +69,10 @@ function getCards() {
         subtypeInput = document.querySelector('#fossil').value
         subtypeParam += ` set.id:base3 OR`
     }
+    if (subtypeInputBaseTwo == true) {
+        subtypeInput = document.querySelector('#base-two').value
+        subtypeParam += ` set.id:base4 OR`
+    }
     if (subtypeInputTeamRocket == true) {
         subtypeInput = document.querySelector('#team-rocket').value
         subtypeParam += ` set.id:base5 OR`
@@ -81,7 +86,7 @@ function getCards() {
         subtypeParam += ` set.id:gym2 OR`
     }
     if (subtypeParam == '') {
-        subtypeParam = ` (set.id:base1 OR set.id:base2 OR set.id:base3 OR set.id:base5 OR set.id:gym1 OR set.id:gym2)`
+        subtypeParam = ` (set.id:base1 OR set.id:base2 OR set.id:base3 OR set.id:base4 OR set.id:base5 OR set.id:gym1 OR set.id:gym2)`
     } else {
         subtypeParam = subtypeParam.slice(0, -2)
     }
