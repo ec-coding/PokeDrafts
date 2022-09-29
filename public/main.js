@@ -447,3 +447,11 @@ function resetParams() {
     document.querySelector('#card-type-pokemon').checked = true;
     document.querySelector('.type-input-sec').style.display = 'block'
 }
+
+const btnSearch = document.querySelector('#nav-search')
+
+btnSearch.addEventListener('click', btnColorOne)
+
+function btnColorOne() {
+    btnSearch.addClass('active')
+}

@@ -104,6 +104,9 @@
 		</div>
 		<div id="search-results" class="panel tab-content">
 			<h2>Search Results (<span id="results-card-count" value="Change">0</span>/30)</h2>
+			<section class="instructions">
+				<p class="instructions-text">Instructions: Use the side arrows to search through the card results. Click on any card to add it to your deck.</p>
+			</section>
 			<div id="card-container">
 				<ul class="search-cards search-slider slider">
 					<!-- <% for(var i = 0; i < cards.length; i++) {%>
@@ -122,6 +125,9 @@
 
 			<!-- How do I add card count?? -->
 			<h2 id="deck-card-count">Deck (<span id="card-count" value="Change"><%= quantity %></span>/60)</h2>
+			<section class="instructions">
+				<p class="instructions-text">Instructions: Use the side arrows to search through your deck. Click on any card to remove it from your deck.</p>
+			</section>
 			<div id="deck-container">
 				<ul class="deck-cards deck-slider slider">
 					<% for(var i=0; i < cards.length; i++) {%>

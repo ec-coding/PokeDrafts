@@ -132,9 +132,14 @@ h3 {
      background-color: lightgreen;
 }
 
+#nav-container button.active {
+     background-color: lightgreen !important;
+}
+
+
 .panel {
      position: relative;
-     min-height: 60vh;
+     min-height: 81vh;
      border: 2px solid black;
      background-image: linear-gradient(rgb(220, 100, 100), rgb(220, 200, 200), rgb(220, 100, 100));
 }
