@@ -176,6 +176,10 @@ label {
      display: none;
 }
 
+.card-img, .deck-card-img {
+     width: 60%;
+}
+
 img {
      margin: 10px 10px 0 10px;
      border-radius: 5px;
@@ -243,7 +247,8 @@ img:active {
 }
 
 
-#card-container {
+#card-container, #deck-container {
+     padding-top: 20px;
      height: 385px;
      display: grid;
      place-items: center;
@@ -256,12 +261,6 @@ img:active {
      font-size: 24px;
      font-weight: bold;
      display: none;
-}
-
-#deck-container {
-     height: 385px;
-     display: grid;
-     place-items: center;
 }
 
 #delete-deck-button {
@@ -323,6 +322,10 @@ img:active {
      cursor: pointer;
      background-color: rgb(124, 76, 76, 0.50);
      font-size: 18px;
+}
+
+.btn:hover, .btn:active {
+     background-color: rgb(124, 76, 76, 0.35) !important;
 }
 
 .btn:active {

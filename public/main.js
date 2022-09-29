@@ -125,7 +125,7 @@ function getCards() {
                 newCard.setAttribute('class', 'search-card search-slide slide');
                 newCardName.setAttribute('class', 'card-name');
                 newCardImg.setAttribute('class', 'card-img');
-                newCardImg.src = responseData.data[i].images.small
+                newCardImg.src = responseData.data[i].images.large
                 cardContainer.appendChild(newCard)
                 newCard.appendChild(newCardName)
                 newCard.appendChild(newCardImg)
