@@ -147,3 +147,9 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 9/20/2022
 1. Added 3 new card sets onto the UI: Team Rocket, Gym Heroes, and Gym Challenge.
+
+9/27/2022
+1. Adjusted view to better accommodate mobile devices. Width now adjusts to the smallest mobile screen.
+
+9/28/2022
+1. Added counter to card search results to display how many cards were returned after clicking "Submit".
