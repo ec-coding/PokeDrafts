@@ -154,3 +154,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 9/28/2022
 1. Added counter to card search results to display how many cards were returned after clicking "Submit".
+
+9/29/2022
+1. Added instructions on each panel to assist with user navigation.
