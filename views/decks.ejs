@@ -10,6 +10,8 @@
 
 	<!-- external CSS link -->
 	<link href="http://fonts.cdnfonts.com/css/nintendo-ds-bios" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -101,7 +103,7 @@
 			</div>
 		</div>
 		<div id="search-results" class="panel tab-content">
-			<h2>Search Results (<span id="results-card-count" value="Change"><%= quantity %></span>/60)</h2>
+			<h2>Search Results (<span id="results-card-count" value="Change">0</span>/30)</h2>
 			<div id="card-container">
 				<ul class="search-cards search-slider slider">
 					<!-- <% for(var i = 0; i < cards.length; i++) {%>
@@ -135,7 +137,8 @@
 			<button id="delete-deck-button">Delete Deck</button>
 		</div>
 	</div>
-
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 	<script src="/main.js"></script>
 </body>
 

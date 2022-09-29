@@ -57,10 +57,13 @@ h1 {
 }
 
 h2 {
-    margin: 10px auto; 
+     font-weight: bold;
+     font-size: 28px;
+     margin: 10px auto; 
 }
 
 h3 {
+     font-weight: bold;
      font-size: 24px;
      margin-top: 5px;
      margin-bottom: 10px;
@@ -235,6 +238,11 @@ img:active {
      font-weight: bold;
 }
 
+#top-params div button:active {
+     transform: scale(0.9);
+}
+
+
 #card-container {
      height: 385px;
      display: grid;
@@ -257,6 +265,7 @@ img:active {
 }
 
 #delete-deck-button {
+     margin-top: 30px;
      font-size: 20px;
      font-weight: bold;
      border: 2px solid black;

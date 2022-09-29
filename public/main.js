@@ -115,7 +115,6 @@ function getCards() {
         .then(res => res.json())
         .then(responseData => {
             console.log(responseData)
-
             const cardContainer = document.querySelector('#card-container .search-slider')
             cardContainer.innerText = ''
             for (var i = 0; i < responseData.data.length; i++) {
@@ -130,6 +129,8 @@ function getCards() {
                 cardContainer.appendChild(newCard)
                 newCard.appendChild(newCardName)
                 newCard.appendChild(newCardImg)
+                let cardCounter = document.querySelector('.search-cards')
+                document.getElementById("results-card-count").innerText = cardCounter.getElementsByTagName('li').length
                 formatSearchCards()
                 formatCards()
                 document.getElementById("nav-results").click();
@@ -444,4 +445,5 @@ function resetParams() {
     document.querySelectorAll('[name="type"]').forEach(x => x.checked = false);
     document.querySelectorAll('[name="subtype"]').forEach(x => x.checked = false);
     document.querySelector('#card-type-pokemon').checked = true;
+    document.querySelector('.type-input-sec').style.display = 'block'
 }
