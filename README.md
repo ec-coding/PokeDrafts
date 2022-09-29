@@ -25,6 +25,7 @@ PokéDrafts is a full-stack web app that allows you to build your very own deck 
 ## Optimizations
 
 - I plan to implement the following features over time:
+  - Add a counter that shows which slide you are currently on (in both Search Results and Deck).
   - Allow users to manage more than one deck.
   - Allow users to toggle their decks as public or private.
   - If a deck is made public, allow other users to view them.
@@ -153,3 +154,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 9/28/2022
 1. Added counter to card search results to display how many cards were returned after clicking "Submit".
+
+9/29/2022
+1. Added instructions on each panel to assist with user navigation.
