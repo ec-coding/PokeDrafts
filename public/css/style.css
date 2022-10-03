@@ -95,6 +95,15 @@ h3 {
      min-height: 80px;
 }
 
+#footer-container {
+     min-height: 12.2vh;
+     border-bottom: 2px solid black;
+     border-left: 2px solid black;
+     border-right: 2px solid black;
+     background-image: linear-gradient(cornflowerblue, lightblue, cornflowerblue);
+     padding: 10px 0;
+}
+
 #nav-container {
      display: flex;
      flex-direction: row;
@@ -139,7 +148,7 @@ h3 {
 
 .panel {
      position: relative;
-     min-height: 77vh;
+     min-height: 65vh;
      border: 2px solid black;
      background-image: linear-gradient(rgb(220, 100, 100), rgb(220, 200, 200), rgb(220, 100, 100));
 }
