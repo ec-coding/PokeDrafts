@@ -225,9 +225,10 @@ async function deleteCardFromDB(event) {
         .then(res => {
             if (res.ok) {
                 deletedCard.remove()
+                goToNextCard()
                 formatCards()
                 // event.currentTarget.parent.remove('li')
-                goToNextCard()
+
                 return res
             }
         })
