@@ -113,10 +113,18 @@ h3 {
      border: 2px solid black;
 }
 
+.login-text {
+     width: 80% !important;
+     margin: 0 auto;
+}
+
 #login-button {
+     border: 1px solid black;
+}
+
+#login-button a {
      font-size: 20px;
      font-weight: bold;
-     border: 1px solid black;
 }
 
 #login-button:hover {
