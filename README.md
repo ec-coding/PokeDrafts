@@ -159,3 +159,10 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 9/29/2022
 1. Added instructions on each panel to assist with user navigation.
+
+10/2/2022
+1. Experimented with bootstrap modals for card images. There was difficulty with implementation since the "buttons" (aka card images) are not static. 
+
+10/4/2022
+1. Modals have been postponed, since further research is needed on how to join them with dynamic elements.
+2. EJS Headers and Footers have now been divided into their own partials.
