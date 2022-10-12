@@ -182,8 +182,6 @@ function getCards() {
 
 function createCardReplica(card) {
     const deckContainer = document.querySelector('#deck-container .deck-slider')
-    // deckContainer.innerText = ''
-    // moveSlidesWhenAddingCard()
     const newDeckCard = document.createElement('li')
     const newDeckCardImg = document.createElement('img')
     newDeckCard.setAttribute('class', 'deck-card deck-slide slide')
