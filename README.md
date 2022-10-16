@@ -166,3 +166,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 10/4/2022
 1. Modals have been postponed, since further research is needed on how to join them with dynamic elements.
 2. EJS Headers and Footers have now been divided into their own partials.
+
+10/8/2022
+1. Currently revamping app with React framework.
