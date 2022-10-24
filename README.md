@@ -169,3 +169,7 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 10/8/2022
 1. Currently revamping app with React framework.
+
+10/13/2022
+1. Added React components for Search Parameters, Search Results, and User Deck.
+2. Implemented multi-card carousel which can display up to 18 results at a time.
