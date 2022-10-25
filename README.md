@@ -173,3 +173,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 10/13/2022
 1. Added React components for Search Parameters, Search Results, and User Deck.
 2. Implemented multi-card carousel which can display up to 18 results at a time.
+
+10/15/2022
+1. Due to legacy code complications, the react version of this app will be split into another repo and worked on separately. The original version will still be accessible.
