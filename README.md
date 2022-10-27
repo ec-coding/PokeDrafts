@@ -176,3 +176,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 10/15/2022
 1. Due to legacy code complications, the react version of this app will be split into another repo and worked on separately. The original version will still be accessible.
+
+10/18/2022
+1. Added modals for each card, which displays further information on said card, as well as an "Add to Deck" button.
