@@ -179,3 +179,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 10/18/2022
 1. Added modals for each card, which displays further information on said card, as well as an "Add to Deck" button.
+
+10/24/2022
+1. Implemented icons via React props to replace certain text drawn from an API. Elements will now be displayed as their respective icons on card modals.
