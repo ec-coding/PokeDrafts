@@ -182,3 +182,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 10/24/2022
 1. Implemented icons via React props to replace certain text drawn from an API. Elements will now be displayed as their respective icons on card modals.
+
+10/26/2022
+1. Modal design has been revamped and now shows card attributes, as well as pricing data lifted from current market values.
