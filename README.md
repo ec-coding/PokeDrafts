@@ -185,3 +185,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 10/26/2022
 1. Modal design has been revamped and now shows card attributes, as well as pricing data lifted from current market values.
+
+10/29/2022
+1. Added components for card attributes and icons to accommodate different text blocks and images depending on card type.
