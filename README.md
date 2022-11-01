@@ -188,3 +188,7 @@ Building this app has allowed me to learn and exercise a variety of different co
 
 10/29/2022
 1. Added components for card attributes and icons to accommodate different text blocks and images depending on card type.
+
+10/31/2022
+1. Implemented looping carousel slides for card search results via array chunking.
+2. Began work on UI update by adding icons next to search parameters.
