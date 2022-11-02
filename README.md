@@ -192,3 +192,6 @@ Building this app has allowed me to learn and exercise a variety of different co
 10/31/2022
 1. Implemented looping carousel slides for card search results via array chunking.
 2. Began work on UI update by adding icons next to search parameters.
+
+11/1/2022
+1. The design and functionality for the Text, Card Type, Set, and Type parameters have all been completed on the Search Cards tab.
