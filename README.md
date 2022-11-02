@@ -24,6 +24,12 @@
 
 PokéDrafts is a full-stack web app that allows you to build your very own deck from various sets of the Pokémon Trading Card Game.
 
+Progress Images:
+
+<a href="https://imgur.com/a/zowV6hQ">Build v1.0</a>
+
+<a href="https://imgur.com/a/54xKnGd">Build v2.0 (WIP)</a>
+
 ## Optimizations
 
 - I plan to implement the following features over time:
