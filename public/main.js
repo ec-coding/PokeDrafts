@@ -199,7 +199,6 @@ function createCardReplica(card) {
 // DELETING CARDS
 document.querySelectorAll('.deck-card').forEach(card => card.addEventListener('click', deleteCardFromDB))
 
-// Removes a card from the deck if you click it, but only after the page has been reloaded after adding said card.
 async function deleteCardFromDB(event) {
 
     let cardCount = document.getElementById("card-count").innerText
