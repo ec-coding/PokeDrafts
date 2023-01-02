@@ -8,6 +8,7 @@
 <h3 align="center">Built for the 100Devs 100-Hours Project</h3>
 <p align="center">
     <h3 align="center">Access the App <a href="https://pokedrafts.up.railway.app/" target="blank">Here</a></h3>
+    <h3>Note: Due to Heroku's free hosting service ending, the alpha version of PokéDrafts is currently unavailable.</h3>
 </p>
 
 ## How It's Made:
